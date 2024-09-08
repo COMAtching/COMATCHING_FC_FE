@@ -37,9 +37,9 @@ function ContactMethodInput({ handleChange, setIsContactVerified,user, setUser  
         alert("카카오 ID 형식이 올바르지 않습니다.");
         return;
       }
+      setUser(prevUser => ({ ...prevUser, contact_id_Verified: true }));
       alert('입력한 정보는 사용 가능합니다.');
       setIsContactVerified(true);
-      alert('입력한 정보는 사용 가능합니다.');
     } else if (user.contact === "instagram") {
       if (!instagramPattern.test(user.contact_id)) {
         console.log(user.contact_id);

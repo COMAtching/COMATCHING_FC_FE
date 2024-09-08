@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useRecoilState } from "recoil";
 import Background from "../components/Background.jsx";
 import { useNavigate } from "react-router-dom";
@@ -18,12 +18,15 @@ function ChargeRequestPage() {
     setAmount(event.target.value);
   };
   const handleCopy = () => {
-    navigator.clipboard.writeText(accountNumber).then(() => {
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000); // 2초 후에 "Copied!" 메시지 사라지게
-    }).catch(err => {
-      console.error('Failed to copy!', err);
-    });
+    navigator.clipboard
+      .writeText(accountNumber)
+      .then(() => {
+        setCopied(true);
+        setTimeout(() => setCopied(false), 2000); // 2초 후에 "Copied!" 메시지 사라지게
+      })
+      .catch((err) => {
+        console.error("Failed to copy!", err);
+      });
   };
   const handleSubmit = async () => {
     // Recoil 상태 업데이트
@@ -31,17 +34,16 @@ function ChargeRequestPage() {
 
     try {
       // 백엔드로 POST 요청 보내기
-      const response = await instance.post(
-        "/auth/user/api/charge",
-        {
-          amount: parseInt(amount), // amount를 integer로 변환하여 전송
-        }
-      );
+      const response = await instance.post("/auth/user/api/charge", {
+        amount: parseInt(amount), // amount를 integer로 변환하여 전송
+      });
 
       if (response.status === 200) {
+        navigator.clipboard.writeText(accountNumber);
         alert(
           "충전 요청이 성공적으로 전송되었습니다. 부스에 가서 계좌 입금 확인 해주세요!"
         );
+        alert("카카오뱅크 3333-17-9418736\n계좌번호가 복사되었습니다.");
         navigate("/", { replace: true });
         // 이후 리디렉션 또는 다른 로직 추가 가능
       } else {
@@ -91,7 +93,7 @@ function ChargeRequestPage() {
           충전 요청하기
         </button>
       </div>
-      <div className="charge-request-clicked">
+      {/* <div className="charge-request-clicked">
         <p className="account_name">계좌번호: 오준석</p>
         <p className="account">{accountNumber}</p>
         <img 
@@ -109,7 +111,7 @@ function ChargeRequestPage() {
         
         {copied && <span className="copied-message">copy</span>}
 
-      </div>
+      </div> */}
     </div>
   );
 }

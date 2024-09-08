@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
-import { useRecoilState } from "recoil";
+import { useRecoilState , useResetRecoilState} from "recoil";
 import { useNavigate } from "react-router-dom";
 import HeaderPoint from "../components/Headerpoint";
 import Background from "../components/Background";
@@ -26,7 +26,8 @@ function Matching() {
     useRecoilState(MatchResultState); // 뽑기 결과 상태 관리
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
-
+  const resetMatchState = useResetRecoilState(MatchPickState);
+  const resetMatchResultState = useResetRecoilState(MatchResultState);
   const handleHobbyClick = (index) => {
     const isAlreadySelected = MatchState.formData.hobbyOption.includes(index);
     const updatedHobbies = isAlreadySelected
@@ -43,7 +44,12 @@ function Matching() {
       },
     }));
   };
-
+  useEffect(() => {
+    // 컴포넌트가 마운트될 때 Recoil 상태 초기화
+    resetMatchState();  // MatchPickState 초기화
+    
+    resetMatchResultState(); // MatchResultState 초기화
+  }, [resetMatchState,  resetMatchResultState]);
   const handleStart = (e) => {
     if (MatchState.point > userPoint.point) {
       alert("포인트가 부족합니다!!");
@@ -56,6 +62,10 @@ function Matching() {
   };
 
   const handleMove = (e) => {
+    if (MatchState.point > userPoint.point) {
+      alert("포인트가 부족합니다!!");
+      return; // 동작 중단
+    }
     if (isDragging) {
       const clientX = e.type === "mousemove" ? e.clientX : e.touches[0].clientX;
       const deltaX = clientX - startX.current;
@@ -65,6 +75,11 @@ function Matching() {
     }
   };
   const handleEnd = async () => {
+    if (!isDragging) return;
+    if (MatchState.point > userPoint.point) {
+      alert("포인트가 부족합니다!!");
+      return; // 동작 중단
+    }
     setIsDragging(false);
 
     // 필수 선택 확인
@@ -91,7 +106,6 @@ function Matching() {
       alert("다음 단계로 이동합니다."); // 이동 완료 후 원하는 동작 수행
       // 다음 단계로 이동 로직 추가
     }
-    console.log(MatchState);
 
     const FormData = {
       ageOption: MatchState.isUseOption[0]
@@ -114,7 +128,7 @@ function Matching() {
         FormData,
       },
     }));
-    console.log("FormData: ", FormData);
+    
 
     try {
       setLoading(true);
@@ -122,26 +136,27 @@ function Matching() {
         "/auth/user/api/match/request",
         FormData
       );
-      console.log("response: ", response);
+      
       if (response.status === 200) {
         await setMatchPageResult((prev) => ({
           ...prev,
-          age: response.data.age,
-          comment: response.data.comment,
-          contactFrequency: response.data.contactFrequency,
-          currentPoint: response.data.currentPoint,
-          gender: response.data.gender,
-          hobby: response.data.hobby,
-          major: response.data.major,
-          mbti: response.data.mbti,
-          socialId: response.data.socialId,
-          song: response.data.song,
+          age: response.data.data.age,
+          comment: response.data.data.comment,
+          contactFrequency: response.data.data.contactFrequency,
+          currentPoint: response.data.data.currentPoint,
+          gender: response.data.data.gender,
+          hobby: response.data.data.hobby,
+          major: response.data.data.major,
+          mbti: response.data.data.mbti,
+          socialId: response.data.data.contactId,
+          song: response.data.data.song,
         }));
         await setUserPoint((prev) => ({
           ...prev,
-          point: response.data.point,
+          point: response.data.data.currentPoint,
         }));
-        navigate("/match-result");
+        
+        navigate("/match-result",{ replace: true });
       } else {
         alert("실패하였습니다");
         navigate("/");
@@ -270,7 +285,7 @@ function Matching() {
                   money={100}
                   handleButtonClick={(e) => {
                     e.stopPropagation(); // 이벤트 전파 중지
-                    handleButtonClick(0, -100);
+                    handleButtonClick(0, 100);
                   }}
                 />
               </div>
@@ -322,7 +337,7 @@ function Matching() {
                   money={100}
                   handleButtonClick={(e) => {
                     e.stopPropagation(); // 이벤트 전파 중지
-                    handleButtonClick(0, 100);
+                    handleButtonClick(0, -100);
                   }}
                 />
               </div>
@@ -445,7 +460,7 @@ function Matching() {
             className="cost-bubble"
             style={{
               display:
-                MatchState.selectedMBTI.length > 1 && MatchState.point > 0
+              isMBTISelected && MatchState.point > 0
                   ? "block"
                   : "none",
             }}
@@ -456,44 +471,39 @@ function Matching() {
 
           <div
             className="footer_btn"
-            onMouseMove={MatchState.selectedMBTI.length > 1 ? handleMove : null}
-            onMouseUp={MatchState.selectedMBTI.length > 1 ? handleEnd : null}
-            onTouchMove={MatchState.selectedMBTI.length > 1 ? handleMove : null}
-            onTouchEnd={MatchState.selectedMBTI.length > 1 ? handleEnd : null}
+            onMouseMove={isMBTISelected ? handleMove : null}
+            onMouseUp={isMBTISelected ? handleEnd : null}
+            onTouchMove={isMBTISelected ? handleMove : null}
+            onTouchEnd={isMBTISelected ? handleEnd : null}
           >
             <div
               className="footer_btn_box"
               style={{
-                backgroundColor:
-                  MatchState.selectedMBTI.length > 1 ? "white" : "lightgray",
-                opacity: MatchState.selectedMBTI.length > 1 ? 1 : 0.5, // 선택되기 전에는 흐릿하게, 선택되면 선명하게
-                boxShadow:
-                  MatchState.selectedMBTI.length > 1
-                    ? "0px 4px 12px rgba(0, 0, 0, 0.1)"
-                    : "none", // 선택되면 박스쉐도우 추가
+                backgroundColor: isMBTISelected ? "white" : "lightgray",
+                opacity: isMBTISelected ? 1 : 0.5,
+                boxShadow: isMBTISelected
+                  ? "0px 4px 12px rgba(0, 0, 0, 0.1)"
+                  : "none",
               }}
             >
               <img
                 src={
-                  MatchState.selectedMBTI.length > 1
+                  isMBTISelected
                     ? "/assets/slider_active.svg"
                     : "/assets/slider.svg"
                 } // 이미지 변경
                 alt=""
                 style={{
                   left: `${imagePosition}px`,
-                  cursor:
-                    MatchState.selectedMBTI.length > 1
-                      ? "pointer"
-                      : "not-allowed",
+                  cursor: isMBTISelected ? "pointer" : "not-allowed",
                 }} // 커서 변경
                 onMouseDown={handleStart}
                 onTouchStart={handleStart}
               />
               <p>
-                {MatchState.selectedMBTI.length > 1
-                  ? "밀어서 커플되기"
-                  : "조건을 선택해 주세요"}
+                {isMBTISelected
+                ? "밀어서 커플되기"
+                : "조건을 선택해 주세요"}
               </p>
             </div>
           </div>

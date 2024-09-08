@@ -11,6 +11,7 @@ export const mbtiButton = style({
   width: "85%",
   height: "54px",
   margin: "0px 6px 10px 6px",
+  
   borderRadius: "30px",
   backgroundColor: "#ffffff",
   border: "1px solid #e0e0e0",
@@ -33,6 +34,7 @@ export const activeButton = style({
 export const formMbtiButton = style({
   width: "90%",
   height: "54px",
+  padding:"0px",
   fontFamily: '"Pretendard-SemiBold", Helvetica',
   fontWeight: 700,
   fontSize: "20px",

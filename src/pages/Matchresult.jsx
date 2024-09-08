@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import Background from "../components/Background.jsx";
-import HeaderBack from "../components/HeaderBack.jsx";
+import HeaderBackPoint from "../components/HeaderBackPoint.jsx";
 import Footer from "../components/Footer";
 import { useRecoilState } from "recoil";
 import { MatchResultState, MatchPickState, userState } from "../Atoms";
@@ -22,34 +22,40 @@ function Matchresult() {
   const [loading, setLoading] = useState(false);
   // 같은 조건으로 다시 매칭하기 핸들러
   const handleSubmit = async () => {
+    console.log("MatchState.point",MatchState.point);
+    
+    console.log("resultPoint.point",resultPoint.point);
     if (MatchState.point > resultPoint.point) {
       alert("포인트가 부족합니다!!");
+      navigate("/charge-request", { replace: true }); 
+      navigate
       return; // 동작 중단
     }
     try {
       setLoading(true);
+      
       const response = await instance.post(
         "/auth/user/api/match/request",
-        MatchState.formData
+        MatchState.formData.FormData
       );
-
+      console.log(response);
       if (response.data.status === 200) {
         await setMatchResult((prev) => ({
           ...prev,
-          age: response.data.age,
-          comment: response.data.comment,
-          contactFrequency: response.data.contactFrequency,
-          currentPoint: response.data.currentPoint,
-          gender: response.data.gender,
-          hobby: response.data.hobby,
-          major: response.data.major,
-          mbti: response.data.mbti,
-          socialId: response.data.socialId,
-          song: response.data.song,
+          age: response.data.data.age,
+          comment: response.data.data.comment,
+          contactFrequency: response.data.data.contactFrequency,
+          currentPoint: response.data.data.currentPoint,
+          gender: response.data.data.gender,
+          hobby: response.data.data.hobby,
+          major: response.data.data.major,
+          mbti: response.data.data.mbti,
+          socialId: response.data.data.contactId,
+          song: response.data.data.song,
         }));
         await setResultPoint((prev) => ({
           ...prev,
-          point: response.data.point,
+          point: response.data.data.currentPoint,
         }));
         setLoading(false);
       } else {
@@ -93,7 +99,7 @@ function Matchresult() {
         <div>
           <div className="container">
             <Background />
-            <HeaderBack />
+            <HeaderBackPoint currentPoint={resultPoint.point} />
 
             <div className="circle-icon">💟</div>
 
@@ -177,7 +183,7 @@ function Matchresult() {
                       />
                       {MatchState.point}P
                     </div>
-                    같은 조건으로 한번 더 뽑기
+                    같은 조건으로 다시 뽑기
                   </button>
                 </div>
                 <div className="MatchResult-button-container">
@@ -188,7 +194,7 @@ function Matchresult() {
                     쪽지 보내기
                   </button> */}
                   <button className="SendText-button" onClick={handleHome}>
-                    메인화면으로 가기
+                    메인으로
                   </button>
                 </div>
               </div>

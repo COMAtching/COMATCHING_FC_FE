@@ -7,11 +7,11 @@ import { useRecoilState } from "recoil";
 import { adminRequests } from "../Atoms";
 import SockJS from "sockjs-client";
 import Stomp from "stompjs";
-
+import { useNavigate } from "react-router-dom";
 import AdminNavbar from "./Adminnavbar";
-import { SiDocker } from "react-icons/si";
 
 function getTokenFromCookie() {
+  
   const name = "Authorization=";
   const decodedCookie = decodeURIComponent(document.cookie);
   const ca = decodedCookie.split(";");
@@ -28,6 +28,7 @@ function getTokenFromCookie() {
 }
 
 function AdminRequestList() {
+  const navigate = useNavigate();
   const [requests, setRequests] = useRecoilState(adminRequests);
   const [stompClient, setStompClient] = useState(null);
   useEffect(() => {
@@ -35,11 +36,14 @@ function AdminRequestList() {
   }, [requests]);
   useEffect(() => {
     const connectWebSocket = async () => {
-      const socket = new SockJS("https://backend.comatching.site/wss");
+      const socket = new SockJS("https://cuk.comatching.site/wss");
       
       const client = Stomp.over(socket);
       const token = getTokenFromCookie();
-
+      if (!token) {
+        navigate("/adminlogin");
+        return;
+      }
       client.debug = null;
       client.connect(
         { Authorization: `Bearer ${token}` },

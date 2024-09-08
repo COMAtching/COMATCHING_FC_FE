@@ -6,7 +6,7 @@ import { useRecoilState } from "recoil";
 import { userState, selectedMBTIState } from "../Atoms";
 import { useNavigate } from "react-router-dom";
 import MyInput from "../components/MyInput";
-import HeaderMain from "../components/HeaderMain";
+import HeaderBack from "../components/HeaderBack";
 import MajorSelector from "../components/MajorSelector";
 import Cookies from 'js-cookie';
 import "../css/pages/User_info.css";
@@ -22,7 +22,7 @@ import ProgressBar from "../components/Progressbar";
 import Modal from "react-modal"; // Import react-modal
 import TermsAgreementModal from "../components/TermsAgreementModal"; 
 import { endFileScope } from "@vanilla-extract/css/fileScope";
-
+import HeaderMain from "../components/HeaderMain";
 Modal.setAppElement("#root");
 
 function Userinfo() {
@@ -55,15 +55,23 @@ function Userinfo() {
             [category]: value,
         }));
     
-        setUser((prevUser) => ({
-            ...prevUser,
-            mbti: `${category === "EI" ? value : selectedMBTI.EI}${
-                category === "SN" ? value : selectedMBTI.SN
-        }${category === "TF" ? value : selectedMBTI.TF}${
-            category === "PJ" ? value : selectedMBTI.PJ
-        }`,
-        isLoggedIn: true,
-        }));
+        setUser((prevUser) => {
+            const updatedMBTI = {
+                EI: category === "EI" ? value : selectedMBTI.EI,
+                SN: category === "SN" ? value : selectedMBTI.SN,
+                TF: category === "TF" ? value : selectedMBTI.TF,
+                PJ: category === "PJ" ? value : selectedMBTI.PJ,
+            };
+    
+            // All MBTI parts concatenated
+            const mbtiString = `${updatedMBTI.EI || ""}${updatedMBTI.SN || ""}${updatedMBTI.TF || ""}${updatedMBTI.PJ || ""}`;
+    
+            return {
+                ...prevUser,
+                mbti: mbtiString,
+                isLoggedIn: true,
+            };
+        });
     };
 
     const [isGenderSelectable, setIsGenderSelectable] = useState(false); 
@@ -91,11 +99,7 @@ function Userinfo() {
                 if (value.length <= 5) { // 'comment' 필드가 최대 5글자까지만 입력되도록 제한
                     setUser((prevUser) => ({ ...prevUser, comment: value }));
                     setIsCommentVisible(true); // 'comment' 필드가 표시되도록 설정
-                    if (value.length === 5) { // 'comment' 필드가 정확히 5글자일 때
-                        setIsFiveChars(true); // 다섯 글자가 입력되었음을 설정
-                    } else {
-                        setIsFiveChars(false); // 다섯 글자가 입력되지 않았음을 설정
-                    }
+                    setIsFiveChars(true); 
                 }
                 
                 break;
@@ -178,13 +182,13 @@ function Userinfo() {
             comment: user.comment,
             admissionYear: user.admissionYear,
         };
-
+        console.log(postData);
         try {
             const response = await instance.post(
                 "/auth/social/api/user/info",
                 postData
             );
-
+            
             if (response.data.status === 200) {
                 alert("가입이 완료되었습니다.");
                 navigate("/");

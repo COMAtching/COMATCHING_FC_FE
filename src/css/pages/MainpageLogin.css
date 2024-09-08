@@ -226,6 +226,16 @@ label {
   color: #333;
   margin-bottom: 20px;
 }
+.logout-container {
+  text-align: center; /* 가운데 정렬 */
+}
+
+.logout-link {
+  font-size: 16px; /* 글자 크기 */
+  color: #333; /* grayscale/dark 색상 */
+  text-decoration: underline; /* 밑줄 */
+  cursor: pointer; /* 마우스를 올리면 클릭 가능한 커서 */
+}
 @media (max-width: 412px) {
   .charge-request-unclicked {
     font-size: 13px;

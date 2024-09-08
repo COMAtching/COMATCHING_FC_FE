@@ -32,7 +32,7 @@ function HartButtonInfo({
             }, {});
             const accessToken = cookies.Authorization;
     
-            const response = await axios.post("https://backend.comatching.site/auth/user/api/pickme", {
+            const response = await axios.post("https://cuk.comatching.site/auth/user/api/pickme", {
                 amount: hearts
             }, {
                 headers: {

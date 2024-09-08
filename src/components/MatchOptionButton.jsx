@@ -7,7 +7,10 @@ function MatchOptionButton({ state, num, handleButtonClick, money }) {
         <button
           type="button"
           className="match-premium-option-unclick-button"
-          onClick={() => handleButtonClick(num, money)}
+          onClick={() => {
+            
+            handleButtonClick(num, money); // 함수 호출
+          }}
         >
           <div className="match-premium-option-cost">
             <img
@@ -21,7 +24,10 @@ function MatchOptionButton({ state, num, handleButtonClick, money }) {
         <button
           type="button"
           className="match-premium-option-click-button"
-          onClick={() => handleButtonClick(num, -money)}
+          onClick={() => {
+            
+            handleButtonClick(num, -money)
+          }}
         >
           <img
             src={`${import.meta.env.VITE_PUBLIC_URL}../../assets/Backspace.svg`}

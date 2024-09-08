@@ -75,7 +75,7 @@ function Hobbyform() {
           <div className="select-hobby-text">
             본인의 취미를 알려주세요. (1-5개)
           </div>
-          <ProgressBar progress={45} />
+          <ProgressBar progress={0} />
         </div>
         <div className="hobby-card-container">
           {hobbyCards}

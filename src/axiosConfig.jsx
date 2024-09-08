@@ -3,7 +3,7 @@ import axios from "axios";
 
 // Axios 기본 설정
 const instance = axios.create({
-  baseURL: "https://backend.comatching.site", // 실제 서버 URL 사용
+  baseURL: "https://cuk.comatching.site", // 실제 서버 URL 사용
 });
 
 // 요청 인터셉터 설정
@@ -11,14 +11,17 @@ instance.interceptors.request.use(
   (config) => {
     // 엑세스 토큰 및 리프레시 토큰을 쿠키에서 가져옴
     const accessToken = Cookies.get("Authorization");
-    const refreshToken = Cookies.get("RefreshToken"); // 리프레시 토큰도 같이 보냄
-    
+    // const refreshToken = Cookies.get("RefreshToken"); // 리프레시 토큰도 같이 보냄
+    if (!accessToken) {
+      window.location.href = "/"; // 페이지를 /로 리다이렉트
+      return Promise.reject(new Error("No access token found")); // 요청을 취소하고 에러 반환
+    }
     if (accessToken) {
       config.headers.Authorization = `Bearer ${accessToken}`;
     }
-    if (refreshToken) {
-      config.headers["Refresh-Token"] = refreshToken; // 필요에 따라 리프레시 토큰을 헤더에 추가
-    }
+    // if (refreshToken) {
+    //   config.headers["Refresh-Token"] = refreshToken; // 필요에 따라 리프레시 토큰을 헤더에 추가
+    // }
     return config;
   },
   (error) => {
@@ -32,7 +35,7 @@ instance.interceptors.response.use(
     console.log("response",response);
     // 서버 응답 헤더에 새 토큰이 있으면 업데이트
     const newAccessToken = response.headers["authorization"];
-    const newRefreshToken = response.headers["refresh-token"];
+    // const newRefreshToken = response.headers["refresh-token"];
     
     if (newAccessToken && newAccessToken.startsWith("Bearer ")) {
       const newAccessTokenWithoutBearer = newAccessToken.slice(7);
@@ -42,11 +45,11 @@ instance.interceptors.response.use(
       // 새로운 Authorization 쿠키 설정
       Cookies.set("Authorization", newAccessTokenWithoutBearer, { path: "/" });
     }
-    console.log("newRefreshToken",newRefreshToken);
-    if (newRefreshToken) {
-      Cookies.remove("RefreshToken", { path: "/" });
-      Cookies.set("RefreshToken", newRefreshToken); // 새로운 리프레시 토큰을 쿠키에 저장
-    }
+    // console.log("newRefreshToken",newRefreshToken);
+    // if (newRefreshToken) {
+    //   Cookies.remove("RefreshToken", { path: "/" });
+    //   Cookies.set("RefreshToken", newRefreshToken); // 새로운 리프레시 토큰을 쿠키에 저장
+    // }
 
     return response;
   },
@@ -64,7 +67,7 @@ instance.interceptors.response.use(
     if (status === 401 && (data.code === "SEC-001" || data.code === "SEC-002")) {
       // 인증 실패 시 쿠키 삭제 및 리다이렉트
       Cookies.remove("Authorization");
-      Cookies.remove("RefreshToken");
+      // Cookies.remove("RefreshToken");
       localStorage.removeItem("token");
       alert("세션이 만료되었습니다. 다시 로그인해 주세요.");
       window.location.href = "/"; // 메인 페이지로 리다이렉트

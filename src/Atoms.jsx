@@ -18,7 +18,7 @@ export const userState = atom({
     username: "",
     major: "",
     age: "",
-    admissionYear: 19,
+    admissionYear: null,
     song: "",
     mbti: "",
     point: 0,
@@ -28,6 +28,7 @@ export const userState = atom({
     hobby: [],
     comment: "",
     numParticipants: 0,
+    contact_frequency:"",
     contact: "kakao",
   },
 });

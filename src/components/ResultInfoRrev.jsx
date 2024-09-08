@@ -1,16 +1,14 @@
 import React, { Fragment, useRef, useState } from "react";
-import { useRecoilValue } from "recoil";
-import { userState } from "../Atoms";
 import LoginUserInfoTop from "./LoginUserInfoTop";
 import * as styles from "../css/components/UserInfoRrev.css.ts";
 import UserInfoContainer from "./UserInfoContainer";
 import { useNavigate } from "react-router-dom";
-function UserInfoRrev({ ifMainpage }) {
+
+function UserInfoRrev({ user,ifMainpage }) {
   const navigate = useNavigate();
-  const Info = useRecoilValue(userState);
   const sliderRef = useRef(null);
   const [currentPage, setCurrentPage] = useState(0);
-  const isInstagram = Info.contact_id && Info.contact_id.startsWith("@");
+  const isInstagram = user.contactId && user.contactId.startsWith("@");
 
   const scroll = (pageIndex) => {
     if (sliderRef.current) {
@@ -21,7 +19,6 @@ function UserInfoRrev({ ifMainpage }) {
 
   return (
     <Fragment>
-      
       <div className={styles.userInfoRrev}>
         {currentPage > 0 && (
           <div
@@ -35,24 +32,24 @@ function UserInfoRrev({ ifMainpage }) {
           <div className={styles.sliderPage}>
             <UserInfoContainer
               FirstTopic="전공"
-              FirstText={Info.major}
+              FirstText={user.major}
               SecoundTopic="나이"
-              SecondText={Info.age}
+              SecondText={user.age}
             />
             <UserInfoContainer
               FirstTopic="좋아하는 노래"
-              FirstText={Info.song}
+              FirstText={user.song}
               SecoundTopic="MBTI"
-              SecondText={Info.mbti}
+              SecondText={user.mbti}
             />
           </div>
           <div className={`${styles.sliderPage} ${styles.sliderPageSecond}`}>
-            <UserInfoContainer FirstTopic="취미" FirstText={Info.hobby} />
+            <UserInfoContainer FirstTopic="취미" FirstText={user.hobby.join(", ")} />
             <UserInfoContainer
               FirstTopic="나를 표현하는 한마디"
-              FirstText={Info.comment}
+              FirstText={user.comment}
               SecoundTopic="연락빈도"
-              SecondText={Info.contact_frequency}
+              SecondText={user.contactFrequency}
             />
           </div>
         </div>
@@ -67,7 +64,7 @@ function UserInfoRrev({ ifMainpage }) {
         <div className={styles.userContact}>
           <div>
             <span>{isInstagram ? "InstagramID : " : "KakaoTalkID : "}</span>
-            <span> {Info.contact_id}</span>
+            <span>{user.contactId}</span>
           </div>
         </div>
       </div>

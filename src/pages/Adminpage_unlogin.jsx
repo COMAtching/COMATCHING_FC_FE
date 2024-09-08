@@ -25,7 +25,7 @@ function Adminpageunlogin() {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "https://backend.comatching.site/admin/login",
+        "https://cuk.comatching.site/admin/login",
         formData,
         {
           headers: {
@@ -42,7 +42,7 @@ function Adminpageunlogin() {
 
         if (token && token.startsWith("Bearer ")) {
           const tokenWithoutBearer = token.slice(7);
-          Cookies.set("Authorization", tokenWithoutBearer, { path: "/" });
+          Cookies.set("Authorization", tokenWithoutBearer,{ path: "/", expires: 1/6 });
         }
         navigate("/adminpage/charge-requests"); // 로그인 성공 시 페이지 이동
       } else {
