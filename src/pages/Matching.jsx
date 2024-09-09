@@ -253,7 +253,7 @@ function Matching() {
           <div className="matchcontent_mbti">
             <div className="match-title">
               <div className="match-title-text">
-                MBTI <span className="match-required-text">필수</span>
+                MBTI <span className="match-required-text match-required-text-red">필수</span>
               </div>
               <div className="match-title-inst-txt">
                 상대방의 MBTI 2개를 골라주세요.

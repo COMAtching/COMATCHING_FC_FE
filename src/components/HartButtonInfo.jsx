@@ -12,17 +12,23 @@ function HartButtonInfo({
     
 
     const [userInfo, setUserInfo] = useRecoilState(userState);
-    const [hearts, setHearts] = useState("");
-    const pointsPerHeart = 500; // 하트 당 500 포인트
+    const [hearts, setHearts] = useState(null);
+
+    const calculateTotalPoints = (hearts) => {
+        if (hearts <= 0) return 0;
+        if (hearts === 1) return 500;
+        if (hearts === 2) return 1000;
+        return Math.floor(hearts / 3) * 1000 + (hearts % 3 === 1 ? 500 : (hearts % 3 === 0 ? 0 : 1000));
+    };
 
     const handleHeartsChange = (event) => {
         const value = parseInt(event.target.value, 10);
         setHearts(value > 0 ? value : 0);
-      };
+    };
+
+    const totalPointsNeeded = calculateTotalPoints(hearts);
     
-      const totalPointsNeeded = hearts * pointsPerHeart;
-    
-      const handleHeartExchange = async () => {
+    const handleHeartExchange = async () => {
         if (point >= totalPointsNeeded) {
             try {
             const cookies = document.cookie.split('; ').reduce((acc, cookie) => {
@@ -80,6 +86,9 @@ function HartButtonInfo({
         </div>
         <li className="charge-request-clicked-text">
             500P당 1회의 기회를 가질 수 있습니다
+        </li>
+        <li className="charge-request-clicked-text">
+            1개는 500P, 2개는 1000P, 3개는 1000P로 교환할 수 있습니다(2+1)
         </li>
         <li className="charge-request-clicked-text">
             포인트를 PickMe로 바꾸고 싶을때 버튼을 눌러 주세요

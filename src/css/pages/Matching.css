@@ -72,6 +72,7 @@
     padding: 0 32px 0 32px;
 }
 .match-required-text {
+    margin-left: 5px;
     font-size: 13px;
     color: gray; 
 }
@@ -272,4 +273,14 @@
   font-size: 14px;
   font-weight: bold;
   color: #333;
+}
+
+
+@media (max-width: 400px) {
+  .match-title-text {
+      font-size: 20px;
+  }
+  .match-title-inst-txt{
+    font-size: 11px;
+  }
 }
