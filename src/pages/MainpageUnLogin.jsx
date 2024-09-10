@@ -5,7 +5,7 @@ import TotalUsersCounter from "../components/TotalUsersCounter.jsx";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Background from "../components/Background.jsx";
-import HeaderNav from "../components/HeaderNav.jsx";
+import HeaderMain from "../components/HeaderMain.jsx";
 // 로그인 되지 않은 메인페이지입니다.
 function MainpageUnLogin() {
   const navigate = useNavigate(); // 페이지 이동을 위한 useNavigate 훅 사용
@@ -51,7 +51,7 @@ function MainpageUnLogin() {
             numParticipants={numParticipants}
           />
       </div>
-      <HeaderNav />
+      <HeaderMain />
       <div className="greeting-message">
         반갑습니다<br></br>
         코매칭이라면 당신은<br></br>

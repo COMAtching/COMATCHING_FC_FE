@@ -13,7 +13,7 @@ import hobbyIcons from "../data/hobbyIcons"; // 취미 아이콘 데이터 가�
 import Cookies from "js-cookie";
 import "../css/pages/Matching.css";
 import Loading from "./Loading.jsx";
-import HeaderBack from "../components/HeaderBack.jsx";
+import HeaderBackPoint from "../components/HeaderBackPoint.jsx";
 import instance from "../axiosConfig.jsx";
 function Matching() {
   const [MatchState, setMatchState] = useRecoilState(MatchPickState); // 뽑은 선택 리스트
@@ -26,8 +26,39 @@ function Matching() {
     useRecoilState(MatchResultState); // 뽑기 결과 상태 관리
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
+  const [isButtonEnabled  , setIsButtonEnabled] = useState(false);
   const resetMatchState = useResetRecoilState(MatchPickState);
   const resetMatchResultState = useResetRecoilState(MatchResultState);
+
+  useEffect(() => {
+    // Fetch currentPoint from backend when component mounts
+    const fetchCurrentPoint = async () => {
+      try {
+        const response = await instance.get("/auth/user/api/currentPoint");
+        
+        // Assuming response.data.currentPoint is the point value you want to set in Recoil
+        setUserPoint((prev) => ({
+          ...prev,
+          point: response.data.data.currentPoint, // Update the point in Recoil
+        }));
+      } catch (error) {
+        console.error("Failed to fetch currentPoint:", error);
+      }
+    };
+
+    fetchCurrentPoint();
+}, [setUserPoint]); 
+
+  useEffect(() => {
+    const isAgeSelected = MatchState.isUseOption[0] ? (MatchState.formData.age_option || "") !== "" : true;
+    const isContactFrequencySelected = MatchState.isUseOption[1] ? (MatchState.formData.contact_frequency_option || "") !== "" : true;
+  
+    // hobbyOption이 undefined일 경우 빈 배열로 처리
+    const isHobbySelected = MatchState.isUseOption[2] ? (MatchState.formData.hobbyOption || []).length > 0 : true;
+    
+    // 버튼 활성화 로직
+    setIsButtonEnabled(isMBTISelected && isAgeSelected && isContactFrequencySelected && isHobbySelected);
+  }, [MatchState, isMBTISelected]);
   const handleHobbyClick = (index) => {
     const isAlreadySelected = MatchState.formData.hobbyOption.includes(index);
     const updatedHobbies = isAlreadySelected
@@ -241,7 +272,7 @@ function Matching() {
       ) : (
         <div className="container">
           <Background />
-          <HeaderBack />
+          <HeaderBackPoint currentPoint={userPoint.point} />
           <div className="matchcontent">
             <div className="match-title">
               <div className="match-title-text">Matching</div>
@@ -471,37 +502,37 @@ function Matching() {
 
           <div
             className="footer_btn"
-            onMouseMove={isMBTISelected ? handleMove : null}
-            onMouseUp={isMBTISelected ? handleEnd : null}
-            onTouchMove={isMBTISelected ? handleMove : null}
-            onTouchEnd={isMBTISelected ? handleEnd : null}
+            onMouseMove={isButtonEnabled   ? handleMove : null}
+            onMouseUp={isButtonEnabled   ? handleEnd : null}
+            onTouchMove={isButtonEnabled   ? handleMove : null}
+            onTouchEnd={isButtonEnabled   ? handleEnd : null}
           >
             <div
               className="footer_btn_box"
               style={{
-                backgroundColor: isMBTISelected ? "white" : "lightgray",
-                opacity: isMBTISelected ? 1 : 0.5,
-                boxShadow: isMBTISelected
+                backgroundColor: isButtonEnabled   ? "white" : "lightgray",
+                opacity: isButtonEnabled   ? 1 : 0.5,
+                boxShadow: isButtonEnabled  
                   ? "0px 4px 12px rgba(0, 0, 0, 0.1)"
                   : "none",
               }}
             >
               <img
                 src={
-                  isMBTISelected
+                  isButtonEnabled  
                     ? "/assets/slider_active.svg"
                     : "/assets/slider.svg"
                 } // 이미지 변경
                 alt=""
                 style={{
                   left: `${imagePosition}px`,
-                  cursor: isMBTISelected ? "pointer" : "not-allowed",
+                  cursor: isButtonEnabled   ? "pointer" : "not-allowed",
                 }} // 커서 변경
                 onMouseDown={handleStart}
                 onTouchStart={handleStart}
               />
               <p>
-                {isMBTISelected
+                {isButtonEnabled  
                 ? "밀어서 커플되기"
                 : "조건을 선택해 주세요"}
               </p>

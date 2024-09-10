@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useRecoilState } from "recoil";
 import { userState } from "../Atoms";
 import hobbyIcons from "../data/hobbyIcons.jsx";
-import HeaderNav from "../components/HeaderNav.jsx";
+import HeaderMain from "../components/HeaderMain.jsx";
 import ProgressBar from "../components/Progressbar.jsx";
 import Background from "../components/Background.jsx";
 import MemoizedHobbyElement from "../components/HobbyElement.jsx";
@@ -68,7 +68,7 @@ function Hobbyform() {
   return (
     <div className="container">
       <Background/>
-      <HeaderNav />
+      <HeaderMain />
       <div className="content">
         <div className="info-card">
           <div className="select-hobby-topic">취미 선택하기</div>

@@ -1,6 +1,6 @@
 const hobbyIcons = [
   {
-    image: `${import.meta.env.VITE_PUBLIC_URL}../../assets/music.svg`,
+    image:  `${import.meta.env.VITE_PUBLIC_URL}../../assets/music.svg`,
     alt: "음악감상",
     label: "음악감상",
   },

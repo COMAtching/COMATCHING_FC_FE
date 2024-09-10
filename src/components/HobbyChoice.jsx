@@ -9,7 +9,10 @@ function HobbyChoice({ index, hobby, pickHobby, handleHobbyClick }) {
       }`}
       onClick={() => handleHobbyClick(hobby.label)}
     >
-      <img src={hobby.image} alt={hobby.alt} />
+      {/* <object data={hobby.image} type="image/svg+xml" aria-label={hobby.alt}>
+        <img src={hobby.image} alt={hobby.alt} />
+      </object> */}
+        <img src={hobby.image} alt={hobby.alt} />
       <div>{hobby.label}</div>
     </button>
   );

@@ -7,12 +7,15 @@ function HeaderMain() {
   return (
     <div className={styles.header}>
       <div>
-        <img
+        <object
           className={styles.logoImg}
-          src={`${import.meta.env.VITE_PUBLIC_URL}../../assets/logoblacknav.svg`}
-          alt="로고"
+          data={`${import.meta.env.VITE_PUBLIC_URL}../../assets/logoblacknav.svg`}
+          type="image/svg+xml"
+          aria-label="로고"
           onClick={() => navigate("/")}
-        />
+        >
+          <span>로고</span>
+        </object>
       </div>
         {/* <div className={styles.right} onClick={() => navigate("/charge")}>
                 <img src="./assets/point.svg" alt="point" className={styles.pointImage} />

@@ -76,13 +76,16 @@ function MainpageLogin() {
           }));
         }
       } catch (error) {
+        Cookies.remove("Authorization");
+        Cookies.remove("RefreshToken");
         console.error("Error fetching data:", error);
+        window.location.reload();
       }
     };
     fetchData();
   }, []);
   const handleNotService = () => {
-    alert("서비스가 종료되었습니다.");
+    alert("해당 서비스는 9/11일 10:00에 오픈됩니다 축제까지 기다려주세요!");
   };
   const handleVisitGuide = () => {
     navigate("/guide");
@@ -142,7 +145,9 @@ function MainpageLogin() {
               imgSrc={`../../assets/point.svg`}
               infoText={`${userInfo.point}P`}
               buttonText="잔여포인트"
-              handleCharge={handleCharge} // canRequestCharge가 true일 때 handleCharge 전달
+              //handleCharge={handleCharge} 
+              // canRequestCharge가 true일 때 handleCharge 전달
+              handleCharge={handleNotService}
             />
           ) : (
             <MyInfoButton
@@ -156,14 +161,15 @@ function MainpageLogin() {
             imgSrc={`../../assets/heart.svg`}
             infoText={`${userInfo.pickMe}회`}
             buttonText="내가 뽑힐 횟수"
-            handleCharge={handleHeartToggleClick}
+            // handleCharge={handleHeartToggleClick}
+            handleCharge={handleNotService}
           />
         </div>
 
         {isPointClicked ? (
           <ChargeButtonInfo
-            //handleNotService={handleNotService}
-            handleChargeRequest={handleCharge}
+            handleNotService={handleNotService}
+            // handleChargeRequest={handleCharge}
             handleToggleClick={handlePointToggleClick}
             chargeclick={chargeclick}
           />
@@ -174,7 +180,8 @@ function MainpageLogin() {
               <button
                 className="charge-request-unclicked-img"
                 type="button"
-                onClick={handlePointToggleClick}
+                // onClick={handlePointToggleClick}
+                onClick={handleNotService}
               >
                 <img
                   src={`${
@@ -198,7 +205,8 @@ function MainpageLogin() {
             <button
                 className="charge-request-unclicked-img"
                 type="button"
-                onClick={handleAccountToggleClick}
+                // onClick={handleAccountToggleClick}
+                onClick={handleNotService}
               >
                 <img
                   src={`${
@@ -213,6 +221,7 @@ function MainpageLogin() {
           <HartButtonInfo
             //handleNotService={handleNotService}
             point={userInfo.point}
+            
             handleChargeRequest={handlehartCharge}
             handleToggleClick={handleHeartToggleClick}
             chargeclick={chargeclick}
@@ -223,7 +232,8 @@ function MainpageLogin() {
             <button
               className="charge-request-unclicked-img"
               type="button"
-              onClick={handleHeartToggleClick}
+              // onClick={handleHeartToggleClick}
+              onClick={handleNotService}
             >
               <img
                 src={`${
@@ -236,7 +246,8 @@ function MainpageLogin() {
         )}
         <div className="button-group">
           <BottomNavButton
-            onClick={handleVisitcheckresult}
+            onClick={handleNotService}
+            // onClick={handleVisitcheckresult}
             imgSrc={`../../assets/checkresult.svg`}
             imgText="조회버튼"
             buttonText="조회하기"

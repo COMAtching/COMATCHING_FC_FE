@@ -68,7 +68,7 @@ export const MatchResultState = atom({
     age: 0,
     comment: "",
     contactFrequency: "",
-    currentPoint: 1500,
+    currentPoint: 0,
     gender: "",
     hobby: [],
     major: "",

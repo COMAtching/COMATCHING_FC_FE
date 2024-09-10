@@ -143,7 +143,7 @@ function Userinfo() {
         hobby: "취미",
         song: "좋아하는 노래",
         comment: "소개할 다섯글자",
-        admissionYear: "학번"
+        admissionYear: "입학년도"
     };
 
     const handleSubmit = async (e) => {
@@ -182,7 +182,6 @@ function Userinfo() {
             comment: user.comment,
             admissionYear: user.admissionYear,
         };
-        console.log(postData);
         try {
             const response = await instance.post(
                 "/auth/social/api/user/info",
@@ -226,8 +225,8 @@ function Userinfo() {
             checkMethod.department &&
             checkMethod.major &&
             user.age &&
-            user.admissionYear &&
-            user.mbti &&
+            user.admissionYear && user.admissionYear.length === 2 &&
+            user.mbti && user.mbti.length >= 4 &&
             user.contactFrequency;
 
         if (isAllSelected) {

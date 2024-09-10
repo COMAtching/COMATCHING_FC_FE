@@ -32,7 +32,7 @@ instance.interceptors.request.use(
 // 응답 인터셉터 설정
 instance.interceptors.response.use(
   (response) => {
-    console.log("response",response);
+    
     // 서버 응답 헤더에 새 토큰이 있으면 업데이트
     const newAccessToken = response.headers["authorization"];
     // const newRefreshToken = response.headers["refresh-token"];

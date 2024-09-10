@@ -63,7 +63,7 @@ function Checkresult() {
             </div>
           ))
         ) : (
-          <p>사용자 정보를 불러오는 중...</p>
+          <p>매칭결과가 없습니다</p>
         )}
         <Footer />
       </div>

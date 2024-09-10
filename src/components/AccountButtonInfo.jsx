@@ -1,8 +1,8 @@
 import React from 'react';
 import "../css/components/AccountButtonInfo.css";
 function AccountButtonInfo({handleToggleClick}) {
-    const accountNumber = "카카오뱅크 3333-17-9418736"; 
-    const accountHolder = "홍길동";
+    const accountNumber = "토스뱅크 1001-4935-3543"; 
+    const accountHolder = "서승준";
 
     const copyToClipboard = () => {
         navigator.clipboard.writeText(accountNumber);

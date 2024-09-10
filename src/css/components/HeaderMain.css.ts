@@ -30,6 +30,7 @@ export const logoImg = style({
 export const right = style({
     width: '78px',
     height: '20px',
+    zIndex: 30, 
     backgroundColor: 'white',
     cursor: 'pointer',
     borderRadius: '24px',
@@ -55,7 +56,7 @@ export const toggleImage = style({
 
 // span 요소 스타일
 export const spanText = style({
-    fontFamily: 'pretender',
+    fontFamily: 'Pretendard',
     fontWeight: 'bold',
     fontSize: '15px',
     marginRight: '8px', // 텍스트와 이미지 사이에 간격 추가

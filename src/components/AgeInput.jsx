@@ -10,6 +10,7 @@ function AgeInput({ value, onChange }) {
     // 유효성 검사
     if (!/^(20|21|22|23|24|25|26|27|28|29)$/.test(value)) {
       errorMessage = "나이는 20부터 29까지의 숫자로 입력하세요.";
+      onChange({ target: { name, value: "" } });
     }
 
     // 에러 메시지가 있을 경우에만 경고창을 띄웁니다.

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect,useState } from "react";
 import axios from "axios";
 import Background from "../components/Background.jsx";
 import HeaderBackPoint from "../components/HeaderBackPoint.jsx";
@@ -20,6 +20,7 @@ function Matchresult() {
 
   const [resultPoint, setResultPoint] = useRecoilState(userState);
   const [loading, setLoading] = useState(false);
+  
   // 같은 조건으로 다시 매칭하기 핸들러
   const handleSubmit = async () => {
     console.log("MatchState.point",MatchState.point);
@@ -28,7 +29,6 @@ function Matchresult() {
     if (MatchState.point > resultPoint.point) {
       alert("포인트가 부족합니다!!");
       navigate("/charge-request", { replace: true }); 
-      navigate
       return; // 동작 중단
     }
     try {
@@ -38,7 +38,6 @@ function Matchresult() {
         "/auth/user/api/match/request",
         MatchState.formData.FormData
       );
-      console.log(response);
       if (response.data.status === 200) {
         await setMatchResult((prev) => ({
           ...prev,
@@ -65,7 +64,7 @@ function Matchresult() {
       console.error("Error during match request:", error);
     }
   };
-
+  
   // 취미를 아이콘과 매핑하는 함수
   const mapHobbiesWithIcons = (hobbyList) => {
     return hobbyList.map((hobbyName) => {
@@ -73,12 +72,29 @@ function Matchresult() {
       return { name: hobbyName, image: matchedIcon?.image || "" };
     });
   };
-
+  
   const resultData = {
     ...MatchResult,
     hobby: mapHobbiesWithIcons(MatchResult.hobby),
   };
-
+  
+  useEffect(() => {
+    if (
+      resultData.age === 0 &&
+      resultData.comment === "" &&
+      resultData.contactFrequency === "" &&
+      resultData.currentPoint === 0 &&
+      resultData.gender === "" &&
+      resultData.hobby.length === 0 &&
+      resultData.major === "" &&
+      resultData.mbti === "" &&
+      resultData.socialId === "" &&
+      resultData.song === ""
+    ) {
+      navigate("/", { replace: true });
+    }
+  }, [resultData, navigate]);
+  
   // 다시뽑기 버튼 핸들러
   const handleRematch = () => {
     navigate("/matching");
@@ -90,7 +106,7 @@ function Matchresult() {
   const handleHome = () => {
     navigate("/");
   };
-
+  console.log(resultData);
   return (
     <>
       {loading ? (
@@ -160,7 +176,10 @@ function Matchresult() {
                     <div className="MatchResult-Topic">좋아하는 노래</div>
                     <div className="MatchResult-Text">{resultData.song}</div>
                   </div>
-
+                  <div className="MatchResult-Song">
+                    <div className="MatchResult-Topic">나를 표현하는 다섯글자</div>
+                    <div className="MatchResult-Text">{resultData.comment}</div>
+                  </div>
                   <div className="MatchResult-Container">
                     <div className="MatchResult-Contact">
                       <div className="MatchResult-Topic">

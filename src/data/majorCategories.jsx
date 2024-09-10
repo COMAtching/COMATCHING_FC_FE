@@ -70,9 +70,20 @@ const majorCategories = [
         label: "자유전공",
         majors: ["자유전공학과"],
       },
+      
     ],
   },
   // 다른 학교 추가
+  // {
+  //   label: "기타 대학교",
+  //   departments: [
+      
+  //     {
+  //       label: "가톨릭대 아님 ",
+  //       majors: ["기타대학교"],
+  //     },
+  //   ],
+  // },
 ];
 
 export default majorCategories;
