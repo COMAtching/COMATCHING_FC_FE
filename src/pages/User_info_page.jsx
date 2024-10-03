@@ -1,14 +1,11 @@
 import React, { useState,useEffect } from "react";
-import axios from "../axiosConfig";
 // import { validateForm } from "../myfunction/formValidation";
 import instance from "../axiosConfig"; // axiosConfig 인스턴스 불러오기
 import { useRecoilState } from "recoil";
 import { userState, selectedMBTIState } from "../Atoms";
 import { useNavigate } from "react-router-dom";
 import MyInput from "../components/MyInput";
-import HeaderBack from "../components/HeaderBack";
 import MajorSelector from "../components/MajorSelector";
-import Cookies from 'js-cookie';
 import "../css/pages/User_info.css";
 import AgeInputInput from "../components/AgeInput";
 import ContactMethod from "../components/ContactMethod";
@@ -21,7 +18,6 @@ import Background from "../components/Background";
 import ProgressBar from "../components/Progressbar";
 import Modal from "react-modal"; // Import react-modal
 import TermsAgreementModal from "../components/TermsAgreementModal"; 
-import { endFileScope } from "@vanilla-extract/css/fileScope";
 import HeaderMain from "../components/HeaderMain";
 Modal.setAppElement("#root");
 

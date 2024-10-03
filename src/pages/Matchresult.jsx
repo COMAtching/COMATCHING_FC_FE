@@ -23,9 +23,6 @@ function Matchresult() {
   
   // 같은 조건으로 다시 매칭하기 핸들러
   const handleSubmit = async () => {
-    console.log("MatchState.point",MatchState.point);
-    
-    console.log("resultPoint.point",resultPoint.point);
     if (MatchState.point > resultPoint.point) {
       alert("포인트가 부족합니다!!");
       navigate("/charge-request", { replace: true }); 

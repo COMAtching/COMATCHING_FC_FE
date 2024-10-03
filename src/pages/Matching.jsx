@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import { useRecoilState , useResetRecoilState} from "recoil";
 import { useNavigate } from "react-router-dom";
-import HeaderPoint from "../components/Headerpoint";
 import Background from "../components/Background";
 import { MatchPickState, MatchResultState, userState } from "../Atoms";
 import MatchOptionButtonclass from "../components/MatchOptionButton_Class";
@@ -10,7 +9,6 @@ import MBTISection from "../components/MBTISection";
 import AgeButton from "../components/AgeButton";
 import MatchOptionButton from "../components/MatchOptionButton";
 import hobbyIcons from "../data/hobbyIcons"; // 취미 아이콘 데이터 가져오기
-import Cookies from "js-cookie";
 import "../css/pages/Matching.css";
 import Loading from "./Loading.jsx";
 import HeaderBackPoint from "../components/HeaderBackPoint.jsx";

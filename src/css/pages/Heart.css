@@ -1,0 +1,131 @@
+
+
+.heart-clicked-top-page {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  font-size: 20px;
+}
+@media (max-width: 450px) {
+  .heart-request-clicked-top-page{
+    font-size: 20px;
+  }
+}
+
+.heart-request-clicked {
+  position: relative;
+}
+
+
+.heart-input-container {
+  margin-top: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 0px;
+}
+.heart-img{
+  width: 48px;
+  height: 48px;
+}
+.heart-inputs {
+
+  padding-left: 10px;
+  font-size: 36px;
+  font-weight: bold;
+  margin-right: 10px;
+  
+}
+
+.currency-circle {
+  font-size: 36px;
+  font-weight: bold;
+}
+.heartslash{
+  margin-right: 20px;
+  margin-left: 10px;
+}
+.heart-button {
+  background: linear-gradient(90deg, #FF775E 10%, #FF4D61 60%, #E83ABC 100%); /* Angular 아이콘의 색상 추정 */
+  color: #FFFFFF; /* 글자 색상 흰색 */
+  padding: 10px 20px; /* 버튼의 패딩 */
+  font-size: 18px; /* 글자 크기 18px */
+  margin-top: 13px;
+  width: 100%; /* 버튼의 폭을 꽉 채우기 */
+  border: none; /* 기본 테두리 제거 */
+  border-radius: 15px; /* 모서리를 살짝 둥글게 */
+  cursor: pointer; /* 마우스를 올렸을 때 포인터로 변경 */
+  text-align: center; /* 텍스트를 중앙 정렬 */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06); /* 입체감을 위한 그림자 */
+  transition: transform 0.2s ease, box-shadow 0.2s ease; /* 클릭 시 애니메이션 */
+}
+
+.heart-button:disabled {
+  background-color: grey;
+  cursor: not-allowed;
+}
+.request-text{
+  display: flex;
+  justify-content: start;
+  font-size: 14px;
+  color: gray;
+}
+.heart-button:active {
+  transform: translateY(2px); /* 클릭 시 버튼이 눌리는 효과 */
+  box-shadow: 0 3px 4px rgba(0, 0, 0, 0.2); /* 클릭 시 그림자 줄이기 */
+}
+
+.gray-divider {
+  border: none;
+  border-bottom: 1px solid #D3D3D3; /* 연한 회색 밑줄 */
+  width: 100%;
+  margin: 20px 0;
+}
+
+.caution-text {
+  color: #808080; /* 회색 텍스트 */
+  font-size: 16px; /* 글자 크기 16px */
+  font-weight: bold; /* 굵은 글씨 */
+  text-align: start;
+  margin-bottom: 5px;
+}
+
+.heart-counter {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-left: auto;
+  width: fit-content; /* 내용에 맞게 박스 크기 설정 */
+  border-radius: 20%;
+  border: 1px solid gray;
+}
+
+.heart-decrease,
+.heart-increase {
+  background-color: #ffffff;
+  border: none;
+  padding: 10px;
+  font-size: 24px;
+  cursor: pointer;
+  margin: 0 5px;
+}
+
+.heart-count {
+  font-size: 18px;
+  padding: 0 10px;
+}
+
+.total-amount {
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.remaining-point {
+  color:gray;
+  font-size: 20px;
+  font-weight: 400;
+  margin-bottom: 20px;
+}

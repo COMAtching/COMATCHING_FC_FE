@@ -19,10 +19,10 @@ function Checkresult() {
     const fetchData = async () => {
       try {
         const response = await instance.get("/auth/user/api/history/matching");
-        console.log("response history", response);
+        
         if (response.status === 200 && response.data.code === "GEN-000") {
           setIsReview(response.data.data); // 응답 데이터 설정
-          console.log("response.data.data", response.data.data);
+          
         } else if (response.data.code === "HIS-001") {
           alert("결과가 남아있지 않습니다.");
           navigate("/");

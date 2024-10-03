@@ -1,8 +1,7 @@
 import React from 'react';
 import "../css/components/AccountButtonInfo.css";
-function AccountButtonInfo({handleToggleClick}) {
-    const accountNumber = "토스뱅크 1001-4935-3543"; 
-    const accountHolder = "서승준";
+function AccountButtonInfo({handleToggleClick,accountNumber}) {
+    
 
     const copyToClipboard = () => {
         navigator.clipboard.writeText(accountNumber);
@@ -27,7 +26,7 @@ function AccountButtonInfo({handleToggleClick}) {
             </div>
             <div className="account-box">
                 <p className="account-number">{accountNumber}</p>
-                <p className="account-holder">{accountHolder}</p>
+                <p className="account-holder">{}</p>
                 
             </div>
             <button className="copy-button" onClick={copyToClipboard}>클립보드 복사</button>

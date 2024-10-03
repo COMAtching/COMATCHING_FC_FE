@@ -75,3 +75,20 @@
   margin-top: -10px;
   width: 50%;
 }
+.firstloadingbar {
+  animation-delay: 0s;
+  margin-top: 10px;
+}
+
+.secondloadingbar {
+  animation-delay: 0.3s;
+  margin-top: 10px;
+  /* position: relative;
+  top: -130px; */
+}
+
+.thirdloadingbar {
+  animation-delay: 0.5s;
+  margin-top: 10px;
+  width: 50%;
+}

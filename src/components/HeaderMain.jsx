@@ -17,11 +17,6 @@ function HeaderMain() {
           <span>로고</span>
         </object>
       </div>
-        {/* <div className={styles.right} onClick={() => navigate("/charge")}>
-                <img src="./assets/point.svg" alt="point" className={styles.pointImage} />
-                <span className={styles.spanText}>180p</span>
-                <img src="./assets/headertoggle.svg" alt="toggle" className={styles.toggleImage} />
-        </div> */}
     </div>
   );
 }

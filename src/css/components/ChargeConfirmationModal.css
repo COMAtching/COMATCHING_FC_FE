@@ -1,0 +1,144 @@
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    display: flex;
+    justify-content: flex-end; /* Aligns modal at the bottom */
+    align-items: flex-end;
+    z-index: 100000;
+  }
+  
+  .modal-content {
+    display: block;
+    background-color: white;
+    border-radius: 20px 20px 0 0; /* Round the top corners only */
+    width: 100%;
+    height: 50%; /* Take up 40% of the screen height */
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.1); /* Optional: add a subtle shadow */
+  }
+  
+  .modal-charge-img {
+    width: 48px;
+    height: 48px;
+    margin-right: 5px;
+    
+  }
+  .point_container {
+    display: flex;
+    align-items: center; /* 수직 중앙 정렬 */
+    justify-content: center; /* 가로 중앙 정렬 (필요 시) */
+    margin-top: 30px;
+}
+
+  .modal-message {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: left; /* 텍스트 왼쪽 정렬 */
+  }
+  
+  .modal-amount {
+    font-size: 16px;
+  }
+  
+  .modal-amount-value {
+    color: black;
+    font-size: 36px;
+    font-weight: bold;
+  }
+  
+  .modal-warning {
+    margin-top: 10px;
+    font-size: 16px;
+    color: gray;
+    text-align: left; 
+  }
+  
+  .modal-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+  
+  .modal-confirm-button,
+  .modal-cancel-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .modal-confirm-button {
+    background-color: green;
+    color: white;
+  }
+  
+  .modal-cancel-button {
+    background-color: gray;
+    color: white;
+  }
+  .modal-account-number {
+    margin-top: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #4d4d4d; /* grayscale/darker */
+    text-align: center; /* 왼쪽 정렬 */
+    margin-top: 10px; /* 필요에 따라 간격 추가 */
+    margin-bottom: 30px;
+  }
+  .terms-container {
+    display: flex;
+    align-items: center; /* 수직 중앙 정렬 */
+    margin-top: 10px;
+  }
+  .modal-check-img {
+    width: 24px;
+    height: 24px;
+    margin-right: 10px; /* 이미지와 텍스트 사이 간격 */
+  }
+  
+  .modal-terms-text {
+    font-size: 16px;
+    font-weight: bold;
+    color: black;
+    
+  }
+  .modal-more-img{
+    margin-right: 20px;
+  }
+  
+  .modal-required-text {
+    font-size: 12px;
+    color: gray;
+    margin-left: 10px; /* 오른쪽 이미지와 필수 텍스트 사이 간격 */
+    margin-right: auto;
+  }
+
+  .modal-confirm-button {
+    margin-top: 40px;
+    width: 100%;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 15px;
+    border: none;
+    border-radius: 15px; /* 둥글게 변경 */
+    cursor: pointer;
+    transition: background 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* 그림자 추가 */
+  }
+  
+  
+  .modal-confirm-button.inactive {
+    background: #e0e0e0; /* grayscale/lightest */
+    color: #a0a0a0; /* grayscale/light */
+    cursor: not-allowed;
+  }
+  
+  .modal-confirm-button.active {
+    background: linear-gradient(90deg, #FF775E 10%, #FF4D61 60%, #E83ABC 100%);
+    color: white;
+  }

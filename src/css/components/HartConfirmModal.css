@@ -1,0 +1,74 @@
+.heart-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  z-index: 100000;
+}
+
+.heart-modal-content {
+  background-color: white;
+  border-radius: 20px 20px 0 0;
+  width: 100%;
+  height: 50%;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.heart-modal-message {
+  font-size: 24px;
+  font-weight: bold;
+  text-align: left;
+}
+
+.heart-modal-warning {
+  margin-top: 10px;
+  font-size: 16px;
+  color: gray;
+  text-align: left;
+}
+
+.heart-modal-amount-value {
+  color: black;
+  font-size: 36px;
+  font-weight: bold;
+}
+
+.heart-modal-account-number {
+  margin-top: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #4d4d4d;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.heart-modal-confirm-button {
+  margin-top: 40px;
+  width: 100%;
+  font-size: 20px;
+  font-weight: bold;
+  padding: 15px;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.heart-modal-confirm-button.inactive {
+  background: #e0e0e0;
+  color: #a0a0a0;
+  cursor: not-allowed;
+}
+
+.heart-modal-confirm-button.active {
+  background: linear-gradient(90deg, #FF775E 10%, #FF4D61 60%, #E83ABC 100%);
+  color: white;
+}

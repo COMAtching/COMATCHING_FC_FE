@@ -27,9 +27,9 @@ function ContactMethodInput({ handleChange, setIsContactVerified,user, setUser  
   const handleCheck = async () => {
     // 카카오 ID 유효성 검사 패턴
      // 카카오 ID 유효성 검사 패턴
-    const kakaoPattern = /^(?!.*\.\.)(?!.*\.$)(?!^\.)[a-z0-9-_.]{3,15}$/;
+  const kakaoPattern = /^(?!.*\.\.)(?!.*\.$)(?!^\.)[a-zA-Z0-9-_.]{3,15}$/;
      // 인스타그램 ID 유효성 검사 패턴
-    const instagramPattern = /^@[a-z0-9_.]+$/;
+     const instagramPattern = /^@[a-zA-Z0-9_.]+$/;
  
     // contact 값에 따른 유효성 검사
     if (user.contact === "kakao") {

@@ -7,7 +7,6 @@ import Checkresult from "./pages/Checkresult.jsx";
 import Loading from "./pages/Loading.jsx";
 import Guide from "./pages/Guide.jsx";
 import CodeReader from "./pages/CodeReader.jsx";
-import ProfileBuilder from "./pages/ProfileBuilder.jsx";
 import QRGenerator from "./pages/QRGenerator.jsx";
 import Redirection from "./pages/RedirectionPage.jsx";
 import OpenExternalBrowser from "./OpenExternalBrowser.jsx";
@@ -18,10 +17,9 @@ import "./App.css";
 import "./axiosConfig.jsx";
 import Matching from "./pages/Matching.jsx";
 import Adminpageunlogin from "./pages/Adminpage_unlogin.jsx";
-// import ChargeRequestsPage from "./pages/ChargeRequestsPage.jsx";
-// import ChargeRequestMonitor from "./components/admintest.jsx";
+import Heart from "./pages/Heart.jsx";
 import AdminRequestList from "./components/AdminRequestList.jsx";
-import ChargeRequestPage from "./pages/ChargeRequestPage.jsx";
+import Charge from "./pages/Charge.jsx";
 export default function App() {
   return (
     <RecoilRoot>
@@ -42,7 +40,6 @@ export default function App() {
             />
 
             <Route path="/loading" element={<Loading />} />
-            <Route path="/charge-request" element={<ChargeRequestPage />} />
             <Route path="/code-reader" element={<CodeReader />} />
             <Route path="/QR-generator" element={<QRGenerator />} />
             {/* <Route path="/profile-builder" element={<ProfileBuilder />} /> */}
@@ -50,6 +47,8 @@ export default function App() {
             <Route path="/userinfo" element={<Userinfo />} />
             <Route path="/matching" element={<Matching />} />
             <Route path="/describe" element={<Describe />} />
+            <Route path="/charge" element={<Charge />} />
+            <Route path="/heart" element={<Heart />} />
           </Routes>
         </BrowserRouter>
       </div>

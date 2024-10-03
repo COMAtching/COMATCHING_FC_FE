@@ -1,7 +1,6 @@
 import React, { Fragment, useRef, useState } from "react";
 import { useRecoilValue } from "recoil";
 import { userState } from "../Atoms";
-import LoginUserInfoTop from "./LoginUserInfoTop";
 import * as styles from "../css/components/UserInfoRrev.css.ts";
 import UserInfoContainer from "./UserInfoContainer";
 import { useNavigate } from "react-router-dom";
