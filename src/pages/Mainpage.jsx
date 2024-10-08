@@ -18,7 +18,7 @@ function Mainpage() {
       console.log("final:", response);
       console.log("response.data:", response.data);
       console.log("Role:", response.data.data);
-      if (response.data.status === "200") {
+      if (response.data.status === 200) {
         if (response.data.data === "ROLE_USER") {
           setIsLoggedIn(true);
         }
