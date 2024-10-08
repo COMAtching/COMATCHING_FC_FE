@@ -15,14 +15,13 @@ function Mainpage() {
         "https://cuk.comatching.site/check-role",
         { withCredentials: true }
       ); // instance로 요청
-      console.log(response);
+      console.log("final:", response);
       if (response.status === "200") {
-        if (response.data === "ROLE_USER") {
+        if (response.data.data === "ROLE_USER") {
           setIsLoggedIn(true);
         }
-      } else {
-        alert("미로그인");
       }
+      console.log("isLoggedIn:", isLoggedIn);
     };
 
     fetchData();
