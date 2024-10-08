@@ -1,142 +1,62 @@
-.container{
-  width: calc(100% - 48px);
-
+.Unlogin-logo {
+  margin-top: calc(9.5% - 24px);
+  height: 60px;
 }
-.margin_top{
-  margin-top: 50px;
-}
-.greeting-message{
-  font-family: 'Pretendard', sans-serif;
-
-  height: 135px;
+.UnloginMain-text {
+  font-family: "Pretendard", sans-serif;
   font-size: 25px;
-  font-weight:bold;
-  text-align: left;
-  line-height: 1.3;
-  margin-top: 28px;
-}
-
-
-.bubble {
-  position: absolute;
-  background: #ffffff;
-  border: 1px solid #ff4d61;
-  border-radius: 24px;
-  padding: 4px 8px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: inline-block;
-  white-space: nowrap;
-
-  /* font-family: "Pretendard", sans-serif; */
-  color: black;
-  font-size: 12px;
   font-weight: bold;
+  text-align: center;
+  margin-top: 6%;
 }
-
-.bubble:after,
-.bubble:before {
-  top: 100%;
-  left: 50%;
-  border: solid transparent;
-  content: "";
-  height: 0;
-  width: 0;
-  position: absolute;
-  pointer-events: none;
+.Mascot {
+  margin-top: 5.6%;
+  height: 180px;
 }
-
-.bubble:after {
-  border-color: rgba(255, 255, 255, 0);
-  border-top-color: #ffffff;
-  border-width: 7px;
-  margin-left: -7px;
-}
-
-.bubble:before {
-  border-color: rgba(255, 77, 97, 0);
-  border-top-color: #ff4d61;
-  border-width: 8px;
-  margin-left: -8px;
-}
-
 .bubble-counter {
-
+  position: relative;
   background: #ffffff;
-  border: 1px solid #ff4d61;
-  border-radius: 24px;
   padding: 2px 12px 6px 12px;
-  margin-left: 60px;
-  transform: translateX(-50%);
-  display: inline-block;
-  
+  border: 1.5px solid #1e2024;
+  color: #1e2024;
+  font-weight: bold;
+  width: 50%;
+  margin: 8% auto 0 auto;
 }
 
-.bubble-counter > * {
-  display: inline-block;
-  white-space: nowrap;
-}
 .bubble-counter:after,
 .bubble-counter:before {
-  top: 100%;
-  left: 50%;
-  border: solid transparent;
   content: "";
-  height: 0;
-  width: 0;
   position: absolute;
-  pointer-events: none;
+  bottom: -11px; /* 조정됨 */
+  left: 50%;
+  border: 10px solid transparent; /* 크기 조정됨 */
 }
 .bubble-counter:after {
-  border-color: rgba(255, 255, 255, 0);
   border-top-color: #ffffff;
-  border-width: 7px;
-  margin-left: -37px;
+  border-bottom: 0;
+  margin-left: -10.9px; /* 조정됨 */
+  bottom: -9px; /* 조정됨 */
 }
 .bubble-counter:before {
-  border-color: rgba(255, 77, 97, 0);
-  border-top-color: #ff4d61;
-  border-width: 8px;
-  margin-left: -38px;
+  border-top-color: #1e2024;
+  border-bottom: 0;
+  margin-left: -11px; /* 조정됨 */
+  bottom: -10.5px; /* 조정됨 */
 }
 
-.kakao-login {
-  margin-top: 48px;
-  border-radius: 15px;
-  height: 48px;
-  width: 90%;
-  background-color: #fee500;
+.start-button {
+  font-family: "Pretendard";
+  margin-top: 5%;
+  height: 56px;
+  width: 100%;
+  background-color: transparent;
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
+  color: #1e2024;
+  font-size: 24px;
+  font-weight: 400;
+  transition: background-color 0.5s;
 }
-
-.kakao-login img {
-  margin-right: 10px;
-  width: 24px;
-  height: 24px;
-}
-
-.kakao-login p {
-  font-family:"Pretendard", sans-serif;
-  margin: 0;
-  font-size: 20px;
-  font-weight: 900;
-  color: #191919; /* iOS에서 폰트가 파란색으로 뜨는 현상 해결 */
-}
-.kakao-login-element {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-/* .mainpage-unlogin-userimage {
-  width: 80%;
-  height: auto;
-  padding-top: 30px;
-}
-.mainpage-unlogin-logoimage {
-  width: 75%;
-  height: auto;
-  margin-top: 20px;
-} */
 
 .help-text {
   font-family: "Pretendard", sans-serif;
@@ -146,7 +66,7 @@
   font-size: 14px;
   font-weight: bold;
   color: #7a7a7a;
-  padding-top: 45px;
+  padding-top: 35px;
 }
 
 .privacy-button {

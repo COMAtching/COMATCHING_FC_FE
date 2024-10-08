@@ -5,9 +5,7 @@
       "firebase.json",
       "**/.*",
       "**/node_modules/**"
-      
     ],
-    "site":"comatching-devs",
     "rewrites": [
       {
         "source": "**",

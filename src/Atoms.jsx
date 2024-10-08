@@ -7,6 +7,34 @@ export const charge = atom({
   },
 });
 
+export const registerUserState = atom({
+  key: "registerUserState",
+  default: {
+    code: "",
+    major: "",
+    age: "",
+    admissionYear: null,
+    song: "",
+    mbti: "",
+    point: 0,
+    pickMe: 0,
+    contact_id: "",
+    canRequestCharge: true,
+    hobby: [],
+    comment: "",
+    numParticipants: 0,
+    contact_frequency: "",
+    contact: "kakao",
+  },
+});
+
+export const progress = atom({
+  key: "progress",
+  default: {
+    progressState: 100 / 14,
+  },
+});
+
 export const adminRequests = atom({
   key: "adminRequests",
   default: [],
@@ -28,7 +56,7 @@ export const userState = atom({
     hobby: [],
     comment: "",
     numParticipants: 0,
-    contact_frequency:"",
+    contact_frequency: "",
     contact: "kakao",
   },
 });

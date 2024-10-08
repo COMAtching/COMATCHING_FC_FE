@@ -1,0 +1,65 @@
+.UserResult-container {
+  height: 50%;
+}
+.UserResult-info-container {
+  margin-top: 32px;
+  border: 2px solid #474a52;
+  padding: 16px;
+}
+
+.UserResult-text {
+  font-family: "Pretendard", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+}
+.UserResult-topic {
+  font-size: 26px;
+  margin-top: 8px;
+  font-weight: 500;
+  font-family: "GmarketSansMedium";
+}
+.UserResult-similar-text {
+  text-align: left;
+  margin-top: 32px;
+  font-weight: 500;
+  font-size: 24px;
+  margin-bottom: 16px;
+}
+.UserResult-container {
+  max-height: 400px;
+  overflow-y: auto; /* 세로 스크롤을 추가합니다 */
+}
+.UserResult-similar-container {
+  display: flex;
+  border: 1.5px solid #1e2024;
+  padding: 8px 28px;
+  margin-top: 8px;
+  align-items: center; /* 세로 중앙 정렬 */
+  /* justify-content: space-between; */
+}
+.similar-player-img {
+  width: 30px;
+  height: 40px;
+}
+.similar-player-name {
+  font-size: 20px;
+  margin-left: 16px;
+}
+.similar-player-positon {
+  font-size: 20px;
+  margin-left: auto;
+}
+.UserResult-Next {
+  font-family: "Pretendard", sans-serif;
+  margin-top: 16px;
+  position: fixed;
+  height: 56px;
+  width: 90%;
+  background-color: #1e2024;
+  color: #ffffff;
+  font-size: 24px;
+  font-weight: 400;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+}

@@ -4,25 +4,23 @@ import Footer from "../components/Footer.jsx";
 import TotalUsersCounter from "../components/TotalUsersCounter.jsx";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import Background from "../components/Background.jsx";
-import HeaderMain from "../components/HeaderMain.jsx";
-// 로그인 되지 않은 메인페이지입니다.
-function MainpageUnLogin() {
-  const navigate = useNavigate(); // 페이지 이동을 위한 useNavigate 훅 사용
-  const [numParticipants, setNumParticipants] = useState(null); // 참가자 수를 저장할 상태 변수
 
-  // 카카오 로그인 핸들러
-  // 일반적인 형식과 다를텐데 아래 링크로 이동시켜서 백엔드에서 카카오 로그인을 처리한뒤
-  // Redirection페이지로 옮겨서 role을 확인하는 과정을 거쳤습니다.
+function MainpageUnLogin() {
+  const navigate = useNavigate();
+  const [numParticipants, setNumParticipants] = useState(null);
+  const [buttonStyle, setButtonStyle] = useState({
+    backgroundColor: "transparent",
+  });
+
   const handleLogin = () => {
-    window.location.href =
-      "https://cuk.comatching.site/oauth2/authorization/kakao";
-    // alert("서비스 종료 ㅠㅠㅠㅠ");
-  };
-  
-  // 서비스 이용법 안내 페이지로 이동하는 핸들러
-  const handleVisitGuide = () => {
-    navigate("/guide");
+    setButtonStyle({
+      backgroundColor: "#cc0000",
+      color: "#ffffff",
+      transition: "background-color 0.5s",
+    });
+    setTimeout(() => {
+      navigate("/CodeSelect");
+    }, 500);
   };
 
   // 참가자 수를 가져오는 비동기 함수
@@ -30,8 +28,10 @@ function MainpageUnLogin() {
     // 컴포넌트가 마운트될 때 API 요청을 보냄
     const fetchData = async () => {
       try {
-        const response = await axios.get("https://cuk.comatching.site/api/participations");
-        
+        const response = await axios.get(
+          "https://cuk.comatching.site/api/participations"
+        );
+        console.log("response: ", response);
         if (response.status === 200) {
           setNumParticipants(response.data.data);
         }
@@ -39,48 +39,45 @@ function MainpageUnLogin() {
         console.error("Error fetching data:", error);
       }
     };
+
     fetchData();
   }, [setNumParticipants]);
 
   return (
     <div className="container">
-      <Background />
-      <div className="margin_top"></div>
+      <img
+        className="Unlogin-logo"
+        src={`${import.meta.env.VITE_PUBLIC_URL}../../assets/Logo.svg`}
+        alt="로고"
+        onClick={() => navigate(-1)}
+      />
+      <div className="UnloginMain-text">나와 잘 맞는 응원 친구는?</div>
+      <img
+        className="Mascot"
+        src={`${import.meta.env.VITE_PUBLIC_URL}../../assets/mascot.svg`}
+        alt="마스코트"
+      />
       <div className="bubble-counter">
-          <TotalUsersCounter
-            font_size="16px"
-            numParticipants={numParticipants}
-          />
+        <TotalUsersCounter
+          font_size="16px"
+          color="#cc0000"
+          pointcolor="1e2024"
+          numParticipants={numParticipants}
+        />
       </div>
-      <HeaderMain />
-      <div className="greeting-message">
-        반갑습니다<br></br>
-        코매칭이라면 당신은<br></br>
-        이미 커플입니다
-      </div>
-      
-      <div  style={{ marginTop: '69px' }}>
-        <div className="bubble" >
-          ⚡️10초만에 빠른 가입⚡️
-        </div>
-        <button className="kakao-login" onClick={handleLogin}>
-            <div className="kakao-login-element">
-              <img
-                src={`${import.meta.env.VITE_PUBLIC_URL}../../assets/kakao.svg`}
-                alt="카카오"
-              />
-              <p>카카오로 시작하기</p>
-            </div>
-        </button>
-      </div>
+      <button
+        className="start-button"
+        onClick={handleLogin}
+        style={buttonStyle}
+      >
+        시작하기
+      </button>
+
       <div className="help-text">이용에 도움이 필요하신가요?</div>
-        <div>
-          <a className="privacy-button" onClick={handleVisitGuide}>
-            서비스 이용법 안내
-          </a>
-        </div>  
-        <Footer /> 
-        
+      <div className="privacy-button" onClick={() => navigate("/guide")}>
+        서비스 이용법 안내
+      </div>
+      <Footer />
     </div>
   );
 }

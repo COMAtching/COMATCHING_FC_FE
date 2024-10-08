@@ -1,73 +1,35 @@
-.Mainpage__Login {
+.Mainpage-logo {
+  display: flex;
+  margin-right: auto;
+  height: 48px;
+}
+.Mainpage-welcome {
+  text-align: left;
+  font-size: 26px;
+  font-weight: 400;
+  font-family: "GmarketSansMedium";
+  margin-bottom: 16px;
+  margin-top: 32px;
+  line-height: 31px;
+}
+/* .Mainpage__Login {
   width: 100%;
   margin-top: 27px;
   display: inline-block;
   border-radius: 32px;
   margin-bottom: 50px;
   color: #ffffff;
-}
+} */
 
 .matching-button {
   margin-top: 20px;
-  color: #0c0c0c;
+  color: #f9fafa;
   width: 100%;
-  height: 120px;
-  border-radius: 32px;
+  height: 110px;
   font-size: 24px;
   font-weight: bold;
-  background-color: rgba(255, 255, 255, 0.8); /* White with 80% opacity */
-  border: 2px solid #ff6b81;
-  backdrop-filter: blur(12px); /* Background blur effect */
-}
-
-.number-button {
+  background-color: #1e2024;
   text-align: center;
-  margin-top: 10px;
-  color: #0c0c0c;
-  width: 100%;
-  height: 100%;
-  border-radius: 32px;
-  font-size: 15px;
-  font-weight: bold;
-  background-color: #ffffff;
-}
-
-.number-text {
-  padding-top: 5%;
-  font-size: 20px;
-  margin-left: 10%;
-  display: flex;
-}
-
-.number-text2 {
-  font-size: 30px;
-  margin-left: 10%;
-}
-
-.number-bottom {
-  padding-bottom: 10px;
-}
-
-.number-button-opport {
-  margin-left: 45px;
-}
-
-.number-matching-group {
-  display: flex;
-  justify-content: space-between;
-  margin-right: 10%;
-}
-
-.number-charge {
-  background-image: linear-gradient(135deg, #ff775e, #ff4d61, #e83abc);
-  color: #ffffff;
-  text-align: center;
-  height: 40px;
-  width: 40%;
-  border-radius: 10px 10px;
-  font-size: 20px;
-  font-weight: bold;
-  margin-left: 30%;
 }
 
 .button-group {
@@ -76,171 +38,49 @@
   margin-top: 17px;
 }
 
-.charge-request-unclicked {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: auto;
-  background-color: rgba(255, 255, 255, 0.8); /* Fill with 80% opacity */
-  border-radius: 24px;
-  margin-top: 17px;
-
-  padding: 18px 20px;
-  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25); /* Drop shadow */
-  border: 1.5px solid rgba(255, 255, 255, 0.55); /* Stroke */
-  backdrop-filter: blur(12px); /* Background blur effect */
-
-  font-family: "Pretendard", sans-serif;
-  font-size: 15px;
-  font-weight: bold;
-  color: #000000;
-}
-
-.charge-request-unclicked-img,
-.charge-request-clicked-img {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 20px;
-  height: 20px;
-  padding: 0px;
-  border-radius: 100px;
-  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.25);
-  background-color: #ffffff;
-}
-.charge-request-unclicked-img img,
-.charge-request-clicked-img img {
-  width: 12px;
-  height: 8px;
-}
-
-.charge-request-clicked {
-  height: auto;
-  background-color: rgba(255, 255, 255, 0.8); /* Fill with 80% opacity */
-  border-radius: 24px;
-  margin-top: 17px;
-
-  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25); /* Drop shadow */
-  backdrop-filter: blur(12px); /* Background blur effect */
-  padding: 18px 20px;
-
-  font-size: 20px;
-  font-weight: bold;
-  color: #000000;
-}
-.charge-request-clicked-top {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 16px;
-
-}
-.charge-request-clicked-text {
-  text-align: left;
-  margin-left: 8px;
-  font-size: 12px;
-  font-weight: 600;
-  color: #8c8c8c;
-}
-.charge-request-clicked-button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-left: auto;
-  margin-top: 11px;
-  width: 136px;
-  height: 40px;
-  border-radius: 40px;
-  background-color: #ffffff;
-  box-shadow: 0 0 0 1px #e0e0e0 inset;
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
-  font-size: 16px;
-  font-weight: bold;
-  color: #363636;
-}
-.welcome {
-  margin-top: 16px;
-  width: 260px;
-  height: 85px;
-  font-weight: bold;
-  font-family: 'Pretendard', sans-serif;
-  text-align: left;
-  display: flex;
-  align-items: center;
-  justify-content: left;
-  font-size: 32px;
-  color: black;
-  line-height: 1.2;
-}
-.charge-request-disabled {
-  
-  color: #a0a0a0; /* 회색 글자 */
-  cursor: not-allowed; /* 클릭할 수 없음을 나타내는 커서 */
-  font-size: 13px;
-}
-.present_point {
-  margin-top: 10px;
-  align-items: flex-start; /* Align items to the start of the cross axis (left in this case) */
-  display: flex; /* Ensure that the container is using flexbox to make align-items work */
-  justify-content: flex-start; /* Justify content to the start of the main axis (left in this case) */
-}
-.heart-input-container {
-  display: flex; /* flexbox 사용 */
-  align-items: center; /* 크로스 축(세로)에서 중앙 정렬 */
-  justify-content: flex-start; /* 메인 축(가로)에서 왼쪽 정렬 */
-  margin-top: 20px;
-  margin-bottom: 10px;
-}
-.heart-input {
-  padding: 10px 12px; /* 타이핑 편안함을 위한 패딩 조정 */
-  width: 20%; /* 부모 컨테이너에 맞는 너비 조정 */
-  margin-top: 7px;
-  height: 30px;
-  margin-left: 5px; /* 라벨과의 간격 */
-  border: 1px solid #ccc; /* 경계선 설정 */
-  border-radius: 4px; /* 경계선의 모서리를 둥글게 */
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2); /* 그림자 추가 */
-}
-
-.heart-input:focus {
-  
-  outline: none; /* 기본 아웃라인 제거 */
-}
-
-label {
-  font-size: 20px; /* 라벨의 글자 크기 설정 */
-  font-weight: bold;
-  color: #333; /* 라벨의 글자 색상 설정 */
-  margin-right: 10px; /* 입력 필드와의 간격 */
-}
-
-.points-needed > div {
-  text-align: left; /* 내부 div의 텍스트를 왼쪽 정렬 */
-}
-
-
-.points-needed {
-  display: flex;
-  justify-content: flex-start; 
-  font-size: 16px;
-  color: #333;
-  margin-bottom: 20px;
-}
-.logout-container {
-  text-align: center; /* 가운데 정렬 */
-}
-
 .logout-link {
+  margin: 50px 0;
   font-size: 16px; /* 글자 크기 */
   color: #333; /* grayscale/dark 색상 */
   text-decoration: underline; /* 밑줄 */
   cursor: pointer; /* 마우스를 올리면 클릭 가능한 커서 */
 }
-@media (max-width: 412px) {
-  .charge-request-unclicked {
-    font-size: 13px;
-  }
-  .charge-request-clicked-top{
-    font-size: 16px;
-  }
+
+.unmatch-container {
+  border: 2px solid #474a52;
+  background-color: #ffffff;
+  padding: 53px 0;
+}
+.unmatch-text {
+  color: #686b73;
+  margin-top: 24px;
+}
+.match-container {
+  border: 2px solid #474a52;
+  background-color: #ffffff;
+  padding: 24px;
+}
+.match-text {
+  font-size: 20px;
+
+  text-align: left;
+  /* margin-top: 4px; */
+  padding: 4px 0;
+}
+.match-text-span {
+  font-size: 26px;
+  border-bottom: 1px solid #000;
+  text-align: center;
+  background-color: transparent;
+  margin-right: 10px;
+  padding: 8px 16px;
+  flex-grow: 1;
+}
+.match-element {
+  margin-top: 20px;
+  color: #000000;
+  font-weight: 700;
+}
+.ID-span {
+  margin-right: 0px;
 }

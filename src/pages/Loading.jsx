@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import "../css/pages/Loading.css";
-import HeaderNav from "../components/HeaderNav";
 import { useNavigate } from "react-router-dom";
 
 const Loading = () => {
@@ -24,7 +23,6 @@ const Loading = () => {
 
   return (
     <div className="container">
-      <HeaderNav />
       <div className="circle-icon">💟</div>
       <div className="content">
         <div className="LoadingText">

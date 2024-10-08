@@ -1,0 +1,73 @@
+.qr-reader-container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+.qr-reader-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100%;
+}
+.overlay-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  box-sizing: border-box;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #ffffff;
+}
+
+.scanner-area {
+  position: absolute;
+  top: 62%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50vw;
+  height: 50vw;
+  border: 2px solid #ffffff;
+  box-shadow: 0 0 0 9999px rgba(0, 0, 0, 0.5);
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+.scanner-plus {
+  font-size: 80px;
+  font-weight: 100;
+}
+
+.select-button-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: calc(85vh - 310px);
+}
+.code-type-button,
+.load-button {
+  font-family: "Pretendard", sans-serif;
+  margin-top: 16px;
+  height: 56px;
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.code-type-button {
+  width: 38%;
+  background-color: transparent;
+  color: #f9fafa;
+  border: 1px solid #f9fafa;
+}
+
+.load-button {
+  width: 60%;
+  background-color: #f9fafa;
+  color: #1e2024;
+  border: none;
+}

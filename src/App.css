@@ -1,7 +1,10 @@
 .App {
   margin: 0px;
   text-align: center;
-  font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  font-family: "Pretendard", "GmarketSansMedium", -apple-system,
+    BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans",
+    sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+    "Noto Color Emoji";
 }
 
 .App-logo {
@@ -21,7 +24,7 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: #f1f2f3;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -41,14 +44,14 @@
 
 .container {
   padding: 24px;
-  min-height: 100vh;
+  min-height: calc(100vh - 48px);
+  width: calc(100vw - 48px);
+
   font-family: Pretendard;
   text-align: center;
-  background-color: #FFFAFB;
+  background-color: #f1f2f3;
   align-items: center;
-  
 }
-
 
 .content {
   text-align: center;
@@ -61,4 +64,11 @@
   margin-bottom: 50px;
   position: relative;
   backdrop-filter: blur(12px);
+}
+@font-face {
+  font-family: "GmarketSansMedium";
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
 }
