@@ -16,7 +16,9 @@ function Mainpage() {
         { withCredentials: true }
       ); // instance로 요청
       console.log("final:", response);
-      if (response.status === "200") {
+      console.log("response.data:", response.data);
+      console.log("Role:", response.data.data);
+      if (response.data.status === "200") {
         if (response.data.data === "ROLE_USER") {
           setIsLoggedIn(true);
         }
