@@ -41,12 +41,6 @@ function Register() {
     }
   };
 
-  useEffect(() => {
-    setProgressState((prevProgress) => ({
-      progressState: prevProgress.progressState + 100 / 14,
-    }));
-  }, []);
-
   const validateAge = (age) => {
     return age.length === 2 && /^\d{2}$/.test(age) && parseInt(age) >= 10;
   };

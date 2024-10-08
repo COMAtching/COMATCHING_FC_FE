@@ -15,6 +15,12 @@ function CodeTyping() {
   const [isButtonActive, setIsButtonActive] = useState(false);
 
   useEffect(() => {
+    setProgressState(() => ({
+      progressState: 100 / 14,
+    }));
+  }, []);
+
+  useEffect(() => {
     const regex = /^T\d{10}$/;
     setIsButtonActive(regex.test(inputCode));
   }, [inputCode]);
@@ -23,23 +29,24 @@ function CodeTyping() {
     setInputCode(e.target.value);
   };
 
-  const handleNextClick = async () => {
-    console.log("inputCode: ", inputCode);
+  const handleLogin = async (code) => {
     const postData = {
       type: "online",
-      ticket: inputCode,
+      ticket: code,
     };
-    console.log("postData: ", postData);
-
     try {
       const response = await axios.post(
         "https://cuk.comatching.site/user/login",
-        postData
+        postData,
+        { withCredentials: true }
       );
       console.log("response: ", response);
 
       if (response.data.code === "GEN-000") {
         navigate("/Register");
+        setProgressState((prevProgress) => ({
+          progressState: prevProgress.progressState + 100 / 14,
+        }));
       } else {
         alert("미로그인");
       }
@@ -47,6 +54,9 @@ function CodeTyping() {
       console.error("Error:", error);
       alert("로그인 중 오류가 발생했습니다.");
     }
+  };
+  const handleNextClick = () => {
+    handleLogin(inputCode);
   };
 
   const validateCode = (code) => {
@@ -71,7 +81,7 @@ function CodeTyping() {
 
           if (code) {
             if (validateCode(code.data)) {
-              navigate("/Register", { state: { code: code.data } });
+              handleLogin(code.data);
             } else {
               alert(
                 "유효하지 않은 티켓 코드입니다. 'T'로 시작하고 10자리 숫자여야 합니다."

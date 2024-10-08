@@ -1,19 +1,54 @@
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import "../css/pages/CodeSelect.css";
 import { useNavigate } from "react-router-dom";
 import { useRecoilState } from "recoil";
 import { progress } from "../Atoms.jsx";
 import ProgressBar from "../components/Progressbar.jsx";
 import jsQR from "jsqr";
+import axios from "axios";
 
 function CodeSelect() {
   const navigate = useNavigate();
   const [progressState, setProgressState] = useRecoilState(progress);
   const fileInputRef = useRef(null);
 
+  useEffect(() => {
+    setProgressState(() => ({
+      progressState: 100 / 14,
+    }));
+  }, []);
+
   const validateCode = (code) => {
     const codePattern = /^T\d{10}$/;
     return codePattern.test(code);
+  };
+
+  const handleLogin = async (code) => {
+    const postData = {
+      type: "online",
+      ticket: code,
+    };
+
+    try {
+      const response = await axios.post(
+        "https://cuk.comatching.site/user/login",
+        postData,
+        { withCredentials: true }
+      );
+      console.log("response: ", response);
+
+      if (response.data.code === "GEN-000") {
+        navigate("/Register");
+        setProgressState((prevProgress) => ({
+          progressState: prevProgress.progressState + 100 / 14,
+        }));
+      } else {
+        alert("미로그인");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      alert("로그인 중 오류가 발생했습니다.");
+    }
   };
 
   const handleImageUpload = (event) => {
@@ -33,7 +68,9 @@ function CodeSelect() {
 
           if (code) {
             if (validateCode(code.data)) {
-              navigate("/Register");
+              console.log(code.data);
+              handleLogin(code.data);
+              // navigate("/Register");
             } else {
               alert("유효하지 않은 티켓 코드입니다.");
             }
@@ -46,9 +83,11 @@ function CodeSelect() {
       reader.readAsDataURL(file);
     }
   };
+
   const handleImageLoadClick = () => {
     fileInputRef.current.click();
   };
+
   return (
     <div className="container">
       <img
@@ -69,7 +108,7 @@ function CodeSelect() {
       <img
         className="select-logo"
         src={`${import.meta.env.VITE_PUBLIC_URL}../../assets/logo.png`}
-        alt="뒤로가기"
+        alt="이미지"
         onClick={() => navigate(-1)}
       />
       <div className="help-text">* 온라인 예매자에 한함.</div>

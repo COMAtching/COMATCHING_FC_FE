@@ -13,6 +13,7 @@ import Redirection from "./pages/RedirectionPage.jsx";
 import OpenExternalBrowser from "./OpenExternalBrowser.jsx";
 import MainpageLogin from "./pages/MainpageLogin.jsx";
 import Match from "./pages/Match.jsx";
+import MatchResult from "./pages/MatchResult.jsx";
 
 import "./App.css";
 import "./axiosConfig.jsx";
@@ -35,6 +36,7 @@ export default function App() {
             <Route path="/redirection" element={<Redirection />} />
             <Route path="/Mainpage" element={<MainpageLogin />} />
             <Route path="/Match" element={<Match />} />
+            <Route path="/MatchResult" element={<MatchResult />} />
           </Routes>
         </BrowserRouter>
       </div>

@@ -1,7 +1,6 @@
 .backspace {
   display: flex;
   align-items: flex-start;
-  margin-top: 8px;
   width: 32px;
 }
 .select-text {
@@ -22,7 +21,7 @@
 .select-exptext {
   text-align: left;
   margin-top: 20px;
-  font-weight: 400;
+  font-weight: 500;
   line-height: 26px;
 }
 .select-button {

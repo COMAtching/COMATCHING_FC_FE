@@ -6,6 +6,7 @@
 }
 
 .Form-text {
+  font-family: "Pretendard";
   font-size: 18px;
   color: #7f8c8d;
   margin-bottom: 20px;
@@ -51,6 +52,7 @@
 }
 
 .answer-button {
+  font-family: "Pretendard";
   display: block;
   width: 100%;
   color: #1e2024;
@@ -61,4 +63,7 @@
   font-weight: 400;
   height: 64px;
   text-align: center;
+}
+.formImage {
+  width: 100%;
 }

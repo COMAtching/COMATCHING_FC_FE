@@ -95,7 +95,7 @@ function Match() {
           onTouchEnd={handleTouchEnd}
         >
           <img
-            className="backspace"
+            className="arrowpixel"
             src={`${
               import.meta.env.VITE_PUBLIC_URL
             }../../assets/arrowpixel.png`}
@@ -103,7 +103,7 @@ function Match() {
             onClick={() => navigate(-1)}
           />
         </div>
-        밀어서 친구찾기
+        <div className="swipe-text">밀어서 친구찾기</div>
       </div>
     </div>
   );

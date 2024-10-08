@@ -26,12 +26,12 @@
   transition: width 0.5s ease-in-out;
 }
 .question-container {
-  margin: 30px 0;
+  margin: 30px 0 50px 0;
   border: 2px solid #1e2024;
   background-color: #ffffff;
   padding: 24px;
-  max-height: 400px;
-  overflow-y: auto; /* 세로 스크롤을 추가합니다 */
+  max-height: 50vh;
+  overflow-y: auto;
 }
 .register-text {
   color: #000000;
@@ -86,7 +86,7 @@
 }
 
 .register-Next-button {
-  font-family: "Pretendard", sans-serif;
+  font-family: "Pretendard";
   margin-top: 16px;
   position: fixed;
   height: 56px;

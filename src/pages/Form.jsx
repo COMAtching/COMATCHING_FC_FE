@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import instance from "../axiosConfig";
+import { useState, useEffect } from "react";
+// import instance from "../axiosConfig";
 import { useRecoilState } from "recoil";
 import { QUESTIONS, ANSWERS } from "../data/questions";
 import { progress } from "../Atoms";
@@ -15,12 +15,12 @@ function Form() {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [progressState, setProgressState] = useRecoilState(progress);
   const [scores, setScores] = useState({
-    인싸형: 0,
-    먹방형: 0,
-    축린이: 0,
-    축잘알형: 0,
-    집중형: 0,
-    열정형: 0,
+    SocialType: 0,
+    MukbangType: 0,
+    SoccerNoviceType: 0,
+    SoccerExpertType: 0,
+    FocusType: 0,
+    PassionType: 0,
   });
   useEffect(() => {
     setProgressState((prevProgress) => ({
@@ -63,6 +63,13 @@ function Form() {
         <div className="question-num">Q{currentQuestionIndex + 1}.</div>
         <div className="form-text">{QUESTIONS[currentQuestionIndex]}</div>
       </div>
+      <img
+        className="formImage"
+        src={`${import.meta.env.VITE_PUBLIC_URL}../../assets/form/formImage${
+          currentQuestionIndex + 1
+        }.png`}
+        alt="질문이미지"
+      />
       <div className="answers-container">
         {ANSWERS[currentQuestionIndex].map((answer, index) => (
           <button

@@ -1,0 +1,22 @@
+.AI-logo {
+  display: flex;
+  margin-top: 32px;
+  margin-bottom: 16px;
+  width: 48px;
+}
+.MatchResult-Button-Container {
+  display: flex;
+  margin-top: 16px;
+}
+.MatchResult-backspace {
+  width: 56px;
+}
+.MatchResult-copy {
+  background-color: #1e2024;
+  color: #ffffff;
+  font-size: 24px;
+  font-weight: 400;
+  height: 56px;
+  width: 273px;
+  margin-left: auto;
+}

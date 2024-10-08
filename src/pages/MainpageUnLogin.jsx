@@ -29,7 +29,8 @@ function MainpageUnLogin() {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "https://cuk.comatching.site/api/participations"
+          "https://cuk.comatching.site/api/participations",
+          { withCredentials: true }
         );
         console.log("response: ", response);
         if (response.status === 200) {
@@ -47,7 +48,7 @@ function MainpageUnLogin() {
     <div className="container">
       <img
         className="Unlogin-logo"
-        src={`${import.meta.env.VITE_PUBLIC_URL}../../assets/Logo.svg`}
+        src={`${import.meta.env.VITE_PUBLIC_URL}../../assets/Logo.png`}
         alt="로고"
         onClick={() => navigate(-1)}
       />

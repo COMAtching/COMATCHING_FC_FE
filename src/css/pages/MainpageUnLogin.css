@@ -3,7 +3,7 @@
   height: 60px;
 }
 .UnloginMain-text {
-  font-family: "Pretendard", sans-serif;
+  font-family: "Pretendard";
   font-size: 25px;
   font-weight: bold;
   text-align: center;
@@ -15,6 +15,7 @@
 }
 .bubble-counter {
   position: relative;
+  font-family: "Pretendard";
   background: #ffffff;
   padding: 2px 12px 6px 12px;
   border: 1.5px solid #1e2024;
@@ -51,7 +52,7 @@
   height: 56px;
   width: 100%;
   background-color: transparent;
-  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
+  border: 1.5px solid #000000;
   color: #1e2024;
   font-size: 24px;
   font-weight: 400;
@@ -59,7 +60,7 @@
 }
 
 .help-text {
-  font-family: "Pretendard", sans-serif;
+  font-family: "Pretendard";
   display: flex;
   align-items: center;
   justify-content: center;
@@ -70,7 +71,7 @@
 }
 
 .privacy-button {
-  font-family: "Pretendard", sans-serif;
+  font-family: "Pretendard";
   font-size: 14px;
   font-weight: bold;
   color: #7a7a7a;

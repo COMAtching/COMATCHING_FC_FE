@@ -10,18 +10,47 @@ import "../css/pages/QRReader.css";
 const QRReader = () => {
   const navigate = useNavigate();
   const [progressState, setProgressState] = useRecoilState(progress);
-  const [data, setData] = useState("");
-  const [codeState, setCodeState] = useRecoilState(MatchPickState);
   const videoRef = useRef(null);
   const canvasRef = useRef(null);
-  const [isScanning, setIsScanning] = useState(true);
   const fileInputRef = useRef(null);
+
+  useEffect(() => {
+    setProgressState(() => ({
+      progressState: 100 / 14,
+    }));
+  }, []);
 
   const validateCode = (code) => {
     const codePattern = /^T\d{10}$/;
     return codePattern.test(code);
   };
+  const handleLogin = async (code) => {
+    const postData = {
+      type: "online",
+      ticket: code,
+    };
 
+    try {
+      const response = await axios.post(
+        "https://cuk.comatching.site/user/login",
+        postData,
+        { withCredentials: true }
+      );
+      console.log("response: ", response);
+
+      if (response.data.code === "GEN-000") {
+        navigate("/Register");
+        setProgressState((prevProgress) => ({
+          progressState: prevProgress.progressState + 100 / 14,
+        }));
+      } else {
+        alert("미로그인");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      alert("로그인 중 오류가 발생했습니다.");
+    }
+  };
   const handleImageUpload = (event) => {
     const file = event.target.files[0];
     if (file) {
@@ -39,7 +68,7 @@ const QRReader = () => {
 
           if (code) {
             if (validateCode(code.data)) {
-              navigate("/Register", { state: { code: code.data } });
+              handleLogin(code.data);
             } else {
               alert(
                 "유효하지 않은 티켓 코드입니다. 'T'로 시작하고 10자리 숫자여야 합니다."
@@ -61,21 +90,8 @@ const QRReader = () => {
   const sendCode = async (hashCode) => {
     const codePattern = /^T\d{10}$/;
     if (codePattern.test(hashCode)) {
-      // alert("Valid code: " + hashCode);
-      navigate("/Register");
+      handleLogin(hashCode);
     }
-    // const response = await axios.get(
-    //   `/comatching/code-req/admin?code=${hashCode}`
-    // );
-    // if (response.data.status === 200) {
-
-    //   navigate("/Register");
-    // } else {
-    //   throw new Error("Unexpected response code or status");
-    // }
-    // catch (error) {
-    //   console.error("Error sending hash code:", error);
-    // }
   };
 
   useEffect(() => {
@@ -117,7 +133,7 @@ const QRReader = () => {
           inversionAttempts: "dontInvert",
         });
         if (code) {
-          setData(code.data);
+          // setData(code.data);
           sendCode(code.data);
         }
       }
