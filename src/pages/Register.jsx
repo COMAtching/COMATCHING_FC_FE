@@ -27,11 +27,15 @@ function Register() {
     try {
       const response = await axios.post(
         "https://cuk.comatching.site/auth/pending/feature",
-        userInfo
+        userInfo,
+        { withCredentials: true }
       );
       console.log("response: ", response);
       if (response.data.code === "GEN-000") {
         navigate("/Form");
+        setProgressState((prevProgress) => ({
+          progressState: prevProgress.progressState + 100 / 14,
+        }));
       } else {
         alert("미로그인");
       }
