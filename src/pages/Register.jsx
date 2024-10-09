@@ -14,7 +14,7 @@ function Register() {
   const [progressState, setProgressState] = useRecoilState(progress);
   const [step, setStep] = useState(1);
   const [userInfo, setUserInfo] = useState({
-    age: null,
+    age: "",
     gender: "",
     socialId: "",
     cheeringPlayer: "",
@@ -22,26 +22,34 @@ function Register() {
   });
 
   const handleNextClick = async () => {
-    console.log("inputCode: ", userInfo);
-    try {
-      const response = await instance.post("/auth/pending/feature", userInfo);
-      console.log("response: ", response);
-      if (response.data.code === "GEN-000") {
-        navigate("/form");
-        setProgressState((prevProgress) => ({
-          progressState: prevProgress.progressState + 100 / 13,
-        }));
-      } else {
-        alert("미로그인");
-      }
-    } catch (error) {
-      console.error("Error:", error);
-      alert("로그인 중 오류가 발생했습니다.");
-    }
+    console.log("userInfo: ", userInfo);
+    const postData = {
+      age: parseInt(userInfo.age),
+      gender: userInfo.gender,
+      socialId: userInfo.socialId,
+      cheeringPlayer: userInfo.cheeringPlayer,
+      username: userInfo.username,
+    };
+    console.log("postData: ", postData);
+    // try {
+    //   const response = await instance.post("/auth/pending/feature", postData);
+    //   console.log("response: ", response);
+    //   if (response.data.code === "GEN-000") {
+    //     navigate("/form");
+    //     setProgressState((prevProgress) => ({
+    //       progressState: prevProgress.progressState + 100 / 13,
+    //     }));
+    //   } else {
+    //     alert("미로그인");
+    //   }
+    // } catch (error) {
+    //   console.error("Error:", error);
+    //   alert("로그인 중 오류가 발생했습니다.");
+    // }
   };
 
   const validateAge = (age) => {
-    return Number.isInteger(age) && age >= 10 && age <= 99;
+    return age >= 10 && age <= 99;
   };
 
   const validateInstagramId = (id) => {
@@ -53,15 +61,7 @@ function Register() {
   // };
 
   const handleInputChange = (field, value) => {
-    if (field === "age") {
-      const ageNumber = parseInt(value, 10);
-      setUserInfo((prev) => ({
-        ...prev,
-        age: ageNumber,
-      }));
-    } else {
-      setUserInfo((prev) => ({ ...prev, [field]: value }));
-    }
+    setUserInfo((prev) => ({ ...prev, [field]: value }));
   };
 
   const handleInputEnd = (field, value) => {
@@ -221,7 +221,7 @@ function Register() {
             <div className="register-answer-text age-answer">
               <input
                 type="text"
-                value={userInfo.age === null ? "" : userInfo.age.toString()}
+                value={userInfo.age}
                 onChange={(e) => handleInputChange("age", e.target.value)}
                 onBlur={(e) => handleInputEnd("age", e.target.value)}
                 placeholder="23"
