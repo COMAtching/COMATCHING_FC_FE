@@ -86,7 +86,6 @@ function MainpageLogin() {
         className="Mainpage-logo"
         src={`${import.meta.env.VITE_PUBLIC_URL}../../assets/Logo.svg`}
         alt="로고"
-        onClick={() => navigate(-1)}
       />
       <div className="Mainpage-welcome">
         {friendState === null ? (

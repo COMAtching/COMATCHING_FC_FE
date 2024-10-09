@@ -9,7 +9,7 @@ export const progress = atom({
 
 export const userResult = atom({
   key: "userResult",
-  default: [],
+  default: {},
 });
 
 export const userState = atom({

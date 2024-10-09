@@ -26,7 +26,10 @@ function CodeTyping() {
   }, [inputCode]);
 
   const handleInputChange = (e) => {
-    setInputCode(e.target.value);
+    const value = e.target.value;
+    if (value.length <= 11) {
+      setInputCode(value);
+    }
   };
 
   const handleLogin = async (code) => {
@@ -47,6 +50,8 @@ function CodeTyping() {
         setProgressState((prevProgress) => ({
           progressState: prevProgress.progressState + 100 / 14,
         }));
+      } else if (response.data.message === "Deactivated User") {
+        alert("탈퇴하신 유저입니다.");
       } else {
         alert("미로그인");
       }

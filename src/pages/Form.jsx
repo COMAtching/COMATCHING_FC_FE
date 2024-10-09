@@ -15,12 +15,12 @@ function Form() {
   const [progressState, setProgressState] = useRecoilState(progress);
   const [formResult, setFormResult] = useRecoilState(userResult);
   const [scores, setScores] = useState({
-    SocialType: 0,
-    MukbangType: 0,
-    SoccerNoviceType: 0,
-    SoccerExpertType: 0,
-    FocusType: 0,
-    PassionType: 0,
+    socialType: 0,
+    mukbangType: 0,
+    soccerNoviceType: 0,
+    soccerExpertType: 0,
+    focusType: 0,
+    passionType: 0,
   });
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [agreements, setAgreements] = useState({

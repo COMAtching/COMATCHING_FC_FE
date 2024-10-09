@@ -14,6 +14,7 @@ import Match from "./pages/Match.jsx";
 import MatchResult from "./pages/MatchResult.jsx";
 import EditInfo from "./pages/EditInfo.jsx";
 import Guide from "./pages/Guide.jsx";
+import AdminLoginPage from "./pages/AdminLoginPage.jsx";
 
 import "./App.css";
 import "./axiosConfig.jsx";
@@ -37,6 +38,7 @@ export default function App() {
             <Route path="/matchresult" element={<MatchResult />} />
             <Route path="/editinfo" element={<EditInfo />} />
             <Route path="/guide" element={<Guide />} />
+            <Route path="/adminlogin" element={<AdminLoginPage />} />
           </Routes>
         </BrowserRouter>
       </div>

@@ -19,18 +19,20 @@
   margin-bottom: 16px;
 }
 .select-exptext {
+  font-family: "Pretendard";
   text-align: left;
   margin-top: 20px;
   font-weight: 500;
   line-height: 26px;
 }
 .select-button {
-  font-family: "Pretendard", sans-serif;
+  font-family: "Pretendard";
   margin-top: 16px;
   height: 56px;
   width: 100%;
   background-color: transparent;
   color: #1e2024;
+  border: 1.5px solid #000000;
   font-size: 24px;
   font-weight: 400;
 }

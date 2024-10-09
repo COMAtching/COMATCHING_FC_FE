@@ -62,7 +62,7 @@ function UserResult() {
         onClick={() => navigate(-1)}
       />
       <div className="register-info-container">
-        <div className="select-topic">당신은 {result.category}!</div>
+        <div className="select-topic">당신은 {result.cheerPropensity}!</div>
         <div className="Divider" />
       </div>
       <div className="UserResult-container">
