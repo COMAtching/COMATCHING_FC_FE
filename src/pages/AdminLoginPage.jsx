@@ -30,8 +30,8 @@ function AdminLoginPage() {
       const response = await instance.post("/admin/login", postData);
       console.log("response: ", response);
 
-      if (response.data === "로그인에 성공했습니다.") {
-        navigate("/admin-dashboard"); // 관리자 대시보드로 이동
+      if (response.data.message === "로그인에 성공했습니다.") {
+        navigate("/admin"); // 관리자 대시보드로 이동
       } else {
         alert("로그인 실패");
       }
