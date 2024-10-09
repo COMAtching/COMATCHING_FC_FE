@@ -103,15 +103,15 @@ export const ANSWERS = [
   [
     {
       text: "끝나자마자 오늘의 경기 분석 시작!",
-      scores: { FocusType: 5, 축잘알형: 2, PassionType: 1 },
+      scores: { FocusType: 5, SoccerExpertType: 2, PassionType: 1 },
     },
     {
       text: "모두 함께 기념사진을 찍어야지!",
-      scores: { PassionType: 5, 인싸형: 2, 먹방형: 1 },
+      scores: { PassionType: 5, SocialType: 2, MukbangType: 1 },
     },
     {
       text: "배고프다! 뭐 먹으러 가지!",
-      scores: { 먹방형: 5, 축린이: 2, FocusType: 1 },
+      scores: { MukbangType: 5, SoccerNoviceType: 2, FocusType: 1 },
     },
   ],
 ];

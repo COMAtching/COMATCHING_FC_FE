@@ -11,7 +11,7 @@ Modal.setAppElement("#root");
 function UserResult() {
   const [result, setResult] = useRecoilState(userResult);
   const navigate = useNavigate();
-  const { text, topic, image } = getTextContent(result.cheerPropensity);
+
   const getTextContent = (cheerPropensity) => {
     switch (cheerPropensity) {
       case "축린이형":
@@ -52,6 +52,7 @@ function UserResult() {
         };
     }
   };
+  const { text, topic, image } = getTextContent(result.cheerPropensity);
   return (
     <div className="container">
       <img
