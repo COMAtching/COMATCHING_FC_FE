@@ -1,28 +1,28 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import "../css/pages/AdminLoginPage.css";
 import { useNavigate } from "react-router-dom";
 
 import instance from "../axiosConfig.jsx";
 
-function AdminLoginPage() {
+function AdminPage() {
   const navigate = useNavigate();
-  const [inputID, setInputID] = useState("");
+  const [inputCode, setInputCode] = useState("");
   const [inputPassword, setInputPassword] = useState("");
   const [isButtonActive, setIsButtonActive] = useState(false);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    if (name === "ID") {
-      setInputID(value);
+    if (name === "code") {
+      setInputCode(value);
     } else if (name === "password") {
       setInputPassword(value);
     }
-    setIsButtonActive(inputID && inputPassword);
+    setIsButtonActive(inputCode && inputPassword);
   };
 
   const handleLogin = async () => {
     const postData = {
-      username: inputID,
+      username: inputCode,
       password: inputPassword,
     };
     try {
@@ -30,7 +30,7 @@ function AdminLoginPage() {
       console.log("response: ", response);
 
       if (response.data === "로그인에 성공했습니다.") {
-        navigate("/admin-dashboard"); // 관리자 대시보드로 이동
+        navigate("/admin-dashboard");
       } else {
         alert("로그인 실패");
       }
@@ -40,37 +40,28 @@ function AdminLoginPage() {
     }
   };
 
+  const handleNextClick = () => {
+    handleLogin(inputCode);
+  };
+
   return (
     <div className="container">
-      <div className="select-topic">관리자 로그인</div>
+      <div className="select-topic">관리자 페이지</div>
       <div className="Divider" />
 
       <input
-        type="text"
-        name="ID"
-        value={inputID}
+        type="ID"
+        value={inputCode}
         onChange={handleInputChange}
-        placeholder="관리자 ID"
-        className="code-input"
-      />
-      <input
-        type="password"
-        name="password"
-        value={inputPassword}
-        onChange={handleInputChange}
-        placeholder="비밀번호"
+        placeholder="T0123456789"
         className="code-input"
       />
 
-      <button
-        className={`Next-button ${isButtonActive ? "active" : ""}`}
-        onClick={handleLogin}
-        disabled={!isButtonActive}
-      >
+      <button className="Next-button  active" onClick={handleNextClick}>
         로그인
       </button>
     </div>
   );
 }
 
-export default AdminLoginPage;
+export default AdminPage;
