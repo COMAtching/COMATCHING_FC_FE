@@ -14,7 +14,7 @@ function Register() {
   const [progressState, setProgressState] = useRecoilState(progress);
   const [step, setStep] = useState(1);
   const [userInfo, setUserInfo] = useState({
-    age: "",
+    age: 0,
     gender: "",
     socialId: "",
     cheeringPlayer: "",
@@ -196,8 +196,8 @@ function Register() {
                 <option value="" hidden>
                   선택하세요
                 </option>
-                <option value="남성">남성</option>
-                <option value="여성">여성</option>
+                <option value="MALE">남성</option>
+                <option value="FEMALE">여성</option>
               </select>
               입니다.
             </div>

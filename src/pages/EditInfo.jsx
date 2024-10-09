@@ -34,10 +34,6 @@ function EditInfo() {
     }
   };
 
-  const validateAge = (age) => {
-    return age.length === 2 && /^\d{2}$/.test(age) && parseInt(age) >= 10;
-  };
-
   const validateInstagramId = (id) => {
     return /^@[A-Za-z0-9._]+$/.test(id);
   };
@@ -47,10 +43,6 @@ function EditInfo() {
   };
 
   const handleInputEnd = (field, value) => {
-    if (field === "age" && !validateAge(value)) {
-      alert("나이를 정확히 입력해주세요");
-      return;
-    }
     if (field === "socialId" && !validateInstagramId(value)) {
       alert("아이디를 정확히 입력해주세요");
       return;
