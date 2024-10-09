@@ -9,11 +9,11 @@ import Form from "./pages/Form.jsx";
 import UserResult from "./pages/UserResult.jsx";
 
 import Loading from "./pages/Loading.jsx";
-import Redirection from "./pages/RedirectionPage.jsx";
 import OpenExternalBrowser from "./OpenExternalBrowser.jsx";
 import MainpageLogin from "./pages/MainpageLogin.jsx";
 import Match from "./pages/Match.jsx";
 import MatchResult from "./pages/MatchResult.jsx";
+import EditInfo from "./pages/EditInfo.jsx";
 
 import "./App.css";
 import "./axiosConfig.jsx";
@@ -33,10 +33,10 @@ export default function App() {
             <Route path="/Form" element={<Form />} />
             <Route path="/UserResult" element={<UserResult />} />
             <Route path="/loading" element={<Loading />} />
-            <Route path="/redirection" element={<Redirection />} />
             <Route path="/Mainpage" element={<MainpageLogin />} />
             <Route path="/Match" element={<Match />} />
             <Route path="/MatchResult" element={<MatchResult />} />
+            <Route path="/EditInfo" element={<EditInfo />} />
           </Routes>
         </BrowserRouter>
       </div>

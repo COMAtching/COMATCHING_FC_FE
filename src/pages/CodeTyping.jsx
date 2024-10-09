@@ -5,7 +5,7 @@ import { useRecoilState } from "recoil";
 import { progress } from "../Atoms.jsx";
 import ProgressBar from "../components/Progressbar.jsx";
 import jsQR from "jsqr";
-import axios from "axios";
+import instance from "../axiosConfig.jsx";
 
 function CodeTyping() {
   const navigate = useNavigate();
@@ -35,11 +35,7 @@ function CodeTyping() {
       ticket: code,
     };
     try {
-      const response = await axios.post(
-        "https://cuk.comatching.site/user/login",
-        postData,
-        { withCredentials: true }
-      );
+      const response = await instance.post("/user/login", postData);
       console.log("response: ", response);
 
       if (response.data.code === "GEN-000") {

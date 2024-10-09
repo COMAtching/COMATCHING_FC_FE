@@ -1,11 +1,11 @@
 import React, { useState, useRef, useEffect } from "react";
 import jsQR from "jsqr";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useRecoilState } from "recoil";
-import { MatchPickState, progress } from "../Atoms";
+import { progress } from "../Atoms";
 import ProgressBar from "../components/Progressbar";
 import "../css/pages/QRReader.css";
+import instance from "../axiosConfig";
 
 const QRReader = () => {
   const navigate = useNavigate();
@@ -31,11 +31,7 @@ const QRReader = () => {
     };
 
     try {
-      const response = await axios.post(
-        "https://cuk.comatching.site/user/login",
-        postData,
-        { withCredentials: true }
-      );
+      const response = await instance.post("/user/login", postData);
       console.log("response: ", response);
 
       if (response.data.code === "GEN-000") {

@@ -5,7 +5,7 @@ import { useRecoilState } from "recoil";
 import { progress } from "../Atoms.jsx";
 import ProgressBar from "../components/Progressbar.jsx";
 import jsQR from "jsqr";
-import axios from "axios";
+import instance from "../axiosConfig.jsx";
 
 function CodeSelect() {
   const navigate = useNavigate();
@@ -30,11 +30,7 @@ function CodeSelect() {
     };
 
     try {
-      const response = await axios.post(
-        "https://cuk.comatching.site/user/login",
-        postData,
-        { withCredentials: true }
-      );
+      const response = await instance.post("/user/login", postData);
       console.log("response: ", response);
 
       if (response.data.code === "GEN-000") {
@@ -43,11 +39,11 @@ function CodeSelect() {
           progressState: prevProgress.progressState + 100 / 14,
         }));
       } else {
-        alert("미로그인");
+        alert("오류 발생");
       }
     } catch (error) {
       console.error("Error:", error);
-      alert("로그인 중 오류가 발생했습니다.");
+      alert("오류가 발생했습니다.");
     }
   };
 

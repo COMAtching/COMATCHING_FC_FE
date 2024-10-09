@@ -17,6 +17,6 @@
   font-size: 24px;
   font-weight: 400;
   height: 56px;
-  width: 273px;
+  width: calc(100% - 72px);
   margin-left: auto;
 }

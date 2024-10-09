@@ -1,9 +1,7 @@
 import { useEffect, useState } from "react";
-// import { useNavigate } from "react-router-dom";
 import MainpageUnLogin from "./MainpageUnLogin.jsx";
 import MainpageLogin from "./MainpageLogin.jsx";
-import axios from "axios";
-// import instance from "../axiosConfig.jsx";
+import instance from "../axiosConfig.jsx";
 
 function Mainpage() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -11,10 +9,7 @@ function Mainpage() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await axios.get(
-        "https://cuk.comatching.site/check-role",
-        { withCredentials: true }
-      ); // instance로 요청
+      const response = await instance.get("/check-role");
       console.log("final:", response);
       console.log("response.data:", response.data);
       console.log("Role:", response.data.data);

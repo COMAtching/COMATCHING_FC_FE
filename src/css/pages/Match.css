@@ -48,10 +48,11 @@
 
 .Match-button-select {
   background-color: #1e2024;
+  border: 1.5px solid #ffffff;
   color: #ffffff;
 }
 
-.Match-button-unselelct {
+.Match-button-unselect {
   background-color: #ffffff;
   color: #1e2024;
   border: 1.5px solid #000000;

@@ -3,7 +3,7 @@ import "../css/pages/MainpageUnLogin.css";
 import Footer from "../components/Footer.jsx";
 import TotalUsersCounter from "../components/TotalUsersCounter.jsx";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import instance from "../axiosConfig.jsx";
 
 function MainpageUnLogin() {
   const navigate = useNavigate();
@@ -28,10 +28,7 @@ function MainpageUnLogin() {
     // 컴포넌트가 마운트될 때 API 요청을 보냄
     const fetchData = async () => {
       try {
-        const response = await axios.get(
-          "https://cuk.comatching.site/api/participations",
-          { withCredentials: true }
-        );
+        const response = await instance.get("/api/participations");
         console.log("response: ", response);
         if (response.status === 200) {
           setNumParticipants(response.data.data);

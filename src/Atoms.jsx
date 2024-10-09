@@ -1,33 +1,5 @@
 import { atom } from "recoil";
 
-export const charge = atom({
-  key: "charge",
-  default: {
-    chargeclick: false,
-  },
-});
-
-export const registerUserState = atom({
-  key: "registerUserState",
-  default: {
-    code: "",
-    major: "",
-    age: "",
-    admissionYear: null,
-    song: "",
-    mbti: "",
-    point: 0,
-    pickMe: 0,
-    contact_id: "",
-    canRequestCharge: true,
-    hobby: [],
-    comment: "",
-    numParticipants: 0,
-    contact_frequency: "",
-    contact: "kakao",
-  },
-});
-
 export const progress = atom({
   key: "progress",
   default: {
@@ -35,8 +7,8 @@ export const progress = atom({
   },
 });
 
-export const adminRequests = atom({
-  key: "adminRequests",
+export const userResult = atom({
+  key: "userResult",
   default: [],
 });
 
@@ -44,69 +16,15 @@ export const userState = atom({
   key: "userState",
   default: {
     username: "",
-    major: "",
-    age: "",
-    admissionYear: null,
-    song: "",
-    mbti: "",
-    point: 0,
-    pickMe: 0,
-    contact_id: "",
-    canRequestCharge: true,
-    hobby: [],
-    comment: "",
-    numParticipants: 0,
-    contact_frequency: "",
-    contact: "kakao",
-  },
-});
-
-export const selectedMBTIState = atom({
-  key: "selectedMBTIState",
-  default: {
-    EI: "",
-    SN: "",
-    TF: "",
-    PJ: "",
-  },
-});
-
-export const MatchPickState = atom({
-  key: "MatchPickState",
-  default: {
-    selectedMBTI: ["X", "X", "X", "X"],
-    selectedCategory: [],
-    point: 500,
-    balance: null,
-    isUseOption: [false, false, false, false],
-    formData: {
-      ageOption: "",
-
-      mbtiOption: "",
-      hobbyOption: [],
-      contactFrequencyOption: "",
-      sameMajorOption: false,
-    },
-  },
-});
-
-export const MatchResultState = atom({
-  key: "MatchResultState",
-  default: {
-    age: 0,
-    comment: "",
-    contactFrequency: "",
-    currentPoint: 0,
-    gender: "",
-    hobby: [],
-    major: "",
-    mbti: "",
     socialId: "",
-    song: "",
+    cheeringPlayer: "",
+    age: 0,
+    gender: "",
+    cheerPropensity: "",
   },
 });
 
-export const checkresultState = atom({
-  key: "checkresultState",
-  default: [],
+export const matchResult = atom({
+  key: "matchResult",
+  default: {},
 });

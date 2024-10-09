@@ -1,5 +1,6 @@
 # Logs
 server_url.jsx
+axiosConfig.jsx
 
 logs
 *.log

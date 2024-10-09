@@ -7,7 +7,6 @@ import { useNavigate } from "react-router-dom";
 import "../css/pages/Register.css";
 import ProgressBar from "../components/Progressbar";
 import Modal from "react-modal"; // Import react-modal
-import axios from "axios";
 Modal.setAppElement("#root");
 
 function Register() {
@@ -25,11 +24,7 @@ function Register() {
   const handleNextClick = async () => {
     console.log("inputCode: ", userInfo);
     try {
-      const response = await axios.post(
-        "https://cuk.comatching.site/auth/pending/feature",
-        userInfo,
-        { withCredentials: true }
-      );
+      const response = await instance.post("/auth/pending/feature", userInfo);
       console.log("response: ", response);
       if (response.data.code === "GEN-000") {
         navigate("/Form");

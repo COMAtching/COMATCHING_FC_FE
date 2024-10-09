@@ -1,18 +1,19 @@
 import { useState, useEffect } from "react";
 import { useRecoilState } from "recoil";
 import { QUESTIONS, ANSWERS } from "../data/questions";
-import { progress } from "../Atoms";
+import { progress, userResult } from "../Atoms";
 import { useNavigate } from "react-router-dom";
 import "../css/pages/Form.css";
 import ProgressBar from "../components/Progressbar";
 import Modal from "react-modal";
-import axios from "axios";
+import instance from "../axiosConfig";
 Modal.setAppElement("#root");
 
 function Form() {
   const navigate = useNavigate();
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [progressState, setProgressState] = useRecoilState(progress);
+  const [formResult, setFormResult] = useRecoilState(userResult);
   const [scores, setScores] = useState({
     SocialType: 0,
     MukbangType: 0,
@@ -25,21 +26,16 @@ function Form() {
   const [agreements, setAgreements] = useState({
     terms: false,
     privacy: false,
-    age: false,
-    marketing: false,
   });
 
   const handleLogin = async () => {
     console.log("scores: ", scores);
     try {
-      const response = await axios.post(
-        "https://cuk.comatching.site/auth/pending/survey",
-        scores,
-        { withCredentials: true }
-      );
+      const response = await instance.post("/auth/pending/survey", scores);
       console.log("response: ", response);
       if (response.data.code === "GEN-000") {
-        navigate("/");
+        setFormResult(response.data.data);
+        navigate("/UserResult");
       } else {
         alert("미로그인");
       }
@@ -73,11 +69,7 @@ function Form() {
     setAgreements((prev) => ({ ...prev, [key]: !prev[key] }));
   };
 
-  const allAgreementsChecked =
-    agreements.terms &&
-    agreements.privacy &&
-    agreements.age &&
-    agreements.marketing;
+  const allAgreementsChecked = agreements.terms && agreements.privacy;
   return (
     <div className="container">
       <img
@@ -120,28 +112,34 @@ function Form() {
         overlayClassName="modal-overlay"
         className="modal-content"
       >
-        <h2>약관에 동의해주세요</h2>
-        <p>여러분의 소중한 개인정보를 잘 지켜 드릴게요</p>
-
-        <ul>
-          <li onClick={() => toggleAgreement("terms")}>
-            이용약관 동의 {agreements.terms ? "✔️" : "❌"}
-          </li>
-          <li onClick={() => toggleAgreement("privacy")}>
-            개인정보 수집 이용 동의 {agreements.privacy ? "✔️" : "❌"}
-          </li>
-          <li onClick={() => toggleAgreement("age")}>
-            만 14세 이상입니다 {agreements.age ? "✔️" : "❌"}
-          </li>
-          <li onClick={() => toggleAgreement("marketing")}>
-            마케팅 정보 수신 동의 {agreements.marketing ? "✔️" : "❌"}
-          </li>
-        </ul>
-
+        <div className="modal-Topic">약관에 동의해주세요</div>
+        <div className="modal-text">
+          여러분의 소중한 개인정보를 잘 지켜 드릴게요
+        </div>
+        <div className="modal-text-element">
+          <div
+            className={`modal-check  ${agreements.terms ? "active" : ""}`}
+            onClick={() => toggleAgreement("terms")}
+          >
+            ✓
+          </div>
+          <div className="modal-title">이용약관 동의</div>
+          <div className="modal-essential">필수</div>
+        </div>
+        <div className="modal-text-element">
+          <div
+            className={`modal-check ${agreements.privacy ? "active" : ""}`}
+            onClick={() => toggleAgreement("privacy")}
+          >
+            ✓
+          </div>
+          <div className="modal-title">개인정보 수집 이용 동의</div>
+          <div className="modal-essential">필수</div>
+        </div>
         <button
           disabled={!allAgreementsChecked}
           onClick={() => handleLogin()}
-          className={`start-button ${allAgreementsChecked ? "active" : ""}`}
+          className={`modal-button ${allAgreementsChecked ? "active" : ""}`}
         >
           시작하기
         </button>
