@@ -15,7 +15,7 @@ import MatchResult from "./pages/MatchResult.jsx";
 import EditInfo from "./pages/EditInfo.jsx";
 import Guide from "./pages/Guide.jsx";
 import AdminLoginPage from "./pages/AdminLoginPage.jsx";
-import AdminLoginPage from "./pages/AdminLoginPage.jsx";
+import AdminPage from "./pages/AdminPage.jsx";
 
 import "./App.css";
 import "./axiosConfig.jsx";
