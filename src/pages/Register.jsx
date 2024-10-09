@@ -31,21 +31,21 @@ function Register() {
       username: userInfo.username,
     };
     console.log("postData: ", postData);
-    // try {
-    //   const response = await instance.post("/auth/pending/feature", postData);
-    //   console.log("response: ", response);
-    //   if (response.data.code === "GEN-000") {
-    //     navigate("/form");
-    //     setProgressState((prevProgress) => ({
-    //       progressState: prevProgress.progressState + 100 / 13,
-    //     }));
-    //   } else {
-    //     alert("미로그인");
-    //   }
-    // } catch (error) {
-    //   console.error("Error:", error);
-    //   alert("로그인 중 오류가 발생했습니다.");
-    // }
+    try {
+      const response = await instance.post("/auth/pending/feature", postData);
+      console.log("response: ", response);
+      if (response.data.code === "GEN-000") {
+        navigate("/form");
+        setProgressState((prevProgress) => ({
+          progressState: prevProgress.progressState + 100 / 13,
+        }));
+      } else {
+        alert("미로그인");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      alert("로그인 중 오류가 발생했습니다.");
+    }
   };
 
   const validateAge = (age) => {
