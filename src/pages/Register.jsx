@@ -27,7 +27,7 @@ function Register() {
       const response = await instance.post("/auth/pending/feature", userInfo);
       console.log("response: ", response);
       if (response.data.code === "GEN-000") {
-        navigate("/Form");
+        navigate("/form");
         setProgressState((prevProgress) => ({
           progressState: prevProgress.progressState + 100 / 14,
         }));

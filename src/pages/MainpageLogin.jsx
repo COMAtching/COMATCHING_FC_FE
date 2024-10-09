@@ -74,10 +74,10 @@ function MainpageLogin() {
   };
 
   const handleClickmatch = () => {
-    navigate("/matching");
+    navigate("/match");
   };
-  const handleVisitcheckresult = () => {
-    navigate("/check-result");
+  const handleEditInfo = () => {
+    navigate("/editinfo");
   };
 
   return (
@@ -176,7 +176,7 @@ function MainpageLogin() {
 
       <div className="button-group">
         <BottomNavButton
-          onClick={handleVisitcheckresult}
+          onClick={handleEditInfo}
           imgSrc={`../../assets/checkresult.svg`}
           imgText="내 정보 수정"
           buttonText="내 정보 수정"

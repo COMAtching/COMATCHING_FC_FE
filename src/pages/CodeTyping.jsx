@@ -39,7 +39,11 @@ function CodeTyping() {
       console.log("response: ", response);
 
       if (response.data.code === "GEN-000") {
-        navigate("/Register");
+        if (response.data.data === "ROLE_USER") {
+          navigate("/");
+        } else {
+          navigate("/register");
+        }
         setProgressState((prevProgress) => ({
           progressState: prevProgress.progressState + 100 / 14,
         }));

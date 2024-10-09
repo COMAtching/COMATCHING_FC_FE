@@ -35,7 +35,11 @@ const QRReader = () => {
       console.log("response: ", response);
 
       if (response.data.code === "GEN-000") {
-        navigate("/Register");
+        if (response.data.data === "ROLE_USER") {
+          navigate("/");
+        } else {
+          navigate("/register");
+        }
         setProgressState((prevProgress) => ({
           progressState: prevProgress.progressState + 100 / 14,
         }));
@@ -173,7 +177,7 @@ const QRReader = () => {
         <div className="select-button-container">
           <button
             className="code-type-button"
-            onClick={() => navigate("/CodeTyping")}
+            onClick={() => navigate("/codetyping")}
           >
             티켓번호 입력
           </button>

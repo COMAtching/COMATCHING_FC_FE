@@ -34,7 +34,11 @@ function CodeSelect() {
       console.log("response: ", response);
 
       if (response.data.code === "GEN-000") {
-        navigate("/Register");
+        if (response.data.data === "ROLE_USER") {
+          navigate("/");
+        } else {
+          navigate("/register");
+        }
         setProgressState((prevProgress) => ({
           progressState: prevProgress.progressState + 100 / 14,
         }));
@@ -64,9 +68,7 @@ function CodeSelect() {
 
           if (code) {
             if (validateCode(code.data)) {
-              console.log(code.data);
               handleLogin(code.data);
-              // navigate("/Register");
             } else {
               alert("유효하지 않은 티켓 코드입니다.");
             }
@@ -131,7 +133,7 @@ function CodeSelect() {
         />
         <button
           className="select-button"
-          onClick={() => navigate("/CodeTyping")}
+          onClick={() => navigate("/codetyping")}
         >
           직접 티켓번호 입력
         </button>

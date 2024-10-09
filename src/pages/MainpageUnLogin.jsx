@@ -19,7 +19,7 @@ function MainpageUnLogin() {
       transition: "background-color 0.5s",
     });
     setTimeout(() => {
-      navigate("/CodeSelect");
+      navigate("/codeselect");
     }, 500);
   };
 

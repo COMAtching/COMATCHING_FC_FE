@@ -33,7 +33,7 @@ function Match() {
       console.log("response: ", response);
       if (response.data.code === "GEN-000") {
         setPickResult(response.data.data);
-        navigate("/MatchResult");
+        navigate("/matchresult");
       } else {
         alert("미로그인");
       }

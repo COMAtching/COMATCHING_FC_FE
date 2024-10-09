@@ -10,7 +10,6 @@ import UserResult from "./pages/UserResult.jsx";
 
 import Loading from "./pages/Loading.jsx";
 import OpenExternalBrowser from "./OpenExternalBrowser.jsx";
-import MainpageLogin from "./pages/MainpageLogin.jsx";
 import Match from "./pages/Match.jsx";
 import MatchResult from "./pages/MatchResult.jsx";
 import EditInfo from "./pages/EditInfo.jsx";
@@ -26,17 +25,16 @@ export default function App() {
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Mainpage />} />
-            <Route path="/CodeSelect" element={<CodeSelect />} />
+            <Route path="/codeselect" element={<CodeSelect />} />
             <Route path="/qr-reader" element={<QRReader />} />
-            <Route path="/CodeTyping" element={<CodeTyping />} />
+            <Route path="/codetyping" element={<CodeTyping />} />
             <Route path="/register" element={<Register />} />
-            <Route path="/Form" element={<Form />} />
-            <Route path="/UserResult" element={<UserResult />} />
+            <Route path="/form" element={<Form />} />
+            <Route path="/userresult" element={<UserResult />} />
             <Route path="/loading" element={<Loading />} />
-            <Route path="/Mainpage" element={<MainpageLogin />} />
-            <Route path="/Match" element={<Match />} />
-            <Route path="/MatchResult" element={<MatchResult />} />
-            <Route path="/EditInfo" element={<EditInfo />} />
+            <Route path="/match" element={<Match />} />
+            <Route path="/matchresult" element={<MatchResult />} />
+            <Route path="/editinfo" element={<EditInfo />} />
           </Routes>
         </BrowserRouter>
       </div>

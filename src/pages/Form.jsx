@@ -35,7 +35,7 @@ function Form() {
       console.log("response: ", response);
       if (response.data.code === "GEN-000") {
         setFormResult(response.data.data);
-        navigate("/UserResult");
+        navigate("/userresult");
       } else {
         alert("미로그인");
       }
