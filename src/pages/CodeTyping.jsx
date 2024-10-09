@@ -48,7 +48,7 @@ function CodeTyping() {
           navigate("/register");
         }
         setProgressState((prevProgress) => ({
-          progressState: prevProgress.progressState + 100 / 14,
+          progressState: prevProgress.progressState + 100 / 13,
         }));
       } else if (response.data.message === "Deactivated User") {
         alert("탈퇴하신 유저입니다.");

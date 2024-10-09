@@ -57,7 +57,7 @@ function Form() {
     if (currentQuestionIndex < 5) {
       setCurrentQuestionIndex((prevIndex) => prevIndex + 1);
       setProgressState((prevProgress) => ({
-        progressState: prevProgress.progressState + 100 / 14,
+        progressState: prevProgress.progressState + 100 / 13,
       }));
     } else {
       console.log("최종 점수:", scores);

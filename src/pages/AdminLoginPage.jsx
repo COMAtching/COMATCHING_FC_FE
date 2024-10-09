@@ -22,9 +22,10 @@ function AdminLoginPage() {
 
   const handleLogin = async () => {
     const postData = {
-      username: inputID,
+      accountId: inputID,
       password: inputPassword,
     };
+    console.log("postData: ", postData);
     try {
       const response = await instance.post("/admin/login", postData);
       console.log("response: ", response);

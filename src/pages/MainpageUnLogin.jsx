@@ -47,7 +47,6 @@ function MainpageUnLogin() {
         className="Unlogin-logo"
         src={`${import.meta.env.VITE_PUBLIC_URL}../../assets/Logo.png`}
         alt="로고"
-        onClick={() => navigate(-1)}
       />
       <div className="UnloginMain-text">나와 잘 맞는 응원 친구는?</div>
       <img

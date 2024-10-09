@@ -14,7 +14,7 @@ function Register() {
   const [progressState, setProgressState] = useRecoilState(progress);
   const [step, setStep] = useState(1);
   const [userInfo, setUserInfo] = useState({
-    age: 0,
+    age: null,
     gender: "",
     socialId: "",
     cheeringPlayer: "",
@@ -29,7 +29,7 @@ function Register() {
       if (response.data.code === "GEN-000") {
         navigate("/form");
         setProgressState((prevProgress) => ({
-          progressState: prevProgress.progressState + 100 / 14,
+          progressState: prevProgress.progressState + 100 / 13,
         }));
       } else {
         alert("미로그인");
@@ -41,20 +41,32 @@ function Register() {
   };
 
   const validateAge = (age) => {
-    return age.length === 2 && /^\d{2}$/.test(age) && parseInt(age) >= 10;
+    return Number.isInteger(age) && age >= 10 && age <= 99;
   };
 
   const validateInstagramId = (id) => {
     return /^@[A-Za-z0-9._]+$/.test(id);
   };
 
+  // const handleInputChange = (field, value) => {
+  //   setUserInfo((prev) => ({ ...prev, [field]: value }));
+  // };
+
   const handleInputChange = (field, value) => {
-    setUserInfo((prev) => ({ ...prev, [field]: value }));
+    if (field === "age") {
+      const ageNumber = parseInt(value, 10);
+      setUserInfo((prev) => ({
+        ...prev,
+        age: ageNumber,
+      }));
+    } else {
+      setUserInfo((prev) => ({ ...prev, [field]: value }));
+    }
   };
 
   const handleInputEnd = (field, value) => {
     if (field === "age" && !validateAge(value)) {
-      alert("나이를 정확히 입력해주세요");
+      alert("10세부터 99세까지만 참여 가능합니다.");
       return;
     }
     if (field === "socialId" && !validateInstagramId(value)) {
@@ -64,7 +76,7 @@ function Register() {
     if (value && field === getFieldForStep(step)) {
       setStep((prev) => prev + 1);
       setProgressState((prevProgress) => ({
-        progressState: prevProgress.progressState + 100 / 14,
+        progressState: prevProgress.progressState + 100 / 13,
       }));
     }
   };
@@ -209,7 +221,7 @@ function Register() {
             <div className="register-answer-text age-answer">
               <input
                 type="text"
-                value={userInfo.age}
+                value={userInfo.age === null ? "" : userInfo.age.toString()}
                 onChange={(e) => handleInputChange("age", e.target.value)}
                 onBlur={(e) => handleInputEnd("age", e.target.value)}
                 placeholder="23"

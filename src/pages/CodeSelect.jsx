@@ -40,7 +40,7 @@ function CodeSelect() {
           navigate("/register");
         }
         setProgressState((prevProgress) => ({
-          progressState: prevProgress.progressState + 100 / 14,
+          progressState: prevProgress.progressState + 100 / 13,
         }));
       } else {
         alert("오류 발생");
@@ -107,7 +107,6 @@ function CodeSelect() {
         className="select-logo"
         src={`${import.meta.env.VITE_PUBLIC_URL}../../assets/logo.png`}
         alt="이미지"
-        onClick={() => navigate(-1)}
       />
       <div className="help-text">* 온라인 예매자에 한함.</div>
       <button

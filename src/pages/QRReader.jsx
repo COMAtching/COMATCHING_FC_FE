@@ -16,7 +16,7 @@ const QRReader = () => {
 
   useEffect(() => {
     setProgressState(() => ({
-      progressState: 100 / 14,
+      progressState: 100 / 13,
     }));
   }, []);
 
@@ -41,7 +41,7 @@ const QRReader = () => {
           navigate("/register");
         }
         setProgressState((prevProgress) => ({
-          progressState: prevProgress.progressState + 100 / 14,
+          progressState: prevProgress.progressState + 100 / 13,
         }));
       } else {
         alert("미로그인");
