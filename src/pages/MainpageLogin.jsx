@@ -51,7 +51,7 @@ function MainpageLogin() {
     try {
       const response = await instance.get("/auth/user/logout");
       if (response.status === 200) {
-        navigate("/");
+        window.location.reload();
       }
     } catch (error) {
       console.error("Error fetching data:", error);
@@ -62,7 +62,7 @@ function MainpageLogin() {
       const response = await instance.get("/auth/user/quit");
       console.log("response: ", response);
       if (response.status === 200) {
-        navigate("/");
+        window.location.reload();
       }
     } catch (error) {
       console.error("Error fetching data:", error);

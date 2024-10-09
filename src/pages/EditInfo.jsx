@@ -15,7 +15,13 @@ function EditInfo() {
   const handleNextClick = async () => {
     console.log("inputCode: ", userInfo);
     try {
-      const response = await instance.post("/auth/pending/feature", userInfo);
+      const response = await instance.patch("/auth/user/feature", {
+        username: userInfo.username,
+        gender: userInfo.gender,
+        age: userInfo.age,
+        socialId: userInfo.socialId,
+        cheeringPlayer: userInfo.cheeringPlayer,
+      });
       console.log("response: ", response);
       if (response.data.code === "GEN-000") {
         navigate("/");
@@ -70,7 +76,7 @@ function EditInfo() {
           <div className="register-answer-text">
             <input
               type="text"
-              value={userInfo.nickName}
+              value={userInfo.username}
               onChange={(e) => handleInputChange("username", e.target.value)}
               onBlur={(e) => handleInputEnd("username", e.target.value)}
               placeholder="닉네임"
@@ -84,7 +90,7 @@ function EditInfo() {
           <div>제가 응원하는 선수는</div>
           <div className="register-answer-text">
             <select
-              value={userInfo.Favorite}
+              value={userInfo.cheeringPlayer}
               onChange={(e) => {
                 handleInputChange("cheeringPlayer", e.target.value);
                 handleInputEnd("cheeringPlayer", e.target.value);
@@ -139,48 +145,12 @@ function EditInfo() {
           <div className="register-answer-text">
             <input
               type="text"
-              value={userInfo.InstaId}
+              value={userInfo.socialId}
               onChange={(e) => handleInputChange("socialId", e.target.value)}
               onBlur={(e) => handleInputEnd("socialId", e.target.value)}
               placeholder="@user_id"
               className="input-field ID-input"
             />
-          </div>
-        </div>
-
-        <div className="register-text">
-          <div>저는</div>
-          <div className="register-answer-text">
-            <select
-              value={userInfo.gender}
-              onChange={(e) => {
-                handleInputChange("gender", e.target.value);
-                handleInputEnd("gender", e.target.value);
-              }}
-              className="select-field"
-            >
-              <option value="" hidden>
-                선택하세요
-              </option>
-              <option value="남성">남성</option>
-              <option value="여성">여성</option>
-            </select>
-            입니다.
-          </div>
-        </div>
-
-        <div className="register-text">
-          <div>저는</div>
-          <div className="register-answer-text age-answer">
-            <input
-              type="text"
-              value={userInfo.age}
-              onChange={(e) => handleInputChange("age", e.target.value)}
-              onBlur={(e) => handleInputEnd("age", e.target.value)}
-              placeholder="23"
-              className="input-field age-input"
-            />
-            살 입니다.
           </div>
         </div>
       </div>
