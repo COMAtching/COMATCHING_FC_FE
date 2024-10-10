@@ -34,9 +34,11 @@ function Match() {
 
       if (response.data.code === "GEN-000") {
         setPickResult(response.data.data);
+        setIsLoading(false);
+
         navigate("/matchresult");
       } else {
-        alert("미로그인");
+        alert("매칭 실패");
       }
     } catch (error) {
       console.error("Error:", error);
@@ -157,7 +159,8 @@ function Match() {
                 ? "Match-button-select"
                 : "Match-button-unselect"
             }`}
-            onClick={() => setPickGender("RANDOM")}
+            // onClick={() => setPickGender("RANDOM")}
+            onClick={() => handleMatch()}
           >
             상관없음
           </div>

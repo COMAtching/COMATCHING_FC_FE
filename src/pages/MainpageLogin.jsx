@@ -5,9 +5,7 @@ import { useNavigate } from "react-router-dom";
 import TotalUsersCounter from "../components/TotalUsersCounter";
 import Footer from "../components/Footer";
 import instance from "../axiosConfig";
-import Cookies from "js-cookie"; // js-cookie import 추가
 import BottomNavButton from "../components/BottomNavButton";
-import axios from "axios";
 import { userState } from "../Atoms";
 import RadarChart from "../components/RadarChart";
 import Modal from "react-modal";
@@ -64,6 +62,7 @@ function MainpageLogin() {
 
     const fetchMyInfo = async () => {
       try {
+        console.log("정보 요청!");
         const response = await instance.get("/auth/user/info");
         console.log("response: ", response);
         if (response.data.status === 200) {
