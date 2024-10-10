@@ -3,10 +3,10 @@ import instance from "../axiosConfig";
 import { useRecoilState } from "recoil";
 import { totalScores, userResult } from "../Atoms";
 import { useNavigate } from "react-router-dom";
+import RadarChart from "../components/RadarChart";
 
 import "../css/pages/UserResult.css";
 import Modal from "react-modal"; // Import react-modal
-import RadarChart from "../components/RadarChart";
 Modal.setAppElement("#root");
 
 function UserResult() {
