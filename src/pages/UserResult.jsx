@@ -3,7 +3,7 @@ import instance from "../axiosConfig";
 import { useRecoilState } from "recoil";
 import { totalScores, userResult } from "../Atoms";
 import { useNavigate } from "react-router-dom";
-import scoreChart from "../components/scoreChart";
+import RadarChart from "../components/RadarChart";
 
 import "../css/pages/UserResult.css";
 import Modal from "react-modal"; // Import react-modal
@@ -79,7 +79,7 @@ function UserResult() {
           <div className="UserResult-text">{text}</div>
           <div className="UserResult-topic">{topic}</div>
           <div className="chart-container">
-            <scoreChart data={radarData} />
+            <RadarChart data={radarData} />
           </div>
           <img
             className="Mascot"

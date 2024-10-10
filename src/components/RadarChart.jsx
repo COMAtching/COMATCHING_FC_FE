@@ -19,7 +19,7 @@ ChartJS.register(
   Legend
 );
 
-const scoreChart = ({ data }) => {
+const RadarChart = ({ data }) => {
   const chartData = {
     labels: ["열정형", "집중형", "축알못형", "축잘알형", "먹방형", "인싸형"],
     datasets: [
@@ -63,4 +63,4 @@ const scoreChart = ({ data }) => {
   return <Radar data={chartData} options={options} />;
 };
 
-export default scoreChart;
+export default RadarChart;

@@ -35,7 +35,7 @@ export const userState = atom({
     cheeringPlayer: "",
     age: 0,
     gender: "",
-    cheerPropensity: "",
+    cheerPropensity: "축잘알형",
   },
 });
 
