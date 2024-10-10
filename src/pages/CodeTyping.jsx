@@ -52,8 +52,8 @@ function CodeTyping() {
         }));
       } else if (response.data.message === "Deactivated User") {
         alert("탈퇴하신 유저입니다.");
-      } else {
-        alert("미로그인");
+      } else if (response.data.code === "SEC-007") {
+        alert("유효하지 않은 코드입니다.");
       }
     } catch (error) {
       console.error("Error:", error);

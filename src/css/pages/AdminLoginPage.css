@@ -9,6 +9,9 @@
 }
 .admin-input-container {
   margin-top: 48px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .admin-input {
   width: 264px;
