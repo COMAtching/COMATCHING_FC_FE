@@ -9,7 +9,7 @@ import Cookies from "js-cookie"; // js-cookie import 추가
 import BottomNavButton from "../components/BottomNavButton";
 import axios from "axios";
 import { userState } from "../Atoms";
-import RadarChart from "../components/RadarChart";
+import scoreChart from "../components/scoreChart";
 import Modal from "react-modal";
 
 function MainpageLogin() {
@@ -195,7 +195,7 @@ function MainpageLogin() {
               <div className="UserResult-text">{text}</div>
               <div className="UserResult-topic">{topic}</div>
               <div className="chart-container">
-                <RadarChart data={radarData} />
+                <scoreChart data={radarData} />
               </div>
               <img
                 className="Mascot"

@@ -1,4 +1,3 @@
-import React from "react";
 import { Radar } from "react-chartjs-2";
 import {
   Chart as ChartJS,
@@ -20,7 +19,7 @@ ChartJS.register(
   Legend
 );
 
-const RadarChart = ({ data }) => {
+const scoreChart = ({ data }) => {
   const chartData = {
     labels: ["열정형", "집중형", "축알못형", "축잘알형", "먹방형", "인싸형"],
     datasets: [
@@ -64,4 +63,4 @@ const RadarChart = ({ data }) => {
   return <Radar data={chartData} options={options} />;
 };
 
-export default RadarChart;
+export default scoreChart;
