@@ -1,32 +1,23 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import "../css/pages/Loading.css";
-import { useNavigate } from "react-router-dom";
 
 const Loading = () => {
-  const [offset, setOffset] = useState(-100);
-  const navigate = useNavigate();
-
   return (
     <div className="container">
-      <div className="circle-icon">💟</div>
-      <div className="content">
-        <div className="LoadingText">
+      <img
+        className="Mainpage-logo"
+        src={`${import.meta.env.VITE_PUBLIC_URL}../../assets/Logo.svg`}
+        alt="로고"
+      />
+      <img
+        className="AI-logo"
+        src={`${import.meta.env.VITE_PUBLIC_URL}../../assets/AI.png`}
+        alt="AI로고"
+      />
+      <div className="loading-content">
+        <div className="loading-text">
           코매칭 AI가 입력하신 결과를 바탕으로 <br />
           비슷한 매칭 상대를 찾고 있어요..
-        </div>
-        <div className="LoadingBar">
-          <div
-            className="GradientBar firstloadingbar"
-            style={{ backgroundPosition: `${offset}% 0` }}
-          />
-          <div
-            className="GradientBar secondloadingbar"
-            style={{ backgroundPosition: `${offset}% 0` }}
-          />
-          <div
-            className="GradientBar thirdloadingbar"
-            style={{ backgroundPosition: `${offset}% 0` }}
-          />
         </div>
       </div>
     </div>

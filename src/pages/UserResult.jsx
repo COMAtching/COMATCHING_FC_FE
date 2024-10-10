@@ -1,17 +1,26 @@
 import React, { useState, useEffect } from "react";
 import instance from "../axiosConfig";
 import { useRecoilState } from "recoil";
-import { userResult } from "../Atoms";
+import { totalScores, userResult } from "../Atoms";
 import { useNavigate } from "react-router-dom";
 
 import "../css/pages/UserResult.css";
 import Modal from "react-modal"; // Import react-modal
+import RadarChart from "../components/RadarChart";
 Modal.setAppElement("#root");
 
 function UserResult() {
   const [result, setResult] = useRecoilState(userResult);
+  const [scores, setScores] = useRecoilState(totalScores);
   const navigate = useNavigate();
-
+  const radarData = [
+    scores.passionType,
+    scores.focusType,
+    scores.soccerNoviceType,
+    scores.soccerExpertType,
+    scores.mukbangType,
+    scores.socialType,
+  ];
   const getTextContent = (cheerPropensity) => {
     switch (cheerPropensity) {
       case "축린이형":
@@ -69,6 +78,9 @@ function UserResult() {
         <div className="UserResult-info-container">
           <div className="UserResult-text">{text}</div>
           <div className="UserResult-topic">{topic}</div>
+          <div className="chart-container">
+            <RadarChart data={radarData} />
+          </div>
           <img
             className="Mascot"
             src={`${import.meta.env.VITE_PUBLIC_URL}../../assets/${image}`}

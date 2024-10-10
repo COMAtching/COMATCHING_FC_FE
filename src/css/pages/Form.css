@@ -83,19 +83,29 @@
   left: 0;
   width: calc(100% - 40px);
   background-color: white;
-  padding: 20px;
+  padding: 20px 20px 96px 20px;
   border-radius: 50px 50px 0 0;
+  border: none;
+
+  max-height: 370px;
+  transition: max-height 0.3s ease-in-out;
+}
+.modal-open {
+  max-height: calc(90vh - 116px);
 }
 
 .modal-button {
-  margin-top: 15px;
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  right: 20px;
   background-color: #1e2024;
   font-family: "Pretendard";
   height: 56px;
-  width: 100%;
-  background-color: transparent;
+  width: calc(100% - 40px);
+  background-color: #1e2024;
   border: 1.5px solid #000000;
-  color: #1e2024;
+  color: #ffffff;
   font-size: 24px;
   font-weight: 400;
   transition: background-color 0.5s;
@@ -122,17 +132,11 @@
 .modal-text-element {
   display: flex;
 }
-.modal-check {
-  color: #b3b3b3;
-  font-size: 12px;
+.checkImage {
   margin-bottom: 18px;
   margin-right: 18px;
-  padding: 4px;
-  width: 12px;
-  height: 12px;
-  text-align: center;
-  background-color: #e5e5e5;
-  border-radius: 100%;
+  width: 20px;
+  height: 20px;
 }
 .modal-check.active {
   color: #ffffff;
@@ -145,7 +149,14 @@
 }
 .modal-essential {
   font-size: 12px;
-  padding: 2px;
+  margin-top: 3px;
   color: #999999;
   margin-left: 8px;
+}
+.openarrow {
+  margin-left: auto;
+  margin-top: 6px;
+  width: 8px;
+  height: 6px;
+  justify-content: center;
 }

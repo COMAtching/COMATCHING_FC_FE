@@ -15,13 +15,19 @@ function MatchResult() {
         alt="로고"
         onClick={() => navigate(-1)}
       />
+
       <img
         className="AI-logo"
         src={`${import.meta.env.VITE_PUBLIC_URL}../../assets/AI.png`}
         alt="AI로고"
         onClick={() => navigate(-1)}
       />
-
+      {pickMatchReslt.lackOfResource === true && (
+        <div className="match-result-nodata">
+          해당하는 데이터가 없어서
+          <br /> 가장 유사한 사람을 추천해드렸습니다.
+        </div>
+      )}
       <div className="match-container">
         <div className="match-element">
           <div className="match-text">저는</div>
@@ -34,27 +40,31 @@ function MatchResult() {
         <div className="match-element">
           <div className="match-text">저를</div>
           <div className="match-text">
-            <span className="match-text-span">{pickMatchReslt.userName}</span>
+            <span className="match-text-span">{pickMatchReslt.username}</span>
             라고 불러주세요.
           </div>
         </div>
         <div className="match-element">
           <div className="match-text">저는</div>
           <div className="match-text">
-            <span className="match-text-span">{pickMatchReslt.category}</span>
+            <span className="match-text-span">{pickMatchReslt.propensity}</span>
             이에요.
           </div>
         </div>
         <div className="match-element">
           <div className="match-text">제가 응원하는 선수는</div>
           <div className="match-text">
-            <span className="match-text-span">{pickMatchReslt.player}</span>
+            <span className="match-text-span">
+              {pickMatchReslt.cheeringPlayer}
+            </span>
             입니다.
           </div>
         </div>
         <div className="match-element">
           <div className="match-text">아래 계정으로 DM 주세요!</div>
-          <div className="match-text-span ID-span">{pickMatchReslt.ID}</div>
+          <div className="match-text-span ID-span">
+            {pickMatchReslt.socialId}
+          </div>
         </div>
       </div>
       <div className="MatchResult-Button-Container">

@@ -43,28 +43,32 @@ function AdminLoginPage() {
 
   return (
     <div className="container">
-      <div className="select-topic">관리자 로그인</div>
-      <div className="Divider" />
-
-      <input
-        type="text"
-        name="ID"
-        value={inputID}
-        onChange={handleInputChange}
-        placeholder="관리자 ID"
-        className="code-input"
+      <img
+        className="AdminLogin-Logo"
+        src={`${import.meta.env.VITE_PUBLIC_URL}../../assets/Logo.png`}
+        alt="로고"
       />
-      <input
-        type="password"
-        name="password"
-        value={inputPassword}
-        onChange={handleInputChange}
-        placeholder="비밀번호"
-        className="code-input"
-      />
-
+      <div className="AdminLogin-Topic">Partners Page</div>
+      <div className="admin-input-container">
+        <input
+          type="text"
+          name="ID"
+          value={inputID}
+          onChange={handleInputChange}
+          placeholder="관리자 ID"
+          className="admin-input"
+        />
+        <input
+          type="password"
+          name="password"
+          value={inputPassword}
+          onChange={handleInputChange}
+          placeholder="비밀번호"
+          className="admin-input"
+        />
+      </div>
       <button
-        className={`Next-button ${isButtonActive ? "active" : ""}`}
+        className={`Admin-button ${isButtonActive ? "active" : ""}`}
         onClick={handleLogin}
         disabled={!isButtonActive}
       >

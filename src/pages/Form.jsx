@@ -1,12 +1,14 @@
 import { useState, useEffect } from "react";
 import { useRecoilState } from "recoil";
 import { QUESTIONS, ANSWERS } from "../data/questions";
-import { progress, userResult } from "../Atoms";
+import { progress, totalScores, userResult } from "../Atoms";
 import { useNavigate } from "react-router-dom";
 import "../css/pages/Form.css";
 import ProgressBar from "../components/Progressbar";
 import Modal from "react-modal";
 import instance from "../axiosConfig";
+import TermsAgreement from "../components/TermsAgreement";
+import PrivateAgreement from "../components/PrivateAgreement";
 Modal.setAppElement("#root");
 
 function Form() {
@@ -14,19 +16,22 @@ function Form() {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [progressState, setProgressState] = useRecoilState(progress);
   const [formResult, setFormResult] = useRecoilState(userResult);
-  const [scores, setScores] = useState({
-    socialType: 0,
-    mukbangType: 0,
-    soccerNoviceType: 0,
-    soccerExpertType: 0,
-    focusType: 0,
-    passionType: 0,
-  });
+  const [scores, setScores] = useRecoilState(totalScores);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [agreements, setAgreements] = useState({
     terms: false,
     privacy: false,
+    age: false,
   });
+  const [openAgreement, setOpenAgreement] = useState(null);
+
+  const toggleAgreementContent = (key) => {
+    if (openAgreement === key) {
+      setOpenAgreement(null);
+    } else {
+      setOpenAgreement(key);
+    }
+  };
 
   const handleLogin = async () => {
     console.log("scores: ", scores);
@@ -69,7 +74,8 @@ function Form() {
     setAgreements((prev) => ({ ...prev, [key]: !prev[key] }));
   };
 
-  const allAgreementsChecked = agreements.terms && agreements.privacy;
+  const allAgreementsChecked =
+    agreements.terms && agreements.privacy && agreements.age;
   return (
     <div className="container">
       <img
@@ -110,30 +116,67 @@ function Form() {
         isOpen={isModalOpen}
         onRequestClose={() => {}}
         overlayClassName="modal-overlay"
-        className="modal-content"
+        className={`modal-content ${
+          openAgreement === null ? "" : "modal-open"
+        }`}
       >
         <div className="modal-Topic">약관에 동의해주세요</div>
         <div className="modal-text">
           여러분의 소중한 개인정보를 잘 지켜 드릴게요
         </div>
         <div className="modal-text-element">
-          <div
-            className={`modal-check  ${agreements.terms ? "active" : ""}`}
+          <img
+            className="checkImage"
+            src={`${import.meta.env.VITE_PUBLIC_URL}../../assets/${
+              agreements.terms ? "check.png" : "uncheck.png"
+            }`}
+            alt={agreements.terms ? "동의함" : "동의하지 않음"}
             onClick={() => toggleAgreement("terms")}
-          >
-            ✓
-          </div>
+          />
           <div className="modal-title">이용약관 동의</div>
           <div className="modal-essential">필수</div>
+          <img
+            className="openarrow"
+            src={`${import.meta.env.VITE_PUBLIC_URL}../../assets/${
+              openAgreement === "terms" ? "uparrow.png" : "downarrow.png"
+            }`}
+            alt={openAgreement === "terms" ? "닫기" : "열기"}
+            onClick={() => toggleAgreementContent("terms")}
+          />
         </div>
+        {openAgreement === "terms" ? <TermsAgreement /> : ""}
         <div className="modal-text-element">
-          <div
-            className={`modal-check ${agreements.privacy ? "active" : ""}`}
+          <img
+            className="checkImage"
+            src={`${import.meta.env.VITE_PUBLIC_URL}../../assets/${
+              agreements.privacy ? "check.png" : "uncheck.png"
+            }`}
+            alt={agreements.privacy ? "동의함" : "동의하지 않음"}
             onClick={() => toggleAgreement("privacy")}
-          >
-            ✓
-          </div>
+          />
           <div className="modal-title">개인정보 수집 이용 동의</div>
+          <div className="modal-essential">필수</div>
+          <img
+            className="openarrow"
+            src={`${import.meta.env.VITE_PUBLIC_URL}../../assets/${
+              openAgreement === "privacy" ? "uparrow.png" : "downarrow.png"
+            }`}
+            alt={openAgreement === "privacy" ? "열기" : "닫기"}
+            onClick={() => toggleAgreementContent("privacy")}
+          />
+        </div>
+        {openAgreement === "privacy" ? <PrivateAgreement /> : ""}
+        <div className="modal-text-element">
+          <img
+            className="checkImage"
+            src={`${import.meta.env.VITE_PUBLIC_URL}../../assets/${
+              agreements.age ? "check.png" : "uncheck.png"
+            }`}
+            alt={agreements.age ? "동의함" : "동의하지 않음"}
+            onClick={() => toggleAgreement("age")}
+          />
+
+          <div className="modal-title">만 14세 이상입니다</div>
           <div className="modal-essential">필수</div>
         </div>
         <button
@@ -141,7 +184,7 @@ function Form() {
           onClick={() => handleLogin()}
           className={`modal-button ${allAgreementsChecked ? "active" : ""}`}
         >
-          시작하기
+          {allAgreementsChecked ? "시작하기" : "모두 동의하고 시작하기"}
         </button>
       </Modal>
     </div>

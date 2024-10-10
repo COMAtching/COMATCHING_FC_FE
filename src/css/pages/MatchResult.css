@@ -20,3 +20,7 @@
   width: calc(100% - 72px);
   margin-left: auto;
 }
+.match-result-nodata {
+  text-align: left;
+  margin-bottom: 8px;
+}

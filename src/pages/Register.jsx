@@ -49,7 +49,7 @@ function Register() {
   };
 
   const validateAge = (age) => {
-    return age >= 10 && age <= 99;
+    return age >= 14 && age <= 99;
   };
 
   const validateInstagramId = (id) => {
@@ -66,7 +66,7 @@ function Register() {
 
   const handleInputEnd = (field, value) => {
     if (field === "age" && !validateAge(value)) {
-      alert("10세부터 99세까지만 참여 가능합니다.");
+      alert("14세부터 99세까지만 참여 가능합니다.");
       return;
     }
     if (field === "socialId" && !validateInstagramId(value)) {

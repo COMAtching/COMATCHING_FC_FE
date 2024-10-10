@@ -1,0 +1,38 @@
+.AdminLogin-Logo {
+  width: 200px;
+  margin-top: 100px;
+}
+.AdminLogin-Topic {
+  font-size: 48px;
+  font-weight: 700;
+  margin: 20px 0;
+}
+.admin-input-container {
+  margin-top: 48px;
+}
+.admin-input {
+  width: 264px;
+  height: 22px;
+  margin-top: 8px;
+  border-radius: 16px;
+  border: 1px solid #999999;
+  padding: 13px 18px;
+  font-size: 18px;
+  font-weight: 500;
+}
+.Admin-button {
+  font-family: "Pretendard";
+  margin-top: 16px;
+  height: 56px;
+  width: 100%;
+  background-color: #dddfe3;
+  color: #9fa1a8;
+  font-size: 24px;
+  font-weight: 400;
+  border-radius: 16px;
+}
+
+.Admin-button.active {
+  background-color: #cc0000;
+  color: #ffffff;
+}

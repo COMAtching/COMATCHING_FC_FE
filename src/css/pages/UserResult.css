@@ -63,3 +63,9 @@
   left: 50%;
   transform: translateX(-50%);
 }
+.chart-container {
+  position: relative;
+  margin: auto;
+  width: fit-content;
+  height: 30vh;
+}

@@ -4,13 +4,15 @@ import { useRecoilState } from "recoil";
 import { matchResult, progress, userState } from "../Atoms";
 import { useNavigate } from "react-router-dom";
 import "../css/pages/Match.css";
+import Loading from "./Loading";
 
 function Match() {
   const navigate = useNavigate();
   const [swipeProgress, setSwipeProgress] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
   const [matchUserInfo, setMatchUserInfo] = useRecoilState(userState);
-  const [pickGender, setPickGender] = useState("상관없음");
+  const [pickGender, setPickGender] = useState("RANDOM");
+  const [isLoading, setIsLoading] = useState(false);
   const [pickReslt, setPickResult] = useRecoilState(matchResult);
   const handleTouchStart = () => {
     setIsDragging(true);
@@ -24,13 +26,12 @@ function Match() {
   };
   const handleMatch = async () => {
     try {
-      const postData = {
-        category: matchUserInfo.cheerPropensity,
-        age: matchUserInfo.age,
-        pickGender: pickGender,
-      };
-      const response = await instance.post("/auth/pending/survey", postData);
+      setIsLoading(true);
+      const response = await instance.post("/auth/user/match/request", {
+        genderOption: pickGender,
+      });
       console.log("response: ", response);
+
       if (response.data.code === "GEN-000") {
         setPickResult(response.data.data);
         navigate("/matchresult");
@@ -51,7 +52,9 @@ function Match() {
     }
   };
 
-  return (
+  return isLoading === true ? (
+    <Loading />
+  ) : (
     <div className="container">
       <img
         className="backspace"
@@ -130,37 +133,37 @@ function Match() {
         <div className="Match-button-container">
           <div
             className={`${
-              pickGender === "남자"
+              pickGender === "MALE"
                 ? "Match-button-select"
                 : "Match-button-unselect"
             }`}
-            onClick={() => setPickGender("남자")}
+            onClick={() => setPickGender("MALE")}
           >
             남자
           </div>
           <div
             className={`${
-              pickGender === "여자"
+              pickGender === "FEMALE"
                 ? "Match-button-select"
                 : "Match-button-unselect"
             }`}
-            onClick={() => setPickGender("여자")}
+            onClick={() => setPickGender("FEMALE")}
           >
             여자
           </div>
           <div
             className={`${
-              pickGender === "상관없음"
+              pickGender === "RANDOM"
                 ? "Match-button-select"
                 : "Match-button-unselect"
             }`}
-            onClick={() => setPickGender("상관없음")}
+            onClick={() => setPickGender("RANDOM")}
           >
             상관없음
           </div>
         </div>
         <div className="small-Divider" />
-        <div className="Match-category">나이대</div>
+        {/* <div className="Match-category">나이대</div>
         <div className="Match-exp">자신의 연령대에 고정되어 선택될 거에요</div>
         <div className="Match-button-container">
           <div
@@ -190,7 +193,7 @@ function Match() {
           >
             30대
           </div>
-        </div>
+        </div> */}
         <div className="small-Divider" />
       </div>
       <div className="swipe-area">

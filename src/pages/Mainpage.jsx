@@ -4,7 +4,7 @@ import MainpageLogin from "./MainpageLogin.jsx";
 import instance from "../axiosConfig.jsx";
 
 function Mainpage() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
   // const navigate = useNavigate();
 
   useEffect(() => {

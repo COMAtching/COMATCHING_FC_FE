@@ -1,0 +1,73 @@
+.adminpage-top {
+  display: flex;
+  background-color: #ffffff;
+  margin: 30px;
+}
+.adminpage-Logo {
+  height: 40px;
+  margin-right: auto;
+}
+.adminpage-container {
+  background-color: #f4f4f4;
+  display: flex;
+}
+.adminpage-preview {
+  width: 50vw;
+  padding: 64px 0 0 60px;
+}
+
+.adminpage-preview-text {
+  text-align: left;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.adminpage-preview-container {
+  background-color: #ffffff;
+  margin-top: 80px;
+  width: 300px;
+  padding-top: 20px;
+}
+.adminpage-preview-title {
+  font-size: 26px;
+  font-weight: 600;
+}
+.adminpage-preview-maintext {
+  margin-top: 24px;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 400;
+  color: #474a52;
+}
+.adminpage-preview-button {
+  width: 90%;
+  height: 56px;
+  background-color: #1e2024;
+  color: #ffffff;
+  font-size: 24px;
+  font-weight: 400;
+  margin-top: 32px;
+  margin-bottom: 20px;
+}
+.adminpage-typing {
+  width: 50vw;
+  padding: 64px 60px 0 0;
+}
+.adminpage-typing-text {
+  text-align: left;
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+.adminpage-topic-typing {
+  width: 100%;
+  height: 40px;
+  margin-bottom: 16px;
+  padding: 8px;
+}
+.adminpage-text-typing {
+  width: 100%;
+  height: 240px;
+  margin-bottom: 16px;
+  padding: 8px;
+}
