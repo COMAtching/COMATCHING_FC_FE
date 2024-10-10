@@ -10,7 +10,7 @@ export const progress = atom({
 export const userResult = atom({
   key: "userResult",
   default: {
-    cheerPropensity: "",
+    cheerPropensity: "열정형",
     players: [],
   },
 });
@@ -35,7 +35,7 @@ export const userState = atom({
     cheeringPlayer: "",
     age: 0,
     gender: "",
-    cheerPropensity: "",
+    cheerPropensity: "열정형",
   },
 });
 
