@@ -78,6 +78,7 @@ instance.interceptors.response.use(
     if (error.response.data.code === "SEC-001" && !originalRequest._retry) {
       originalRequest._retry = true;
       try {
+        console.log("토큰 재요청");
         await axios.post(
           "https://cuk.comatching.site/auth/refresh",
           {},

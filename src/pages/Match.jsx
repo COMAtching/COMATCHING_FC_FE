@@ -39,6 +39,7 @@ function Match() {
         navigate("/matchresult");
       } else {
         alert("매칭 실패");
+        navigate("/");
       }
     } catch (error) {
       console.error("Error:", error);
@@ -160,7 +161,7 @@ function Match() {
                 : "Match-button-unselect"
             }`}
             // onClick={() => setPickGender("RANDOM")}
-            onClick={() => handleMatch()}
+            onClick={() => handleMatch()} //컴터에서 테스트용
           >
             상관없음
           </div>

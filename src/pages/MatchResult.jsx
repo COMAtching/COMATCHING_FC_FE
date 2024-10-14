@@ -13,14 +13,12 @@ function MatchResult() {
         className="Mainpage-logo"
         src={`${import.meta.env.VITE_PUBLIC_URL}../../assets/Logo.svg`}
         alt="로고"
-        onClick={() => navigate(-1)}
       />
 
       <img
         className="AI-logo"
         src={`${import.meta.env.VITE_PUBLIC_URL}../../assets/AI.png`}
         alt="AI로고"
-        onClick={() => navigate(-1)}
       />
       {pickMatchReslt.lackOfResource === true && (
         <div className="match-result-nodata">

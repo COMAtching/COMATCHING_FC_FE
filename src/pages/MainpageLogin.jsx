@@ -15,20 +15,7 @@ function MainpageLogin() {
   const [totalUser, setTotalUser] = useState(0);
   const [friendState, setFriendState] = useState(null);
   const [userInfo, setUserInfo] = useRecoilState(userState);
-  const [announcements, setAnnouncements] = useState([
-    {
-      title: "첫 번째 공지사항",
-      text: "이것은 첫 번째 공지사항의 내용입니다.",
-    },
-    {
-      title: "두 번째 공지사항",
-      text: "이것은 두 번째 공지사항의 내용입니다.",
-    },
-    {
-      title: "세 번째 공지사항",
-      text: "이것은 세 번째 공지사항의 내용입니다.",
-    },
-  ]);
+  const [announcements, setAnnouncements] = useState([]);
   const [currentAnnouncementIndex, setCurrentAnnouncementIndex] = useState(0);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -75,19 +62,19 @@ function MainpageLogin() {
       }
     };
 
-    // const fetchannouncement = async () => {
-    //   try {
-    //     const response = await instance.get("/auth/user/info");
-    //     console.log("response: ", response);
-    //     if (response.data.status === 200) {
-    //       setAnnouncements(response.data.data);
-    //     }
-    //   } catch (error) {
-    //     console.error("Error fetching data:", error);
-    //   }
-    // };
+    const fetchannouncement = async () => {
+      try {
+        const response = await instance.get("/auth/user/api/inquiry/notice");
+        console.log("response: ", response);
+        if (response.data.status === 200) {
+          setAnnouncements(response.data.data);
+        }
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
 
-    // fetchannouncement();
+    fetchannouncement();
 
     fetchData();
     fetchMyInfo();
@@ -228,7 +215,6 @@ function MainpageLogin() {
                 className="logo"
                 src={`${import.meta.env.VITE_PUBLIC_URL}../../assets/Logo.svg`}
                 alt="로고"
-                onClick={() => navigate(-1)}
               />
               <div className="unmatch-text">
                 아직 매칭된 상대가 없어요

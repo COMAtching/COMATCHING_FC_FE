@@ -7,7 +7,7 @@ import instance from "../axiosConfig.jsx";
 function AdminPage() {
   const navigate = useNavigate();
   const [title, setTitle] = useState("Title");
-  const [content, setContent] = useState("content");
+  const [body, setBody] = useState("content");
 
   useEffect(() => {
     const fetchData = async () => {
@@ -33,16 +33,17 @@ function AdminPage() {
     const { name, value } = e.target;
     if (name === "title") {
       setTitle(value);
-    } else if (name === "content") {
-      setContent(value);
+    } else if (name === "body") {
+      setBody(value);
     }
   };
 
   const handlePublish = async () => {
     try {
-      const response = await instance.post("/admin/publish", {
+      const response = await instance.post("/auth/admin/api/notice/register", {
         title,
-        content,
+        body,
+        expireDate: "2024-10-19",
       });
       console.log("response: ", response);
       if (response.data.status === 200) {
@@ -69,7 +70,7 @@ function AdminPage() {
           <div className="adminpage-preview-text">미리보기</div>
           <div className="adminpage-preview-container">
             <div className="adminpage-preview-title">{title}</div>
-            <div className="adminpage-preview-maintext">{content}</div>
+            <div className="adminpage-preview-maintext">{body}</div>
             <button className="adminpage-preview-button">네, 확인했어요</button>
           </div>
         </div>
@@ -86,8 +87,8 @@ function AdminPage() {
           <div className="adminpage-typing-text">내용</div>
 
           <textarea
-            name="content"
-            value={content}
+            name="body"
+            value={body}
             onChange={handleInputChange}
             placeholder="공지 내용을 입력하세요"
             className="adminpage-text-typing"

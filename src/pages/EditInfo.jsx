@@ -150,7 +150,7 @@ function EditInfo() {
         className="register-Next-button active"
         onClick={() => handleNextClick()}
       >
-        다음으로
+        변경사항 저장하기
       </button>
     </div>
   );
