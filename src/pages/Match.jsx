@@ -160,8 +160,8 @@ function Match() {
                 ? "Match-button-select"
                 : "Match-button-unselect"
             }`}
-            // onClick={() => setPickGender("RANDOM")}
-            onClick={() => handleMatch()} //컴터에서 테스트용
+            onClick={() => setPickGender("RANDOM")}
+            // onClick={() => handleMatch()} //컴터에서 테스트용
           >
             상관없음
           </div>
@@ -198,7 +198,6 @@ function Match() {
             30대
           </div>
         </div> */}
-        <div className="small-Divider" />
       </div>
       <div className="swipe-area">
         <div
