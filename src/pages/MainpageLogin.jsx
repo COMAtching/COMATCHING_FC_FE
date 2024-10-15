@@ -66,7 +66,7 @@ function MainpageLogin() {
       try {
         const response = await instance.get("/auth/user/api/inquiry/notice");
         console.log("response: ", response);
-        if (response.data.status === 200) {
+        if (response.data.code === "GEN-000") {
           setAnnouncements(response.data.data);
         }
       } catch (error) {
