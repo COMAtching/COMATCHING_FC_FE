@@ -62,7 +62,7 @@
   width: 60px;
 }
 .ID-input {
-  width: calc(100% - 12px);
+  width: calc(100% - 72px);
   margin-right: 0px;
 }
 .nickNamwe-input {
@@ -104,3 +104,16 @@
   background-color: #cc0000;
   color: #ffffff;
 }
+.check-button {
+  width: 50px;          /* 버튼 너비 */
+  height: 38px;         /* 버튼 높이 */
+  margin-left: 4px;     /* 왼쪽 마진 */
+  background-color: #ffffff; /* 배경색 */
+  color: black;         /* 글자색 */
+  border: 1px solid #000000; /* 테두리 */
+  padding: 5px;         /* 패딩 */
+  cursor: pointer;      /* 커서 모양 */
+  border-radius: 4px;   /* 둥근 테두리 */
+  font-weight: bold;
+}
+

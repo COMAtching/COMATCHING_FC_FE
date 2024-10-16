@@ -20,7 +20,8 @@ function Register() {
     cheeringPlayer: "",
     username: "",
   });
-
+  const [isSocialIdValid, setIsSocialIdValid] = useState(false);
+  const [isButtonDisabled, setIsButtonDisabled] = useState(false);
   const handleNextClick = async () => {
     console.log("userInfo: ", userInfo);
     const postData = {
@@ -62,6 +63,26 @@ function Register() {
 
   const handleInputChange = (field, value) => {
     setUserInfo((prev) => ({ ...prev, [field]: value }));
+    if (field === "age" && validateAge(value)) {
+      setStep(2); // 나이가 유효하면 바로 다음 단계로 이동
+      setProgressState((prevProgress) => ({
+        progressState: prevProgress.progressState + 100 / 13,
+      }));
+    }
+    
+  };
+  const handleCheckInstagramId = () => {
+    if (validateInstagramId(userInfo.socialId)) {
+      setIsSocialIdValid(true); // 유효성 통과
+      setStep(4); // 다음 단계로 이동
+      setProgressState((prevProgress) => ({
+        progressState: prevProgress.progressState + 100 / 13,
+      }));
+      setIsButtonDisabled(true); // 버튼 비활성화
+    } else {
+      alert("올바른 인스타그램 아이디 형식(@user_id)을 입력해 주세요.");
+      setIsSocialIdValid(false); // 유효성 실패
+    }
   };
 
   const handleInputEnd = (field, value) => {
@@ -89,7 +110,7 @@ function Register() {
     return (
       Object.values(userInfo).every((value) => value !== "") &&
       validateAge(userInfo.age) &&
-      validateInstagramId(userInfo.socialId)
+      isSocialIdValid // 유효성 검사 통과 여부
     );
   };
   return (
@@ -186,10 +207,14 @@ function Register() {
                 type="text"
                 value={userInfo.InstaId}
                 onChange={(e) => handleInputChange("socialId", e.target.value)}
-                onBlur={(e) => handleInputEnd("socialId", e.target.value)}
+                
                 placeholder="@user_id"
                 className="input-field ID-input"
               />
+              <button
+                className="check-button" // 확인 버튼 스타일 지정
+                onClick={handleCheckInstagramId}
+              >확인</button>
             </div>
           </div>
         )}
@@ -235,7 +260,7 @@ function Register() {
       <button
         className={`register-Next-button ${isActive() ? "active" : ""}`}
         onClick={() => handleNextClick()}
-        disabled={!isActive()}
+        disabled={isButtonDisabled} // 버튼 비활성화 조건
       >
         다음으로
       </button>
