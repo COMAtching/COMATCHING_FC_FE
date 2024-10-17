@@ -44,7 +44,7 @@ const QRReader = () => {
           progressState: prevProgress.progressState + 100 / 13,
         }));
       } else if (response.data.code === "SEC-007") {
-        alert("유효하지 않은 코드입니다.");
+        alert("온라인 예매가 아니거나 인증이 불가한 티켓입니다.");
       }
     } catch (error) {
       console.error("Error:", error);
