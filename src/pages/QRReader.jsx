@@ -126,7 +126,7 @@ const QRReader = () => {
       });
 
     function tick() {
-      if (video.readyState === video.HAVE_ENOUGH_DATA  ) {
+      if (video.readyState === video.HAVE_ENOUGH_DATA&& !isRequestSent  ) {
         canvas.height = video.videoHeight;
         canvas.width = video.videoWidth;
         context.drawImage(video, 0, 0, canvas.width, canvas.height);
@@ -147,7 +147,7 @@ const QRReader = () => {
         } 
         requestAnimationFrame(tick);
       }
-  }, []);
+  }, [isRequestSent]);
 
   return (
     <div className="qr-reader-container">
