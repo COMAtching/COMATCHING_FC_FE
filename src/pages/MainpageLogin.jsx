@@ -204,7 +204,7 @@ function MainpageLogin() {
             <div className="unmatch-container">
               <img
                 className="logo"
-                src={`${import.meta.env.VITE_PUBLIC_URL}../../assets/Logo.svg`}
+                src={`${import.meta.env.VITE_PUBLIC_URL}../../assets/mascot_1.svg`}
                 alt="로고"
               />
               <div className="unmatch-text">
@@ -276,13 +276,13 @@ function MainpageLogin() {
       <div className="button-group">
         <BottomNavButton
           onClick={handleEditInfo}
-          imgSrc={`../../assets/checkresult.svg`}
+          imgSrc={`../../assets/mascot_2.svg`}
           imgText="내 정보 수정"
           buttonText="내 정보 수정"
         />
         <BottomNavButton
           onClick={handleVisitGuide}
-          imgSrc={`../../assets/guidebook.svg`}
+          imgSrc={`../../assets/soccer.svg`}
           imgText="경기장 정보"
           buttonText="경기장 정보"
         />
