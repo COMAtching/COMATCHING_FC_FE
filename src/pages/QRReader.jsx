@@ -13,7 +13,7 @@ const QRReader = () => {
   const videoRef = useRef(null);
   const canvasRef = useRef(null);
   const fileInputRef = useRef(null);
-  const [isScanning, setIsScanning] = useState(true); // 스캔 가능 여부 제어
+  
   useEffect(() => {
     setProgressState(() => ({
       progressState: 100 / 13,
@@ -45,11 +45,12 @@ const QRReader = () => {
         }));
       } else if (response.data.code === "SEC-007") {
         alert("온라인 예매가 아니거나 인증이 불가한 티켓입니다.");
-        
+        navigate("/");
       }
     } catch (error) {
       console.error("Error:", error);
       alert("로그인 중 오류가 발생했습니다.");
+      navigate("/");
     }
   };
   const handleImageUpload = (event) => {
@@ -92,13 +93,10 @@ const QRReader = () => {
   const sendCode = async (hashCode) => {
     const codePattern = /^T\d{10}$/;
     if (codePattern.test(hashCode)) {
-      setIsScanning(false); // 스캔 일시 중지
+      
       await handleLogin(hashCode);
 
-      // 2초 후에 다시 스캔 가능하게 설정
-      setTimeout(() => {
-        setIsScanning(true);
-      }, 2000); // 2000ms = 2초
+      
     }
   };
 
@@ -127,7 +125,7 @@ const QRReader = () => {
       });
 
     function tick() {
-      if (video.readyState === video.HAVE_ENOUGH_DATA  && isScanning) {
+      if (video.readyState === video.HAVE_ENOUGH_DATA  ) {
         canvas.height = video.videoHeight;
         canvas.width = video.videoWidth;
         context.drawImage(video, 0, 0, canvas.width, canvas.height);
@@ -141,22 +139,15 @@ const QRReader = () => {
           inversionAttempts: "dontInvert",
         });
         if (code) {
-            setIsScanning(false);  // QR 코드 인식 시 즉시 스캔 중지
+            // QR 코드 인식 시 즉시 스캔 중지
             sendCode(code.data);  // QR 코드 처리 함수 호출
             
-            // 2초 후 스캔 재개
-            setTimeout(() => {
-              setIsScanning(true);
-              requestAnimationFrame(tick);  // 스캔이 재개될 때 프레임 요청
-            }, 2000);  // 2초 대기
           } else {
             requestAnimationFrame(tick);  // QR 코드를 인식하지 못했으면 계속 스캔
           }
-        } else if (isScanning) {
-          requestAnimationFrame(tick);  // 스캔이 활성화된 경우에만 프레임 요청
-        }
+        } 
       }
-  }, [isScanning]);
+  }, []);
 
   return (
     <div className="qr-reader-container">
