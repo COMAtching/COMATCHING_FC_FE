@@ -19,11 +19,11 @@ function MainpageLogin() {
   const [currentAnnouncementIndex, setCurrentAnnouncementIndex] = useState(0);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  // useEffect(() => {
-  //   if (announcements.length > 0) {
-  //     setIsModalOpen(true);
-  //   }
-  // }, [announcements]);
+  useEffect(() => {
+    if (announcements.length > 0) {
+      setIsModalOpen(true);
+    }
+  }, [announcements]);
 
   const closeModal = () => {
     if (currentAnnouncementIndex < announcements.length - 1) {
@@ -68,11 +68,9 @@ function MainpageLogin() {
         console.log("response: ", response);
         if (response.data.code === "GEN-000") {
           setAnnouncements(response.data.data);
-          console.log(announcements);
+          console.log("announcements",announcements);
         }
-        if (response.data.data.length > 0) {
-          setIsModalOpen(true);
-        }
+        
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -306,7 +304,7 @@ function MainpageLogin() {
               {announcements[currentAnnouncementIndex].title}
             </div>
             <div className="mainpage-modal-text">
-              {announcements[currentAnnouncementIndex].text}
+              {announcements[currentAnnouncementIndex].body}
             </div>
             <button onClick={closeModal} className="mainpage-modal-button">
               {currentAnnouncementIndex < announcements.length - 1
