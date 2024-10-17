@@ -16,7 +16,7 @@ function Guide() {
         <div className="Divider" />
       </div>
       <div className="content">
-        <p className="guide-text">부천 FC 1995 <br/>
+        <p className="guide-text">부천FC1995 <br/>
         HOME STADIUM</p>
         <img
           className="guide-img"

@@ -38,7 +38,7 @@ function Match() {
 
         navigate("/matchresult");
       } else {
-        alert("매칭 실패");
+        alert("해당 유형이 없습니다 잠시후에 다시 시도해주세요!");
         navigate("/");
       }
     } catch (error) {
@@ -69,7 +69,7 @@ function Match() {
       <div className="Divider" />
       <div className="Match-container">
         <div className="Match-category">응원유형</div>
-        <div className="Match-exp">자신과 동일한 유형이 선택될 거에요.</div>
+        <div className="Match-exp">본인과 동일한 유형이 선택될 거에요.</div>
         <div className="Match-button-container">
           <div
             className={`${
