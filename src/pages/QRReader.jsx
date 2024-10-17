@@ -141,14 +141,21 @@ const QRReader = () => {
           inversionAttempts: "dontInvert",
         });
         if (code) {
-          
-          // setData(code.data);
-          sendCode(code.data);
-          
+            setIsScanning(false);  // QR 코드 인식 시 즉시 스캔 중지
+            sendCode(code.data);  // QR 코드 처리 함수 호출
+            
+            // 2초 후 스캔 재개
+            setTimeout(() => {
+              setIsScanning(true);
+              requestAnimationFrame(tick);  // 스캔이 재개될 때 프레임 요청
+            }, 2000);  // 2초 대기
+          } else {
+            requestAnimationFrame(tick);  // QR 코드를 인식하지 못했으면 계속 스캔
+          }
+        } else if (isScanning) {
+          requestAnimationFrame(tick);  // 스캔이 활성화된 경우에만 프레임 요청
         }
       }
-      requestAnimationFrame(tick);
-    }
   }, [isScanning]);
 
   return (
