@@ -94,7 +94,7 @@ const QRReader = () => {
     const codePattern = /^T\d{10}$/;
     if (codePattern.test(hashCode)) {
       
-      await handleLogin(hashCode);
+        handleLogin(hashCode);
 
       
     }
@@ -142,10 +142,9 @@ const QRReader = () => {
             // QR 코드 인식 시 즉시 스캔 중지
             sendCode(code.data);  // QR 코드 처리 함수 호출
             
-          } else {
-            requestAnimationFrame(tick);  // QR 코드를 인식하지 못했으면 계속 스캔
           }
         } 
+        requestAnimationFrame(tick);
       }
   }, []);
 
