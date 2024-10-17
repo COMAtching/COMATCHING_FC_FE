@@ -110,41 +110,41 @@ function MainpageLogin() {
         return {
           text: "나는야 귀여운 축린이!",
           topic: "순수한 축린이형",
-          image: "김형근.png",
+          
         };
       case "인싸형":
         return {
           text: "관중계의 떠오르는 별!",
           topic: "멋쟁이 인싸형",
-          image: "김형근.png",
+          
         };
       case "열정형":
         return {
           text: "앗 뜨거! 타오르는 열정!",
           topic: "불타는 열정형",
-          image: "김형근.png",
+          
         };
       case "먹방형":
         return {
           text: "먹방은 내게 맡겨!",
           topic: "행복한 먹방형",
-          image: "김형근.png",
+          
         };
       case "집중형":
         return {
           text: "혜안을 가진 사람!",
           topic: "분석하는 집중형",
-          image: "김형근.png",
+          
         };
       case "축잘알형":
         return {
           text: "축구를 잘아는 당신!",
           topic: "다아는 축잘알형",
-          image: "김형근.png",
+          
         };
     }
   };
-  const { text, topic, image } = getTextContent(userInfo.cheerPropensity);
+  const { text, topic } = getTextContent(userInfo.cheerPropensity);
   const radarData = [
     userInfo.passionType,
     userInfo.focusType,
@@ -174,11 +174,11 @@ function MainpageLogin() {
               <div className="chart-container">
                 <RadarChart data={radarData} />
               </div>
-              <img
+              {/* <img
                 className="Mascot"
                 src={`${import.meta.env.VITE_PUBLIC_URL}../../assets/${image}`}
                 alt="마스코트"
-              />
+              /> */}
             </div>
           </div>
         </>
