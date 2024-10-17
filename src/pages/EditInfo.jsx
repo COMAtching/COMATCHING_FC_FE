@@ -33,9 +33,31 @@ function EditInfo() {
       alert("로그인 중 오류가 발생했습니다.");
     }
   };
-
+  const handleLogout = async () => {
+    try {
+      const response = await instance.get("/auth/user/logout");
+      if (response.status === 200) {
+        window.location.reload();
+      }
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
+  
   const validateInstagramId = (id) => {
     return /^@[A-Za-z0-9._]+$/.test(id);
+  };
+
+  const handleQuit = async () => {
+    try {
+      const response = await instance.get("/auth/user/quit");
+      console.log("response: ", response);
+      if (response.status === 200) {
+        window.location.reload();
+      }
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
   };
 
   const handleInputChange = (field, value) => {
@@ -146,6 +168,13 @@ function EditInfo() {
           </div>
         </div>
       </div>
+      <div onClick={handleLogout} className="logout-link">
+        로그아웃
+      </div>
+      <div onClick={handleQuit} className="logout-link">
+        탈퇴하기
+      </div>
+      
       <button
         className="register-Next-button active"
         onClick={() => handleNextClick()}

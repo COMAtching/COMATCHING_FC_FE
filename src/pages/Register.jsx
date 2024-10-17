@@ -72,13 +72,16 @@ function Register() {
     
   };
   const handleCheckInstagramId = () => {
+    if (isSocialIdValid) {
+      return; // 이미 성공적으로 통과된 경우 더 이상 실행되지 않음
+    }
     if (validateInstagramId(userInfo.socialId)) {
       setIsSocialIdValid(true); // 유효성 통과
       setStep(4); // 다음 단계로 이동
       setProgressState((prevProgress) => ({
         progressState: prevProgress.progressState + 100 / 13,
       }));
-      setIsButtonDisabled(false); // 버튼 비활성화
+      setIsButtonDisabled(true); // 버튼 비활성화
     } else {
       alert("올바른 인스타그램 아이디 형식(@user_id)을 입력해 주세요.");
       setIsSocialIdValid(false); // 유효성 실패
@@ -214,6 +217,7 @@ function Register() {
               <button
                 className="check-button" // 확인 버튼 스타일 지정
                 onClick={handleCheckInstagramId}
+                disabled={isButtonDisabled} // 버튼 비활성화 조건
               >확인</button>
             </div>
           </div>
@@ -260,7 +264,7 @@ function Register() {
       <button
         className={`register-Next-button ${isActive() ? "active" : ""}`}
         onClick={() => handleNextClick()}
-        disabled={isButtonDisabled} // 버튼 비활성화 조건
+        
       >
         다음으로
       </button>

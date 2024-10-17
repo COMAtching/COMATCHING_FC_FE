@@ -90,18 +90,7 @@ function MainpageLogin() {
       console.error("Error fetching data:", error);
     }
   };
-  const handleQuit = async () => {
-    try {
-      const response = await instance.get("/auth/user/quit");
-      console.log("response: ", response);
-      if (response.status === 200) {
-        window.location.reload();
-      }
-    } catch (error) {
-      console.error("Error fetching data:", error);
-    }
-  };
-
+  
   const handleVisitGuide = () => {
     navigate("/guide");
   };
@@ -299,9 +288,7 @@ function MainpageLogin() {
       <div onClick={handleLogout} className="logout-link">
         로그아웃
       </div>
-      <div onClick={handleQuit} className="logout-link">
-        탈퇴하기
-      </div>
+      
       <Footer />
       <Modal
         isOpen={isModalOpen}
