@@ -62,6 +62,12 @@ function Register() {
   // };
 
   const handleInputChange = (field, value) => {
+    if (field === "socialId") {
+      // socialId 필드에 입력된 값이 @로 시작하지 않으면 자동으로 추가
+      if (!value.startsWith("@")) {
+        value = "@" + value;
+      }
+    }
     setUserInfo((prev) => ({ ...prev, [field]: value }));
     if (field === "age" && validateAge(value)) {
       setStep(2); // 나이가 유효하면 바로 다음 단계로 이동
@@ -172,6 +178,7 @@ function Register() {
                 <option value="이정빈">8. 이정빈</option>
                 <option value="박호민">9. 박호민</option>
                 <option value="조수철">10. 조수철</option>
+                <option value="11">11. 박창준</option>
                 <option value="박형진">13. 박형진</option>
                 <option value="최재영">14. 최재영</option>
                 <option value="송진규">15. 송진규</option>
@@ -206,9 +213,10 @@ function Register() {
           <div className="register-text">
             <div>이 계정으로 DM 주세요!</div>
             <div className="register-answer-text">
+              
               <input
                 type="text"
-                value={userInfo.InstaId}
+                value={userInfo.socialId}
                 onChange={(e) => handleInputChange("socialId", e.target.value)}
                 
                 placeholder="@user_id"

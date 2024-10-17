@@ -74,7 +74,7 @@ function MatchResult() {
         />
         <button
           className="MatchResult-copy"
-          onClick={() => navigator.clipboard.writeText(pickMatchReslt.ID)}
+          onClick={() => navigator.clipboard.writeText(pickMatchReslt.socialId)}
         >
           연락처 복사하기
         </button>

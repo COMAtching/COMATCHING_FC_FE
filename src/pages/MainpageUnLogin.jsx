@@ -29,7 +29,7 @@ function MainpageUnLogin() {
     const fetchData = async () => {
       try {
         const response = await instance.get("/api/participations");
-        console.log("response: ", response);
+        // console.log("response: ", response);
         if (response.status === 200) {
           setNumParticipants(response.data.data);
         }

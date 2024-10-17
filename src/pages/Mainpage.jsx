@@ -10,15 +10,15 @@ function Mainpage() {
   useEffect(() => {
     const fetchData = async () => {
       const response = await instance.get("/check-role");
-      console.log("final:", response);
-      console.log("response.data:", response.data);
-      console.log("Role:", response.data.data);
+      // console.log("final:", response);
+      // console.log("response.data:", response.data);
+      // console.log("Role:", response.data.data);
       if (response.data.status === 200) {
         if (response.data.data === "ROLE_USER") {
           setIsLoggedIn(true);
         }
       }
-      console.log("isLoggedIn:", isLoggedIn);
+      // console.log("isLoggedIn:", isLoggedIn);
     };
 
     fetchData();

@@ -56,7 +56,7 @@ function MainpageLogin() {
           setUserInfo(response.data.data.myInfo);
           setFriendState(response.data.data.enemyInfo);
         }
-        console.log("FriendState:, ", friendState);
+        // console.log("FriendState:, ", friendState);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -65,10 +65,10 @@ function MainpageLogin() {
     const fetchannouncement = async () => {
       try {
         const response = await instance.get("/auth/user/api/inquiry/notice");
-        console.log("response: ", response);
+        // console.log("response: ", response);
         if (response.data.code === "GEN-000") {
           setAnnouncements(response.data.data);
-          console.log("announcements",announcements);
+          // console.log("announcements",announcements);
         }
         
       } catch (error) {
@@ -165,7 +165,7 @@ function MainpageLogin() {
           <div className="Mainpage-welcome">
             반가워요
             <br />
-            승리를 향해! 부천FC
+            승리를 향해! 부천FC1955
           </div>
           <div className="UserResult-container">
             <div className="UserResult-info-container">

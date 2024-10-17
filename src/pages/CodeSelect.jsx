@@ -105,7 +105,7 @@ function CodeSelect() {
       </div>
       <img
         className="select-logo"
-        src={`${import.meta.env.VITE_PUBLIC_URL}../../assets/logo.png`}
+        src={`${import.meta.env.VITE_PUBLIC_URL}../../assets/ticket.svg`}
         alt="이미지"
       />
       <div className="help-text">* 온라인 예매자에 한함.</div>

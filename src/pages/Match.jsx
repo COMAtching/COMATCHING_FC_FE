@@ -30,7 +30,7 @@ function Match() {
       const response = await instance.post("/auth/user/match/request", {
         genderOption: pickGender,
       });
-      console.log("response: ", response);
+      // console.log("response: ", response);
 
       if (response.data.code === "GEN-000") {
         setPickResult(response.data.data);
