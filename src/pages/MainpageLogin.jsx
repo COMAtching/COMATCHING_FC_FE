@@ -19,11 +19,11 @@ function MainpageLogin() {
   const [currentAnnouncementIndex, setCurrentAnnouncementIndex] = useState(0);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  useEffect(() => {
-    if (announcements.length > 0) {
-      setIsModalOpen(true);
-    }
-  }, [announcements]);
+  // useEffect(() => {
+  //   if (announcements.length > 0) {
+  //     setIsModalOpen(true);
+  //   }
+  // }, [announcements]);
 
   const closeModal = () => {
     if (currentAnnouncementIndex < announcements.length - 1) {
@@ -38,7 +38,7 @@ function MainpageLogin() {
     const fetchData = async () => {
       try {
         const response = await instance.get("/api/participations");
-        console.log("response: ", response);
+        // console.log("response: ", response);
         if (response.status === 200) {
           setTotalUser(response.data.data);
         }
@@ -51,7 +51,7 @@ function MainpageLogin() {
       try {
         console.log("정보 요청!");
         const response = await instance.get("/auth/user/info");
-        console.log("response: ", response);
+        // console.log("response: ", response);
         if (response.data.status === 200) {
           setUserInfo(response.data.data.myInfo);
           setFriendState(response.data.data.enemyInfo);
@@ -68,6 +68,10 @@ function MainpageLogin() {
         console.log("response: ", response);
         if (response.data.code === "GEN-000") {
           setAnnouncements(response.data.data);
+          console.log(announcements);
+        }
+        if (response.data.data.length > 0) {
+          setIsModalOpen(true);
         }
       } catch (error) {
         console.error("Error fetching data:", error);
