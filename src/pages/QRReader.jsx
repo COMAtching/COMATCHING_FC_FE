@@ -76,6 +76,7 @@ const QRReader = () => {
             }
           } else {
             alert("QR 코드를 인식할 수 없습니다.");
+            window.location.reload(); // 페이지 새로고침
           }
         };
         img.src = e.target.result;

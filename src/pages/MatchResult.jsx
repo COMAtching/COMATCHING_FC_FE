@@ -33,7 +33,7 @@ function MatchResult() {
       )}
       <div className="match-container">
         <div className="match-element">
-          <div className="match-text">저는</div>
+          <div className="match-text">응원친구는</div>
           <div className="match-text">
             <span className="match-text-span">{pickMatchReslt.age}</span>살,
             <span className="match-text-span">{pickMatchReslt.gender}</span>
