@@ -7,7 +7,4 @@ export default defineConfig({
   define: {
     global: "window", // global을 window 객체로 매핑
   },
-  server: {
-    hmr: false, // HMR 비활성화
-  },
 });
