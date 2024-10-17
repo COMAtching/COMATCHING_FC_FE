@@ -13,7 +13,7 @@ const QRReader = () => {
   const videoRef = useRef(null);
   const canvasRef = useRef(null);
   const fileInputRef = useRef(null);
-  const [isScanning, setIsScanning] = useState(true)
+  const [isScanning, setIsScanning] = useState(true); // 스캔 가능 여부 제어
   useEffect(() => {
     setProgressState(() => ({
       progressState: 100 / 13,
@@ -92,7 +92,13 @@ const QRReader = () => {
   const sendCode = async (hashCode) => {
     const codePattern = /^T\d{10}$/;
     if (codePattern.test(hashCode)) {
-      handleLogin(hashCode);
+      setIsScanning(false); // 스캔 일시 중지
+      await handleLogin(hashCode);
+
+      // 2초 후에 다시 스캔 가능하게 설정
+      setTimeout(() => {
+        setIsScanning(true);
+      }, 2000); // 2000ms = 2초
     }
   };
 
@@ -121,7 +127,7 @@ const QRReader = () => {
       });
 
     function tick() {
-      if (video.readyState === video.HAVE_ENOUGH_DATA && isScanning) {
+      if (video.readyState === video.HAVE_ENOUGH_DATA  && isScanning) {
         canvas.height = video.videoHeight;
         canvas.width = video.videoWidth;
         context.drawImage(video, 0, 0, canvas.width, canvas.height);
@@ -135,17 +141,15 @@ const QRReader = () => {
           inversionAttempts: "dontInvert",
         });
         if (code) {
-          setIsScanning(false);
+          
           // setData(code.data);
           sendCode(code.data);
-          setTimeout(() => {
-            setIsScanning(true);
-          }, 3000); // 3000ms = 3초
+          
         }
       }
       requestAnimationFrame(tick);
     }
-  }, [ isScanning]);
+  }, [isScanning]);
 
   return (
     <div className="qr-reader-container">
