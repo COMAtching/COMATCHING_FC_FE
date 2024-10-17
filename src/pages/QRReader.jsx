@@ -13,7 +13,7 @@ const QRReader = () => {
   const videoRef = useRef(null);
   const canvasRef = useRef(null);
   const fileInputRef = useRef(null);
-
+  const [isScanning, setIsScanning] = useState(true)
   useEffect(() => {
     setProgressState(() => ({
       progressState: 100 / 13,
@@ -45,7 +45,7 @@ const QRReader = () => {
         }));
       } else if (response.data.code === "SEC-007") {
         alert("온라인 예매가 아니거나 인증이 불가한 티켓입니다.");
-        window.location.reload(); // 페이지 새로고침
+        
       }
     } catch (error) {
       console.error("Error:", error);
@@ -77,7 +77,7 @@ const QRReader = () => {
             }
           } else {
             alert("QR 코드를 인식할 수 없습니다.");
-            window.location.reload(); // 페이지 새로고침
+            
           }
         };
         img.src = e.target.result;
@@ -121,7 +121,7 @@ const QRReader = () => {
       });
 
     function tick() {
-      if (video.readyState === video.HAVE_ENOUGH_DATA) {
+      if (video.readyState === video.HAVE_ENOUGH_DATA && isScanning) {
         canvas.height = video.videoHeight;
         canvas.width = video.videoWidth;
         context.drawImage(video, 0, 0, canvas.width, canvas.height);
@@ -135,13 +135,17 @@ const QRReader = () => {
           inversionAttempts: "dontInvert",
         });
         if (code) {
+          setIsScanning(false);
           // setData(code.data);
           sendCode(code.data);
+          setTimeout(() => {
+            setIsScanning(true);
+          }, 3000); // 3000ms = 3초
         }
       }
       requestAnimationFrame(tick);
     }
-  }, []);
+  }, [ isScanning]);
 
   return (
     <div className="qr-reader-container">
