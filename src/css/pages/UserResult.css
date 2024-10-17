@@ -1,5 +1,5 @@
 .UserResult-container {
-  height: 50%;
+  height: 70%;
 }
 .UserResult-info-container {
   margin-top: 32px;
@@ -11,12 +11,14 @@
   font-family: "Pretendard", sans-serif;
   font-size: 16px;
   font-weight: 500;
+  margin-top: 20px;
 }
 .UserResult-topic {
   font-size: 26px;
   margin-top: 8px;
   font-weight: 500;
   font-family: "GmarketSansMedium";
+  margin-top: 30px;
 }
 .UserResult-similar-text {
   text-align: left;
@@ -26,7 +28,7 @@
   margin-bottom: 16px;
 }
 .UserResult-container {
-  max-height: 400px;
+  max-height: 600px;
   overflow-y: auto; /* 세로 스크롤을 추가합니다 */
 }
 .UserResult-similar-container {
@@ -59,13 +61,16 @@
   color: #ffffff;
   font-size: 24px;
   font-weight: 400;
-  bottom: 10px;
+  bottom: 30px;
   left: 50%;
   transform: translateX(-50%);
 }
 .chart-container {
   position: relative;
-  margin: auto;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
   width: fit-content;
   height: 30vh;
+  margin-bottom: 40px;
 }

@@ -43,7 +43,7 @@ function EditInfo() {
       console.error("Error fetching data:", error);
     }
   };
-  
+
   const validateInstagramId = (id) => {
     return /^@[A-Za-z0-9._]+$/.test(id);
   };
@@ -124,6 +124,7 @@ function EditInfo() {
               <option value="이정빈">8. 이정빈</option>
               <option value="박호민">9. 박호민</option>
               <option value="조수철">10. 조수철</option>
+              <option value="박창준">11. 박창준</option>
               <option value="박형진">13. 박형진</option>
               <option value="최재영">14. 최재영</option>
               <option value="송진규">15. 송진규</option>

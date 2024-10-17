@@ -38,6 +38,8 @@
 }
 .select-logo {
   width: 150px;
+  margin-top: 50px;
+  margin-bottom: 30px;
 }
 .Divider {
   margin-top: 20px;
@@ -48,4 +50,9 @@
 .imageLoad-button {
   background-color: #1e2024;
   color: #ffffff;
+}
+.guide-text {
+  margin-top: 20px;
+  font-weight: bolder;
+  color: #1E2024; /* GreyScale/Grey800 값 적용 */
 }

@@ -128,7 +128,7 @@ function CodeTyping() {
         placeholder="T0123456789"
         className="code-input"
       />
-      <div className="help-text">* 온라인 예매자에 한함.</div>
+      <div className="help-text">* 경기시작 4시간 전 예매자에 한함.</div>
 
       <button
         className={`Next-button ${isButtonActive ? "active" : ""}`}
