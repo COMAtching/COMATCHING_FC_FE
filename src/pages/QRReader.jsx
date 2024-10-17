@@ -13,7 +13,7 @@ const QRReader = () => {
   const videoRef = useRef(null);
   const canvasRef = useRef(null);
   const fileInputRef = useRef(null);
-  
+  const [isRequestSent, setIsRequestSent] = useState(false);
   useEffect(() => {
     setProgressState(() => ({
       progressState: 100 / 13,
@@ -25,6 +25,7 @@ const QRReader = () => {
     return codePattern.test(code);
   };
   const handleLogin = async (code) => {
+    if (isRequestSent) return;
     const postData = {
       type: "online",
       ticket: code,
@@ -33,7 +34,7 @@ const QRReader = () => {
     try {
       const response = await instance.post("/user/login", postData);
       console.log("response: ", response);
-
+      setIsRequestSent(true);
       if (response.data.code === "GEN-000") {
         if (response.data.data === "ROLE_USER") {
           navigate("/");
