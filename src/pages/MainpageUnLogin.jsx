@@ -45,13 +45,13 @@ function MainpageUnLogin() {
     <div className="container">
       <img
         className="Unlogin-logo"
-        src={`${import.meta.env.VITE_PUBLIC_URL}../../assets/Logo.png`}
+        src={`${import.meta.env.VITE_PUBLIC_URL}../../assets/Logo_main.svg`}
         alt="로고"
       />
       <div className="UnloginMain-text">나와 잘 맞는 응원 친구는?</div>
       <img
         className="Mascot"
-        src={`${import.meta.env.VITE_PUBLIC_URL}../../assets/mascot.svg`}
+        src={`${import.meta.env.VITE_PUBLIC_URL}../../assets/mascot.png`}
         alt="마스코트"
       />
       <div className="bubble-counter">

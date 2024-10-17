@@ -61,7 +61,7 @@ function AdminPage() {
       <div className="adminpage-top">
         <img
           className="adminpage-Logo"
-          src={`${import.meta.env.VITE_PUBLIC_URL}../../assets/Logo.png`}
+          src={`${import.meta.env.VITE_PUBLIC_URL}../../assets/Logo.svg`}
           alt="로고"
         />
       </div>

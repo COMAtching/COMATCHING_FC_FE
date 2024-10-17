@@ -45,7 +45,7 @@ function AdminLoginPage() {
     <div className="container">
       <img
         className="AdminLogin-Logo"
-        src={`${import.meta.env.VITE_PUBLIC_URL}../../assets/Logo.png`}
+        src={`${import.meta.env.VITE_PUBLIC_URL}../../assets/Logo_main.svg`}
         alt="로고"
       />
       <div className="AdminLogin-Topic">Partners Page</div>
