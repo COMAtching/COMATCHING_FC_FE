@@ -49,12 +49,12 @@ const QRReader = () => {
         }));
       } else if (response.data.code === "SEC-007") {
         alert("온라인 예매가 아니거나 인증이 불가한 티켓입니다.");
-        navigate("/");
+        navigate("/", { replace: true }); 
       }
     } catch (error) {
       console.error("Error:", error);
       alert("로그인 중 오류가 발생했습니다.");
-      navigate("/");
+      navigate("/", { replace: true }); 
     }
   };
   const handleImageUpload = (event) => {
