@@ -14,6 +14,7 @@ const QRReader = () => {
   const canvasRef = useRef(null);
   const fileInputRef = useRef(null);
   const [isRequestSent, setIsRequestSent] = useState(false);
+  let requestLock = false; // 추가적인 잠금 변수
   useEffect(() => {
     setProgressState(() => ({
       progressState: 100 / 13,
@@ -25,7 +26,9 @@ const QRReader = () => {
     return codePattern.test(code);
   };
   const handleLogin = async (code) => {
-    if (isRequestSent) return;
+    if (isRequestSent || requestLock) return;
+    requestLock = true; // 즉시 잠금 걸기
+    setIsRequestSent(true); // 상태도 업데이트
     const postData = {
       type: "online",
       ticket: code,
@@ -34,7 +37,7 @@ const QRReader = () => {
     try {
       const response = await instance.post("/user/login", postData);
       console.log("response: ", response);
-      setIsRequestSent(true);
+      
       if (response.data.code === "GEN-000") {
         if (response.data.data === "ROLE_USER") {
           navigate("/");
@@ -92,6 +95,7 @@ const QRReader = () => {
   };
 
   const sendCode = async (hashCode) => {
+    if (requestLock) return; // 잠금 확인 후 진행
     const codePattern = /^T\d{10}$/;
     if (codePattern.test(hashCode)) {
       
@@ -126,7 +130,7 @@ const QRReader = () => {
       });
 
     function tick() {
-      if (video.readyState === video.HAVE_ENOUGH_DATA&& !isRequestSent  ) {
+      if (video.readyState === video.HAVE_ENOUGH_DATA   && !requestLock) {
         canvas.height = video.videoHeight;
         canvas.width = video.videoWidth;
         context.drawImage(video, 0, 0, canvas.width, canvas.height);
