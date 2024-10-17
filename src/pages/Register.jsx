@@ -78,7 +78,7 @@ function Register() {
       setProgressState((prevProgress) => ({
         progressState: prevProgress.progressState + 100 / 13,
       }));
-      setIsButtonDisabled(true); // 버튼 비활성화
+      setIsButtonDisabled(false); // 버튼 비활성화
     } else {
       alert("올바른 인스타그램 아이디 형식(@user_id)을 입력해 주세요.");
       setIsSocialIdValid(false); // 유효성 실패
