@@ -12,7 +12,7 @@ export const bottomNavButton = style({
 
   boxShadow: "2px 2px 4px rgba(0, 0, 0, 0.25)",
   fontFamily: '"Pretendard", sans-serif',
-  fontSize: "20px",
+  fontSize: "16px",
   fontWeight: "500",
   // color: "#000000",
   // "@media": {

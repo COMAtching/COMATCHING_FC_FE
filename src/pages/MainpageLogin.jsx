@@ -277,8 +277,8 @@ function MainpageLogin() {
         <BottomNavButton
           onClick={handleEditInfo}
           imgSrc={`../../assets/mascot_2.svg`}
-          imgText="내 정보 수정"
-          buttonText="내 정보 수정"
+          imgText="내정보 수정"
+          buttonText="내정보 수정"
         />
         <BottomNavButton
           onClick={handleVisitGuide}

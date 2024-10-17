@@ -69,7 +69,7 @@ function Register() {
       }
     }
     setUserInfo((prev) => ({ ...prev, [field]: value }));
-    if (field === "age" && validateAge(value)) {
+    if (field === "age" && validateAge(value)&& step === 1) {
       setStep(2); // 나이가 유효하면 바로 다음 단계로 이동
       setProgressState((prevProgress) => ({
         progressState: prevProgress.progressState + 100 / 13,
@@ -148,6 +148,7 @@ function Register() {
                 onBlur={(e) => handleInputEnd("username", e.target.value)}
                 placeholder="닉네임"
                 className="input-field nickNamwe-input"
+                maxLength={6} // 닉네임 최대 6글자 제한
               />
               라고 불러주세요!
             </div>

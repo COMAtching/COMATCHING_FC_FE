@@ -7,6 +7,11 @@ import { matchResult } from "../Atoms";
 function MatchResult() {
   const navigate = useNavigate(); // 페이지 이동을 위한 useNavigate 훅 사용
   const [pickMatchReslt, setPickMatchResult] = useRecoilState(matchResult);
+  
+  const handleCopyClick = () => {
+    navigator.clipboard.writeText(pickMatchReslt.socialId);
+    alert(`연락처 ${pickMatchReslt.socialId}가 복사되었습니다!`); // 복사 성공 알림
+  };
   return (
     <div className="container">
       <img
@@ -74,7 +79,7 @@ function MatchResult() {
         />
         <button
           className="MatchResult-copy"
-          onClick={() => navigator.clipboard.writeText(pickMatchReslt.socialId)}
+          onClick={handleCopyClick}
         >
           연락처 복사하기
         </button>

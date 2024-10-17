@@ -133,7 +133,7 @@ function Form() {
             alt={agreements.terms ? "동의함" : "동의하지 않음"}
             onClick={() => toggleAgreement("terms")}
           />
-          <div className="modal-title">이용약관 동의</div>
+          <div className="modal-title" onClick={() => toggleAgreement("terms")}>이용약관 동의</div>
           <div className="modal-essential">필수</div>
           <img
             className="openarrow"
@@ -154,7 +154,7 @@ function Form() {
             alt={agreements.privacy ? "동의함" : "동의하지 않음"}
             onClick={() => toggleAgreement("privacy")}
           />
-          <div className="modal-title">개인정보 수집 이용 동의</div>
+          <div className="modal-title" onClick={() => toggleAgreement("privacy")}>개인정보 수집 이용 동의</div>
           <div className="modal-essential">필수</div>
           <img
             className="openarrow"
@@ -176,7 +176,7 @@ function Form() {
             onClick={() => toggleAgreement("age")}
           />
 
-          <div className="modal-title">만 14세 이상입니다</div>
+          <div className="modal-title" onClick={() => toggleAgreement("age")}>만 14세 이상입니다</div>
           <div className="modal-essential">필수</div>
         </div>
         <button
