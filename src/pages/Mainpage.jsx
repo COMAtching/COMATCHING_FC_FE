@@ -24,7 +24,7 @@ function Mainpage() {
     fetchData();
   }, []);
 
-  return isLoggedIn ? <MainpageLogin /> : <MainpageUnLogin />;
+  return isLoggedIn ? <MainpageLogin /> : <MainpageLogin />;
 }
 
 export default Mainpage;

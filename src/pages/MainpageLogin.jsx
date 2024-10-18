@@ -165,7 +165,7 @@ function MainpageLogin() {
           <div className="Mainpage-welcome">
             반가워요
             <br />
-            승리를 향해! 부천FC1955
+            승리를 향해! 부천FC1995
           </div>
           <div className="UserResult-container">
             <div className="UserResult-info-container">
@@ -286,6 +286,10 @@ function MainpageLogin() {
           imgText="경기장 정보"
           buttonText="경기장 정보"
         />
+      </div>
+      <div className="help-text">이용에 도움이 필요하신가요?</div>
+      <div className="privacy-button" onClick={() => navigate("/faq")}>
+        서비스 이용법 안내
       </div>
       <div onClick={handleLogout} className="logout-link">
         로그아웃

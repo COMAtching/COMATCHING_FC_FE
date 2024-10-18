@@ -66,6 +66,7 @@ function EditInfo() {
   const confirmQuit = () => {
     handleQuit();
     closeModal();
+    navigate('/');
   };
   return (
     <div className="container">
