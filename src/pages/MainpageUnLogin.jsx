@@ -70,9 +70,9 @@ function MainpageUnLogin() {
         시작하기
       </button>
 
-      <div className="help-text">이용에 도움이 필요하신가요?</div>
+      <div className="help-text">경기장 정보가 궁금하신가요?</div>
       <div className="privacy-button" onClick={() => navigate("/guide")}>
-        서비스 이용법 안내
+        경기장 정보 안내
       </div>
       <Footer />
     </div>

@@ -16,7 +16,7 @@ import EditInfo from "./pages/EditInfo.jsx";
 import Guide from "./pages/Guide.jsx";
 import AdminLoginPage from "./pages/AdminLoginPage.jsx";
 import AdminPage from "./pages/AdminPage.jsx";
-
+import Faq from "./pages/Faq.jsx";
 import "./App.css";
 import "./axiosConfig.jsx";
 
@@ -41,6 +41,7 @@ export default function App() {
             <Route path="/guide" element={<Guide />} />
             <Route path="/adminlogin" element={<AdminLoginPage />} />
             <Route path="/adminpage" element={<AdminPage />} />
+            <Route path="/faq" element={<Faq />} />
           </Routes>
         </BrowserRouter>
       </div>

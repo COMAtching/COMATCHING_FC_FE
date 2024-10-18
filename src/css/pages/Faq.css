@@ -1,0 +1,49 @@
+.container {
+  padding: 20px;
+}
+
+.backspace {
+  width: 24px;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+.register-info-container {
+  text-align: left; /* 왼쪽 정렬 */
+  margin-bottom: 30px;
+}
+
+.select-topic {
+  font-size: 28px;
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+
+
+.faq-item {
+  margin-top: 34px;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  background-color: white;
+  border-radius: 15px; /* 모서리를 둥글게 */
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* 그림자 효과 추가 */
+  padding: 20px; /* 여백을 추가하여 내용이 더 여유롭게 보이도록 */
+}
+.faq-question {
+  font-family: "Pretendard", sans-serif; /* Pretendard 폰트 적용 */
+  font-size: 20px;
+  font-weight: bold;
+  color: #34495e;
+  margin-bottom: 8px;
+  text-decoration: none; /* 밑줄 제거 */
+  text-align: left; /* 왼쪽 정렬 */
+}
+
+.faq-answer {
+  font-family: "Pretendard", sans-serif; /* Pretendard 폰트 적용 */
+  font-size: 16px;
+  color: #7f8c8d;
+  font-weight: normal;
+  text-align: left; /* 왼쪽 정렬 */
+}
