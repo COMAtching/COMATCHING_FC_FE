@@ -308,9 +308,10 @@ function MainpageLogin() {
             <div className="mainpage-modal-title">
               {announcements[currentAnnouncementIndex].title}
             </div>
-            <div className="mainpage-modal-text">
-              {announcements[currentAnnouncementIndex].body}
-            </div>
+            <div
+              className="mainpage-modal-text"
+              dangerouslySetInnerHTML={{ __html: announcements[currentAnnouncementIndex].body.replace(/\n/g, "<br>") }}
+            ></div>
             <button onClick={closeModal} className="mainpage-modal-button">
               {currentAnnouncementIndex < announcements.length - 1
                 ? "다음"
