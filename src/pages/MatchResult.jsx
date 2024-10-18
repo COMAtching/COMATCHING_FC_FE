@@ -44,7 +44,7 @@ function MatchResult() {
           <div className="match-text">저를</div>
           <div className="match-text">
             <span className="match-text-span">{pickMatchReslt.username}</span>
-            라고 불러주세요.
+            (이)라고 불러주세요.
           </div>
         </div>
         <div className="match-element">
