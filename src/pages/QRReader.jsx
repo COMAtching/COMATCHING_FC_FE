@@ -39,7 +39,7 @@ const QRReader = () => {
     deleteCookie("accesstoken");
     try {
       const response = await instance.post("/user/login", postData);
-      console.log("response: ", response);
+      // console.log("response: ", response);
       
       if (response.data.code === "GEN-000") {
         if (response.data.data === "ROLE_USER") {
