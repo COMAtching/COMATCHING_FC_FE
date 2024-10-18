@@ -85,7 +85,7 @@ function UserResult() {
         className="backspace"
         src={`${import.meta.env.VITE_PUBLIC_URL}../../assets/arrow.svg`}
         alt="뒤로가기"
-        onClick={() => navigate(-1)}
+        onClick={() => navigate("/")}
       />
       <div className="register-info-container">
         <div className="select-topic">당신은 {result.cheerPropensity}!</div>

@@ -92,6 +92,7 @@ function Form() {
 
             // 페이지 이동 (replace 옵션 사용)
             navigate("/", { replace: true });
+            alert("로그인을 처음부터 시작해주세요!");
         }}
       />
       <div className="info-card">
