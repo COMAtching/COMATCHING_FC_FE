@@ -70,7 +70,10 @@ function AdminPage() {
           <div className="adminpage-preview-text">미리보기</div>
           <div className="adminpage-preview-container">
             <div className="adminpage-preview-title">{title}</div>
-            <div className="adminpage-preview-maintext">{body}</div>
+            <div
+              className="adminpage-preview-maintext"
+              dangerouslySetInnerHTML={{ __html: body.replace(/\n/g, "<br>") }}
+            ></div>
             <button className="adminpage-preview-button">네, 확인했어요</button>
           </div>
         </div>
