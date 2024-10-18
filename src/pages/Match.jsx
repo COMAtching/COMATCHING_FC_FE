@@ -25,26 +25,27 @@ function Match() {
     setSwipeProgress(newProgress);
   };
   const handleMatch = async () => {
-    try {
-      setIsLoading(true);
-      const response = await instance.post("/auth/user/match/request", {
-        genderOption: pickGender,
-      });
-      // console.log("response: ", response);
+    alert("매칭은 13:00이후에 가능합니다!");
+    // try {
+    //   setIsLoading(true);
+    //   const response = await instance.post("/auth/user/match/request", {
+    //     genderOption: pickGender,
+    //   });
+    //   // console.log("response: ", response);
 
-      if (response.data.code === "GEN-000") {
-        setPickResult(response.data.data);
-        setIsLoading(false);
+    //   if (response.data.code === "GEN-000") {
+    //     setPickResult(response.data.data);
+    //     setIsLoading(false);
 
-        navigate("/matchresult");
-      } else {
-        alert("해당 유형이 없습니다 잠시후에 다시 시도해주세요!");
-        navigate("/");
-      }
-    } catch (error) {
-      console.error("Error:", error);
-      alert("로그인 중 오류가 발생했습니다.");
-    }
+    //     navigate("/matchresult");
+    //   } else {
+    //     alert("해당 유형이 없습니다 잠시후에 다시 시도해주세요!");
+    //     navigate("/");
+    //   }
+    // } catch (error) {
+    //   console.error("Error:", error);
+    //   alert("로그인 중 오류가 발생했습니다.");
+    // }
   };
   const handleTouchEnd = () => {
     setIsDragging(false);
