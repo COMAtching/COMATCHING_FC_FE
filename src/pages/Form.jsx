@@ -9,6 +9,8 @@ import Modal from "react-modal";
 import instance from "../axiosConfig";
 import TermsAgreement from "../components/TermsAgreement";
 import PrivateAgreement from "../components/PrivateAgreement";
+import Cookies from "js-cookie";
+
 Modal.setAppElement("#root");
 
 function Form() {
@@ -82,7 +84,15 @@ function Form() {
         className="backspace"
         src={`${import.meta.env.VITE_PUBLIC_URL}../../assets/arrow.svg`}
         alt="뒤로가기"
-        onClick={() => navigate("/", { replace: true })}
+        onClick={() => {
+                      // js-cookie 라이브러리로 accessToken 삭제
+            Cookies.remove("accessToken");
+
+            
+
+            // 페이지 이동 (replace 옵션 사용)
+            navigate("/", { replace: true });
+        }}
       />
       <div className="info-card">
         <div className="select-text">Step.3</div>
