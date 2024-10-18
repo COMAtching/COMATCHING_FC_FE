@@ -148,7 +148,7 @@ function Register() {
                 onBlur={(e) => handleInputEnd("username", e.target.value)}
                 placeholder="닉네임"
                 className="input-field nickNamwe-input"
-                maxLength={6} // 닉네임 최대 6글자 제한
+                maxLength={8} // 닉네임 최대 6글자 제한
               />
               라고 불러주세요!
             </div>
