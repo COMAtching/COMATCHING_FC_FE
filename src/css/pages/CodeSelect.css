@@ -56,3 +56,7 @@
   font-weight: bolder;
   color: #1E2024; /* GreyScale/Grey800 값 적용 */
 }
+.help-text{
+  padding-top: 25px;
+  margin-bottom: 20px;
+}

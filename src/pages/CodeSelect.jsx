@@ -108,7 +108,7 @@ function CodeSelect() {
         src={`${import.meta.env.VITE_PUBLIC_URL}../../assets/ticket.svg`}
         alt="이미지"
       />
-      <div className="help-text">*티켓 데이터 수집으로 인해 경기 시작 4시간 전 <br />예매자만 참여 가능합니다.</div>
+      <div className="help-text">티켓 데이터 수집으로 인해<br />경기 시작 4시간 전 예매자만 참여 가능합니다.</div>
       <button
         className="select-button imageLoad-button"
         onClick={handleImageLoadClick}
