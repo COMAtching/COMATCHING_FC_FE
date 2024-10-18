@@ -10,7 +10,7 @@ function MatchResult() {
   
   const handleCopyClick = () => {
     navigator.clipboard.writeText(pickMatchReslt.socialId);
-    alert(`연락처 ${pickMatchReslt.socialId}가 복사되었습니다!`); // 복사 성공 알림
+    alert(`아이디 ${pickMatchReslt.socialId}가 복사되었습니다!`); // 복사 성공 알림
   };
   return (
     <div className="container">
@@ -81,7 +81,7 @@ function MatchResult() {
           className="MatchResult-copy"
           onClick={handleCopyClick}
         >
-          연락처 복사하기
+          인스타 ID 복사하기
         </button>
       </div>
     </div>

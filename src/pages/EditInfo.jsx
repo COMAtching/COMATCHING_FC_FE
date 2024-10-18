@@ -11,7 +11,7 @@ Modal.setAppElement("#root");
 function EditInfo() {
   const navigate = useNavigate();
   const [userInfo, setUserInfo] = useRecoilState(userState);
-
+  const [isModalOpen, setIsModalOpen] = useState(false); // Modal state
   const handleNextClick = async () => {
     console.log("inputCode: ", userInfo);
     try {
@@ -60,7 +60,13 @@ function EditInfo() {
       return;
     }
   };
-
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
+  
+  const confirmQuit = () => {
+    handleQuit();
+    closeModal();
+  };
   return (
     <div className="container">
       <img
@@ -160,7 +166,7 @@ function EditInfo() {
         </div>
       </div>
       
-      <div onClick={handleQuit} className="logout-link">
+      <div onClick={openModal} className="logout-link">
         탈퇴하기
       </div>
       
@@ -170,6 +176,18 @@ function EditInfo() {
       >
         변경사항 저장하기
       </button>
+      <Modal
+        isOpen={isModalOpen}
+        onRequestClose={closeModal}
+        contentLabel="탈퇴 확인"
+        className="custom-modal-content"
+        overlayClassName="custom-modal-overlay"
+      >
+        <h2>정말 탈퇴하시겠습니까?</h2>
+        <p>탈퇴 후 재가입은 불가능합니다</p>
+        <button onClick={confirmQuit} className="custom-confirm-button">확인</button>
+        <button onClick={closeModal} className="custom-cancel-button">취소</button>
+      </Modal>
     </div>
   );
 }

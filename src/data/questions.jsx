@@ -1,6 +1,6 @@
 export const QUESTIONS = [
   <>
-    오늘은 부천FC1955 경기날!
+    오늘은 부천FC1995 경기날!
     <br />
     너무 떨린다
   </>,
