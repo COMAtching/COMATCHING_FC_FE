@@ -8,6 +8,9 @@ import "../css/pages/QRReader.css";
 import instance from "../axiosConfig";
 
 const QRReader = () => {
+  const deleteCookie = (name) => {
+    document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
+  };
   const navigate = useNavigate();
   const [progressState, setProgressState] = useRecoilState(progress);
   const videoRef = useRef(null);
@@ -33,7 +36,7 @@ const QRReader = () => {
       type: "online",
       ticket: code,
     };
-
+    deleteCookie("accesstoken");
     try {
       const response = await instance.post("/user/login", postData);
       console.log("response: ", response);
