@@ -124,12 +124,16 @@ function Register() {
   };
   return (
     <div className="container">
-      <img
-        className="backspace"
-        src={`${import.meta.env.VITE_PUBLIC_URL}../../assets/arrow.svg`}
-        alt="뒤로가기"
-        onClick={() => navigate(-1)}
-      />
+      <div className="backspace-container">
+        <img
+          className="backspace"
+          src={`${import.meta.env.VITE_PUBLIC_URL}../../assets/arrow.svg`}
+          alt="뒤로가기"
+          onClick={() => navigate(-1)}
+        />
+        <span className="backspace-text">처음으로</span>
+      </div>
+      
       <div className="register-info-container">
         <div className="select-text">Step.2</div>
         <div className="select-topic">당신을 소개해주세요.</div>

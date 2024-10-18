@@ -160,3 +160,19 @@
   height: 6px;
   justify-content: center;
 }
+.backspace-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.backspace {
+  margin-right: 8px; /* 이미지와 텍스트 사이 간격 */
+}
+
+.backspace-text {
+  font-size: 12px;  /* 작게 */
+  color: rgba(0, 0, 0, 0.5); /* 흐리게 */
+  font-weight: bold; /* 굵게 */
+  font-family: "Pretendard"; /* 폰트 일관성 유지 */
+}

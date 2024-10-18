@@ -80,21 +80,23 @@ function Form() {
     agreements.terms && agreements.privacy && agreements.age;
   return (
     <div className="container">
-      <img
-        className="backspace"
-        src={`${import.meta.env.VITE_PUBLIC_URL}../../assets/arrow.svg`}
-        alt="뒤로가기"
-        onClick={() => {
-                      // js-cookie 라이브러리로 accessToken 삭제
+      <div className="backspace-container">
+        <img
+          className="backspace"
+          src={`${import.meta.env.VITE_PUBLIC_URL}../../assets/arrow.svg`}
+          alt="뒤로가기"
+          onClick={() => {
+            // js-cookie 라이브러리로 accessToken 삭제
             Cookies.remove("accessToken");
-
-            
 
             // 페이지 이동 (replace 옵션 사용)
             navigate("/", { replace: true });
             alert("로그인을 처음부터 시작해주세요!");
-        }}
-      />
+          }}
+        />
+        <span className="backspace-text">처음으로</span>
+      </div>
+      
       <div className="info-card">
         <div className="select-text">Step.3</div>
         <div className="select-topic">나는 무슨 유형일까?</div>
