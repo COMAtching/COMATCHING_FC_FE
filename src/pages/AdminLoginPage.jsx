@@ -25,10 +25,10 @@ function AdminLoginPage() {
       accountId: inputID,
       password: inputPassword,
     };
-    console.log("postData: ", postData);
+    // console.log("postData: ", postData);
     try {
       const response = await instance.post("/admin/login", postData);
-      console.log("response: ", response);
+      // console.log("response: ", response);
 
       if (response.data.message === "로그인에 성공했습니다.") {
         navigate("/adminpage"); // 관리자 대시보드로 이동

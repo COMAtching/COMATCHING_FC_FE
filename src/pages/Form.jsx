@@ -36,10 +36,10 @@ function Form() {
   };
 
   const handleLogin = async () => {
-    console.log("scores: ", scores);
+    // console.log("scores: ", scores);
     try {
       const response = await instance.post("/auth/pending/survey", scores);
-      console.log("response: ", response);
+      // console.log("response: ", response);
       if (response.data.code === "GEN-000") {
         setFormResult(response.data.data);
         navigate("/userresult");
@@ -67,7 +67,7 @@ function Form() {
         progressState: prevProgress.progressState + 100 / 13,
       }));
     } else {
-      console.log("최종 점수:", scores);
+      // console.log("최종 점수:", scores);
       setIsModalOpen(true);
     }
   };

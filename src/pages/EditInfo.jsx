@@ -13,7 +13,7 @@ function EditInfo() {
   const [userInfo, setUserInfo] = useRecoilState(userState);
   const [isModalOpen, setIsModalOpen] = useState(false); // Modal state
   const handleNextClick = async () => {
-    console.log("inputCode: ", userInfo);
+    // console.log("inputCode: ", userInfo);
     try {
       const response = await instance.patch("/auth/user/feature", {
         username: userInfo.username,
@@ -22,7 +22,7 @@ function EditInfo() {
         socialId: userInfo.socialId,
         cheeringPlayer: userInfo.cheeringPlayer,
       });
-      console.log("response: ", response);
+      // console.log("response: ", response);
       if (response.data.code === "GEN-000") {
         navigate("/");
       } else {
@@ -41,7 +41,7 @@ function EditInfo() {
   const handleQuit = async () => {
     try {
       const response = await instance.get("/auth/user/quit");
-      console.log("response: ", response);
+      // console.log("response: ", response);
       if (response.status === 200) {
         window.location.reload();
       }

@@ -45,7 +45,7 @@ function AdminPage() {
         body,
         expireDate: "2024-10-19",
       });
-      console.log("response: ", response);
+      // console.log("response: ", response);
       if (response.data.status === 200) {
         alert("공지가 성공적으로 등록되었습니다.");
       } else {

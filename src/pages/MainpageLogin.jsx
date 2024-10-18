@@ -49,7 +49,7 @@ function MainpageLogin() {
 
     const fetchMyInfo = async () => {
       try {
-        console.log("정보 요청!");
+        // console.log("정보 요청!");
         const response = await instance.get("/auth/user/info");
         // console.log("response: ", response);
         if (response.data.status === 200) {

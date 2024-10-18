@@ -23,7 +23,7 @@ function Register() {
   const [isSocialIdValid, setIsSocialIdValid] = useState(false);
   const [isButtonDisabled, setIsButtonDisabled] = useState(false);
   const handleNextClick = async () => {
-    console.log("userInfo: ", userInfo);
+    // console.log("userInfo: ", userInfo);
     const postData = {
       age: parseInt(userInfo.age),
       gender: userInfo.gender,
@@ -31,10 +31,10 @@ function Register() {
       cheeringPlayer: userInfo.cheeringPlayer,
       username: userInfo.username,
     };
-    console.log("postData: ", postData);
+    // console.log("postData: ", postData);
     try {
       const response = await instance.post("/auth/pending/feature", postData);
-      console.log("response: ", response);
+      // console.log("response: ", response);
       if (response.data.code === "GEN-000") {
         navigate("/form");
         setProgressState((prevProgress) => ({
