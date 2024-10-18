@@ -82,7 +82,7 @@ function Form() {
         className="backspace"
         src={`${import.meta.env.VITE_PUBLIC_URL}../../assets/arrow.svg`}
         alt="뒤로가기"
-        onClick={() => navigate(-1)}
+        onClick={() => navigate("/", { replace: true })}
       />
       <div className="info-card">
         <div className="select-text">Step.3</div>
