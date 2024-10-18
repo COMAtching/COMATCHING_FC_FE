@@ -98,8 +98,8 @@ function MainpageLogin() {
   };
 
   const handleClickmatch = () => {
-    // navigate("/match");
-    alert("매칭은 13:00부터 가능합니다.");
+    navigate("/match");
+    // alert("매칭은 13:00부터 가능합니다.");
   };
   const handleEditInfo = () => {
     navigate("/editinfo");
