@@ -11,7 +11,9 @@ function MainpageUnLogin() {
   const [buttonStyle, setButtonStyle] = useState({
     backgroundColor: "transparent",
   });
-
+  const handleAlert = () => {
+    alert("서비스가 종료되었습니다."); // 경고창 표시
+  };
   const handleLogin = () => {
     setButtonStyle({
       backgroundColor: "#cc0000",
@@ -64,8 +66,9 @@ function MainpageUnLogin() {
       </div>
       <button
         className="start-button"
-        onClick={handleLogin}
+        // onClick={handleLogin}
         style={buttonStyle}
+        onClick={handleAlert} // 버튼 클릭 시 알람 표시
       >
         시작하기
       </button>
