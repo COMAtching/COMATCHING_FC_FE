@@ -62,5 +62,5 @@
 
 ## 추가 자료
 
-- [티스토리 포스트 99](https://ojspp41.tistory.com/99)
-- [티스토리 포스트 98](https://ojspp41.tistory.com/98)
+- [React와 Chart.js로 구현하는 레이더 차트](https://ojspp41.tistory.com/99)
+- [React와 Chart.js로 구현하는 레이더 차트: RadarChart 컴포넌트 분석](https://ojspp41.tistory.com/98)
