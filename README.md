@@ -24,8 +24,6 @@
 - `react-modal`
 
 [GitHub Repository](https://github.com/ojspp41/Catspot_front)  
-[Demo Video](https://youtube.com/shorts/ZDS1km9BB_k?si=KI7-pVQ4PTc8RRJN)
-
 ---
 
 ## 🔑 주요 성과
