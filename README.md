@@ -1,7 +1,5 @@
 # COMAtching FC - 부천 FC 관람 티켓을 활용한 AI 응원 친구 매칭 서비스
 
-![COMAtching FC](attachment:d371632a-0f5e-4bf4-81c2-c1e3de4f3286:f9a47982-261b-4b57-90ec-3477960a1a7f.png)
-
 **소개:**  
 부천 FC 축구 경기장에서 실제 운영된 AI 매칭 서비스로, 관람 티켓을 활용해 관중 간 함께 응원할 친구를 AI가 매칭해주는 웹앱
 
